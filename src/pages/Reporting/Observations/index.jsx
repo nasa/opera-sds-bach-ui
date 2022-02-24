@@ -124,7 +124,7 @@ function Observations() {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      mimeType: `json`,
+      mime: `json`,
     };
     let results = {};
     try {
@@ -152,6 +152,7 @@ function Observations() {
 
     pushUrlParams(getTempValues(state, tempState, true), history);
     const results = await getObservationReport();
+    results.data = JSON.parse(results.data);
     setLoading(false);
     setSummary(results.data.HEADER);
     const observations = fixObservationData(results.data.OBSERVATION);

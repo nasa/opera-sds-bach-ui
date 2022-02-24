@@ -209,7 +209,7 @@ function AllData() {
             <Button
               color="primary"
               onClick={handleJsonData}
-              style={{ justifyContent: "right" }}
+              style={{ justifyContent: "right", textTransform: "none" }}
             >
               {value}
             </Button>

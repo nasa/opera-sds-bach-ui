@@ -10,7 +10,7 @@ export const SIDEBAR_OPENED_LS = "sidebar_opened"; // localStorage
 export const ACTIVE_LINK_OPENED = "#E4E4E4";
 export const ACTIVE_LINK_CLOSED = "#00000030";
 
-export const MISSION_TITLE = "NISAR - DATA ACCOUNTABILITY";
+export const MISSION_TITLE = "OPERA - DATA ACCOUNTABILITY";
 
 export const EDIT_GLOBAL_FILTER = "EDIT_GLOBAL_FILTER";
 export const EDIT_DATA_SUMMARY_FILTER = "EDIT_DATA_SUMMARY_FILTER";

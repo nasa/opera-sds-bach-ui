@@ -49,11 +49,20 @@ export default function Routes() {
               path="/"
               render={() => <Redirect to="/data-summary" />}
             />
-            <Route path="/data-summary" component={DataSummary} />
-            <Route path="/reporting" component={Reporting} />
+            <Route
+              path="/data-summary"
+              component={DataSummary}
+              opened={sidebarOpen}
+            />
+            <Route
+              path="/reporting"
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              render={(props) => <Reporting {...props} opened={sidebarOpen} />}
+            />
             <Route
               path="/product-accountability"
               component={ProductAccountability}
+              opened={sidebarOpen}
             />
             <Route component={NotFound} />
           </Switch>

@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
+import { Typography, Tooltip } from "@material-ui/core";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
@@ -29,6 +30,7 @@ import {
   pushUrlParams,
   pushTempToState,
   getTempValues,
+  makeAPIGet,
 } from "../../../api/DataUtils";
 
 import FilterMenu from "../../../components/FilterMenu";
@@ -117,11 +119,148 @@ function TrackFrames() {
   const toggleNone = () => setTempNone(!tempNone);
 
   const columns = [
-    { field: "id", headerName: "Product Type", width: 350 },
+    { field: "sec_ref_cycle", headerName: "Cycle\n(SEC/REF)", width: 170 },
+    { field: "Track", headerName: "Track", width: 140 },
+    { field: "Frame", headerName: "Frame", width: 140 },
     {
-      field: "count",
-      headerName: "Files Ingested",
-      width: 350,
+      field: "observation_id",
+      headerName: "Observation ID",
+      width: 180,
+    },
+    {
+      field: "L0B_L_RRSD",
+      headerName: "L0B_L_RRSD ID",
+      width: 675,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "frame_coverage",
+      headerName: "Coverage",
+      width: 120,
+      renderCell: (params) => {
+        const { value } = params;
+        return <p>{value}</p>;
+      },
+    },
+    {
+      field: "L1_L_RSLC",
+      headerName: "L1_L_RSLC ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "L2_L_GSLC",
+      headerName: "L2_L_GSLC ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "L2_L_GCOV",
+      headerName: "L2_L_GCOV ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "L1_L_RIFG",
+      headerName: "L1_L_RIFG ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "L1_L_RUNW",
+      headerName: "L1_L_RUNW ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
+    },
+    {
+      field: "L2_L_GUNW",
+      headerName: "L2_L_GUNW ID",
+      width: 600,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Typography
+              variant="body2"
+              style={{ justifyContent: "flex-start" }}
+            >
+              {value}
+            </Typography>
+          </Tooltip>
+        );
+      },
     },
   ];
 
@@ -244,14 +383,44 @@ function TrackFrames() {
 
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
+  async function getTrackFrameAccountabilityData() {
+    const paths = ["track-frame"];
+    const params = {};
+    if (tempObservationID !== "") {
+      params.observation_id = tempObservationID;
+    }
+    if (tempFrameID !== "") {
+      params.frame = tempFrameID;
+    }
+    if (tempTrackID !== "") {
+      params.track = tempTrackID;
+    }
+    if (tempObservationID !== "") {
+      params.observation_id = tempObservationID;
+    }
+    if (tempL0bRrsdID !== "") {
+      params.l0b_rrsd_id = tempL0bRrsdID;
+    }
+    let results = {};
+    try {
+      results = await makeAPIGet(paths, params);
+    } catch (err) {
+      console.error(err);
+    }
+    return results;
+  }
+
   const search = async () => {
     setLoading(true);
 
     pushTempToState(dispatch, tempState);
 
     pushUrlParams(getTempValues(state, tempState, true), history);
+
+    const results = await getTrackFrameAccountabilityData();
+    console.log(results.data);
     setLoading(false);
-    setData([]);
+    setData(results.data);
   };
 
   const reset = () => {
@@ -262,7 +431,7 @@ function TrackFrames() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, tempState, true), tempDispatch);
+    onMount(history, getTempValues(state, null, false), tempDispatch);
   }, [history.location.pathname]);
 
   return (
@@ -273,11 +442,12 @@ function TrackFrames() {
           <RangeFilter
             label="Cycle"
             labelA="Secondary"
-            valueA={tempCycleSecondaryID}
+            valueA="N/A"
             setValueA={setTempCycleSecondaryID}
             labelB="Reference"
-            valueB={tempCycleReferenceID}
+            valueB="N/A"
             setValueB={setTempCycleReferenceID}
+            disabled
           />
           <StringFilter
             label="Track"

@@ -70,7 +70,7 @@ export default function FilterMenu(props) {
         border: "1px solid #E0E0E0",
         boxSizing: "border-box",
         borderRadius: "0px 0px 4px 4px",
-
+        verticalAlign: "baseline",
         /* Inside Auto Layout */
 
         flex: "none",

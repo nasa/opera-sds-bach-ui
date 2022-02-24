@@ -89,6 +89,10 @@ export function pullUrlParams(history, dispatch) {
     setL0bRrsdId,
     setLdfFilename,
     setVCID,
+    setCycleReferenceID,
+    setCycleSecondaryID,
+    setTrackID,
+    setFrameID,
     setCRID,
     setProcessingMode,
     setReportType,
@@ -150,6 +154,18 @@ export function pullUrlParams(history, dispatch) {
       case "vcid":
         setVCID(value);
         break;
+      case "cycle_ref":
+        setCycleReferenceID(value);
+        break;
+      case "cycle_sec":
+        setCycleSecondaryID(value);
+        break;
+      case "track":
+        setTrackID(value);
+        break;
+      case "frame":
+        setFrameID(value);
+        break;
       case "crid":
         setCRID(value);
         break;
@@ -173,7 +189,7 @@ export function pullUrlParams(history, dispatch) {
  */
 export function onMount(history, values, dispatch) {
   if (history.location.search) pullUrlParams(history, dispatch);
-  pushUrlParams(values, history);
+  else pushUrlParams(values, history);
   return () => console.log(`location has changed ${history.location.pathname}`);
 }
 

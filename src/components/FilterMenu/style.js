@@ -27,7 +27,6 @@ export default makeStyles((theme) => ({
 
     /* Inside Auto Layout */
 
-    flex: "none",
     order: 0,
     flexGrow: 0,
     margin: "0px 15px",

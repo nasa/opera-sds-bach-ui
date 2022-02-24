@@ -10,11 +10,11 @@ import DataProcessing from "./DataProcessing";
 
 import styles from "./style";
 
-class DataSummary extends React.Component {
+class Reporting extends React.Component {
   componentDidMount() {}
 
   render() {
-    const { classes, match } = this.props;
+    const { classes, match, opened } = this.props;
 
     // TODO: move this to a config file in the future
     const links = [
@@ -26,7 +26,7 @@ class DataSummary extends React.Component {
 
     return (
       <>
-        <TabMenu links={links} match={match} />
+        <TabMenu links={links} match={match} opened={opened} />
 
         <div className={classes.subPage}>
           {/* this allows to move to the first tab when clicking the link in the sidebar */}
@@ -48,11 +48,12 @@ class DataSummary extends React.Component {
   }
 }
 
-DataSummary.propTypes = {
+Reporting.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
   match: PropTypes.shape({
     path: PropTypes.string.isRequired,
   }).isRequired,
+  opened: PropTypes.isRequired,
 };
 
-export default withStyles(styles)(DataSummary);
+export default withStyles(styles)(Reporting);

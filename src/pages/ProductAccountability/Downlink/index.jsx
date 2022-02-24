@@ -142,7 +142,21 @@ function Downlink() {
   const toggleUnknown = () => setTempUnknown(!tempUnknown);
 
   const columns = [
-    { field: "id", headerName: "LDF", width: 300 },
+    {
+      field: "id",
+      headerName: "LDF",
+      width: 300,
+      renderCell: (params) => {
+        const { value } = params;
+        return (
+          <Tooltip title={value}>
+            <Button color="primary" style={{ justifyContent: "right" }}>
+              {value}
+            </Button>
+          </Tooltip>
+        );
+      },
+    },
     { field: "vcid", headerName: "VCID", width: 100 },
     {
       field: "created_at",
@@ -411,7 +425,7 @@ function Downlink() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, tempState, true), tempDispatch);
+    onMount(history, getTempValues(state, null, false), tempDispatch);
   }, [history.location.pathname]);
 
   return (

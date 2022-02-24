@@ -18,10 +18,10 @@ export default function Table(props) {
     loading,
   } = props;
 
-  const classes = useStyles();
-
   const [pageSize, setPageSize] = React.useState(5);
   const [page, setPage] = React.useState(0);
+
+  const classes = useStyles();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

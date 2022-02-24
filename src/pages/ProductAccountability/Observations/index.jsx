@@ -414,7 +414,7 @@ function Observations() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, tempState, true), tempDispatch);
+    onMount(history, getTempValues(state, null, false), tempDispatch);
   }, [history.location.pathname]);
 
   return (
