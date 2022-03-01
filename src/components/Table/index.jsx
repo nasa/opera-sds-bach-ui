@@ -23,11 +23,11 @@ export default function Table(props) {
 
   const classes = useStyles();
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (newPage) => {
     setPage(newPage);
   };
 
-  const handlePageSize = (event, newPageSize) => {
+  const handlePageSize = (newPageSize) => {
     setPageSize(Number(newPageSize));
   };
 

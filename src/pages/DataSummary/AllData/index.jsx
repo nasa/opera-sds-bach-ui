@@ -193,7 +193,7 @@ function AllData() {
       field: "FileName",
       headerName: "File Name",
       width: 620,
-      valueGetter: (params) => `${params.getValue("metadata").FileName || ""}`,
+      valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
         const handleJsonData = async () => {
@@ -222,7 +222,7 @@ function AllData() {
       headerName: "Recieved Date/Time",
       width: 210,
       valueGetter: (params) =>
-        `${params.getValue("metadata").ProductReceivedTime || ""}`,
+        `${params.row.metadata.ProductReceivedTime || ""}`,
     },
     {
       field: "transfer_status",
