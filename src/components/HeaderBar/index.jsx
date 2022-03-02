@@ -9,7 +9,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { APP_BAR_HEIGHT } from "../../constants";
 
 import useStyles from "./style";
-import operaLogo from "../../images/opera_logo.svg";
+import operaLogo from "../../images/opera_logo.png";
 import nasaLogo from "../../images/nasa_logo.svg";
 
 export function hashCode(str) {
