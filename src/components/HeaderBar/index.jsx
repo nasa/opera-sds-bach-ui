@@ -9,7 +9,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { APP_BAR_HEIGHT } from "../../constants";
 
 import useStyles from "./style";
-import nisarLogo from "../../images/NISAR_MISSION_PATCH.svg";
+import operaLogo from "../../images/opera_logo.svg";
 import nasaLogo from "../../images/nasa_logo.svg";
 
 export function hashCode(str) {
@@ -63,7 +63,7 @@ export default function HeaderBar(props) {
           <img
             height={APP_BAR_HEIGHT}
             alt="logo"
-            src={nisarLogo}
+            src={operaLogo}
             className={classes.logo}
           />
           <div>
