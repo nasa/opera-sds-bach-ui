@@ -29,7 +29,6 @@ export default makeStyles((theme) => ({
 
     order: 0,
     flexGrow: 0,
-    margin: "0px 15px",
     overflowY: "auto",
     width: "100%",
   },
