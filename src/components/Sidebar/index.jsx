@@ -46,21 +46,23 @@ export default function Sidebar(props) {
       path: "/product-accountability",
       icon: CheckCircleIcon,
     },
-    {
-      label: "Process Monitoring",
-      path: "/process-monitoring",
-      icon: VisibilityIcon,
-    },
+    // hidden for OPERA
+    // {
+    //   label: "Process Monitoring",
+    //   path: "/process-monitoring",
+    //   icon: VisibilityIcon,
+    // },
     {
       label: "Reporting",
       path: "/reporting",
       icon: InsertChartIcon,
     },
-    {
-      label: "Cluster Health",
-      path: "/cluster-health",
-      icon: FavoriteIcon,
-    },
+    // hidden for OPERA
+    // {
+    //   label: "Cluster Health",
+    //   path: "/cluster-health",
+    //   icon: FavoriteIcon,
+    // },
   ];
 
   return (

@@ -18,7 +18,8 @@ class Reporting extends React.Component {
 
     // TODO: move this to a config file in the future
     const links = [
-      { path: "observations", label: "Observations" },
+      // hidden for OPERA
+      // { path: "observations", label: "Observations" },
       { path: "data-processing", label: "Data Processing" },
       { path: "latency", label: "Latency" },
       { path: "urgent-response", label: "Urgent Response" },
@@ -33,11 +34,11 @@ class Reporting extends React.Component {
           <Route
             exact
             path={`${match.path}`}
-            render={() => <Redirect to={`${match.path}/observations`} />}
+            render={() => <Redirect to={`${match.path}/data-processing`} />}
           />
 
           {/* todo: may move this to config file and map over array */}
-          <Route path={`${match.path}/observations`} component={Observations} />
+          {/* <Route path={`${match.path}/observations`} component={Observations} /> */}
           <Route
             path={`${match.path}/data-processing`}
             component={DataProcessing}

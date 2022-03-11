@@ -16,9 +16,11 @@ export default function Table(props) {
     setOpen,
     checkboxSelection,
     loading,
+    rowsPerPageOptions,
+    initialPageSize,
   } = props;
 
-  const [pageSize, setPageSize] = React.useState(5);
+  const [pageSize, setPageSize] = React.useState(initialPageSize);
   const [page, setPage] = React.useState(0);
 
   const classes = useStyles();
@@ -53,7 +55,7 @@ export default function Table(props) {
           onPageChange={handleChangePage}
           pageSize={pageSize}
           onPageSizeChange={handlePageSize}
-          rowsPerPageOptions={[5, 10, 20]}
+          rowsPerPageOptions={rowsPerPageOptions}
           pagination
         />
       </div>
@@ -69,6 +71,8 @@ Table.propTypes = {
   setOpen: PropTypes.func,
   checkboxSelection: PropTypes.bool,
   loading: PropTypes.bool,
+  rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+  initialPageSize: PropTypes.number,
 };
 
 Table.defaultProps = {
@@ -79,4 +83,6 @@ Table.defaultProps = {
   setOpen: () => {},
   checkboxSelection: false,
   loading: false,
+  rowsPerPageOptions: [5, 10, 20],
+  initialPageSize: 5,
 };

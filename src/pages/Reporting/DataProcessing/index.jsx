@@ -22,8 +22,8 @@ import {
 } from "../../../contexts/ReportingContexts";
 
 import {
-  StateContext as DataStateNenContext,
-  DispatchContext as DataDispatchNenContext,
+  StateContext as DataStateIncomingL2HLSFilesContext,
+  DispatchContext as DataDispatchL2HLSFilesContext,
 } from "../../../contexts/DataContexts/DataProcessing/IncomingNen";
 
 import {
@@ -66,7 +66,7 @@ function DataProcessing(props) {
   const { match } = props;
 
   const links = [
-    { path: "incoming-nen", label: "Incoming NEN Files" },
+    { path: "incoming-l2-hls", label: "Incoming L2 HLS Files" },
     { path: "incoming-gds", label: "Incoming GDS Ancillary Files" },
     { path: "generated-sds", label: "Generated SDS Products" },
     { path: "outgoing-to-daac", label: "Outgoing Products To DAAC" },
@@ -77,8 +77,8 @@ function DataProcessing(props) {
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
 
-  const nenDataState = React.useContext(DataStateNenContext);
-  const nenDataDispatch = React.useContext(DataDispatchNenContext);
+  const incomingL2HLSFilesDataState = React.useContext(DataStateIncomingL2HLSFilesContext);
+  const incomingL2HLSFilesDataDispatch = React.useContext(DataDispatchL2HLSFilesContext);
 
   const gdsDataState = React.useContext(DataStateGdsContext);
   const gdsDataDispatch = React.useContext(DataDispatchGdsContext);
@@ -98,10 +98,10 @@ function DataProcessing(props) {
     reportType,
   } = state;
 
-  const nenData = nenDataState.data;
-  const nenSummary = nenDataState.summary;
-  const setNenData = nenDataDispatch.setData;
-  const setNenSummary = nenDataDispatch.setSummary;
+  const incomingL2HLSFilesData = incomingL2HLSFilesDataState.data;
+  const incomingL2HLSFilesSummary = incomingL2HLSFilesDataState.summary;
+  const setIncomingL2HLSFilesData = incomingL2HLSFilesDataDispatch.setData;
+  const setIncomingL2HLSFilesSummary = incomingL2HLSFilesDataDispatch.setSummary;
 
   const gdsData = gdsDataState.data;
   const gdsSummary = gdsDataState.summary;
@@ -176,12 +176,13 @@ function DataProcessing(props) {
 
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
-  const getIncomingNen = async () => {
+  const getIncomingL2HLSFiles = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "nen",
+      mime: "invalid", // TODO chrisjrd: fix bug in Bach API. "json" should return JSON, but instead returns a string of JSON
     };
     let results = {};
     try {
@@ -254,8 +255,8 @@ function DataProcessing(props) {
 
   const getReport = async (reportName) => {
     switch (reportName) {
-      case "incoming-nen":
-        return getIncomingNen();
+      case "incoming-l2-hls":
+        return getIncomingL2HLSFiles();
       case "incoming-gds":
         return getIncomingGds();
       case "generated-sds":
@@ -269,9 +270,9 @@ function DataProcessing(props) {
 
   const setReportInfo = (reportName, results) => {
     switch (reportName) {
-      case "incoming-nen":
-        setNenSummary(results.data.header);
-        setNenData(formatReportData("name", results.data.products));
+      case "incoming-l2-hls":
+        setIncomingL2HLSFilesSummary(results.data.header);
+        setIncomingL2HLSFilesData(formatReportData("name", results.data.products));
         return true;
       case "incoming-gds":
         setGdsSummary(results.data.header);
@@ -295,8 +296,8 @@ function DataProcessing(props) {
     switch (currentPath) {
       case "data-processing":
         return {};
-      case "incoming-nen":
-        return nenSummary || {};
+      case "incoming-l2-hls":
+        return incomingL2HLSFilesSummary || {};
       case "incoming-gds":
         return gdsSummary || {};
       case "generated-sds":
@@ -378,14 +379,14 @@ function DataProcessing(props) {
             <Route
               exact
               path={`${match.path}`}
-              render={() => <Redirect to={`${match.path}/incoming-nen`} />}
+              render={() => <Redirect to={`${match.path}/incoming-l2-hls`} />}
             />
 
             {/* todo: may move this to config file and map over array */}
             <Route
-              path={`${match.path}/incoming-nen`}
+              path={`${match.path}/incoming-l2-hls`}
               render={() => (
-                <IncomingNenProducts data={nenData} loading={loading} />
+                <IncomingNenProducts data={incomingL2HLSFilesData} loading={loading} />
               )}
             />
             <Route
