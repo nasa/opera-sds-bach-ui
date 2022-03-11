@@ -13,14 +13,22 @@ export default function FilterTableGrid(props) {
   return (
     <Grid container spacing={4} className={classes.gridContainer}>
       {!filtersHidden ? (
-        <Grid item xs={2} className={classes.leftGridChild}>
+        <Grid item className={classes.leftGridChild}
+              xs={12}
+              md={4}
+              lg={4}
+              xl={2}
+        >
           {children[0]}
         </Grid>
       ) : null}
       {children.length <= 1 ? null : (
         <Grid
           item
-          xs={filtersHidden ? 12 : 10}
+          xs={filtersHidden ? 12 : 12}
+          md={filtersHidden ? 12 : 8}
+          lg={filtersHidden ? 12 : 8}
+          xl={filtersHidden ? 12 : 10}
           className={classes.rightGridChild}
         >
           {children[1]}

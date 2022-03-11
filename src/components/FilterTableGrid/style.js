@@ -14,14 +14,11 @@ export default makeStyles(() => ({
   leftGridChild: {
     position: "relative",
     height: "fit-content",
-    minWidth: "220px",
-    minHeight: "400px",
     justifyContent: "space-between",
   },
   rightGridChild: {
     position: "relative",
     height: "fit-content",
-    minHeight: "400px",
     justifyContent: "space-between",
   },
 }));

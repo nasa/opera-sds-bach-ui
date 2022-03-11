@@ -20,7 +20,6 @@ export default makeStyles(() => ({
   },
   content: {
     marginTop: APP_BAR_HEIGHT,
-    minWidth: "50em",
   },
   drawerOpen: {
     width: `calc(100% - ${DRAWER_WIDTH}px)`,

@@ -6,7 +6,6 @@ export default makeStyles(() => ({
     minHeight: "500px",
   },
   dataGridDiv: {
-    paddingRight: "18px",
     display: "flex",
     height: "100%",
   },
