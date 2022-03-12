@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import clsx from "clsx";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline, Toolbar } from "@material-ui/core";
 
 import HeaderBar from "../../components/HeaderBar";
 import Sidebar from "../../components/Sidebar";
@@ -35,7 +35,9 @@ export default function Routes() {
 
       <Router basename={BASEPATH}>
         <HeaderBar missionTitle={MISSION_TITLE} opened={sidebarOpen} />
+        <Toolbar />
         <Sidebar opened={sidebarOpen} toggleSidebar={toggleSidebar} />
+        <Toolbar />
 
         <main
           className={clsx(classes.content, {

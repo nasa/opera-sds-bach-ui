@@ -6,8 +6,6 @@ import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
-import { APP_BAR_HEIGHT } from "../../constants";
-
 import useStyles from "./style";
 import operaLogo from "../../images/opera_logo.png";
 import nasaLogo from "../../images/nasa_logo.svg";
@@ -52,16 +50,17 @@ export default function HeaderBar(props) {
   return (
     <>
       <AppBar
-        position="fixed"
         elevation={0}
         className={clsx(classes.appBar, classes.header, {
           [classes.appBarShift]: opened,
           [classes.appBarClose]: !opened,
         })}
+        color="background"
       >
         <Toolbar>
           <img
-            height={APP_BAR_HEIGHT}
+            width="129px"
+            height="auto"
             alt="logo"
             src={operaLogo}
             className={classes.logo}
@@ -80,7 +79,7 @@ export default function HeaderBar(props) {
             </Typography>
           </div>
           <div className={classes.logoRight}>
-            <img height={APP_BAR_HEIGHT} alt="logo" src={nasaLogo} />
+            <img width="129px" height="auto" alt="logo" src={nasaLogo} />
           </div>
         </Toolbar>
       </AppBar>
