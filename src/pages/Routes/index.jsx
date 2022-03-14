@@ -35,9 +35,7 @@ export default function Routes() {
 
       <Router basename={BASEPATH}>
         <HeaderBar missionTitle={MISSION_TITLE} opened={sidebarOpen} />
-        <Toolbar />
         <Sidebar opened={sidebarOpen} toggleSidebar={toggleSidebar} />
-        <Toolbar />
 
         <main
           className={clsx(classes.content, {

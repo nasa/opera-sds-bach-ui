@@ -50,6 +50,7 @@ export default function HeaderBar(props) {
   return (
     <>
       <AppBar
+        position="relative"
         elevation={0}
         className={clsx(classes.appBar, classes.header, {
           [classes.appBarShift]: opened,
