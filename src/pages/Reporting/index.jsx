@@ -54,7 +54,7 @@ Reporting.propTypes = {
   match: PropTypes.shape({
     path: PropTypes.string.isRequired,
   }).isRequired,
-  opened: PropTypes.isRequired,
+  opened: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(Reporting);
