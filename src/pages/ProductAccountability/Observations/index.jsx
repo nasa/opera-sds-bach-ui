@@ -7,23 +7,22 @@ import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
 import WarningIcon from "@material-ui/icons/Warning";
 import moment from "moment";
 
-import PageWrapper from "../../../components/PageWrapper";
-import FilterTableGrid from "../../../components/FilterTableGrid";
+import PageWrapper from "@bach/components/PageWrapper";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
 
 import {
   DispatchContext,
   StateContext,
-} from "../../../contexts/ProductAccountabilityContexts";
+} from "@bach/contexts/ProductAccountabilityContexts";
 
-import useStyles from "./style";
-import CompleteIcon from "../../../images/complete.svg";
-import PartialIcon from "../../../images/partial.svg";
-import NoneIcon from "../../../images/none.svg";
+import CompleteIcon from "@bach/images/complete.svg";
+import PartialIcon from "@bach/images/partial.svg";
+import NoneIcon from "@bach/images/none.svg";
 
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
-} from "../../../contexts/DataContexts/ObservationsData";
+} from "@bach/contexts/DataContexts/ObservationsData";
 
 import {
   onMount,
@@ -31,17 +30,18 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterController from "../../../components/FilterController";
-import Table from "../../../components/Table";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import CheckboxFilter from "../../../components/Filters/CheckboxFilter";
-import RadioFilter from "../../../components/Filters/RadioFilter";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterController from "@bach/components/FilterController";
+import Table from "@bach/components/Table";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
+import RadioFilter from "@bach/components/Filters/RadioFilter";
 
-import makeLabel from "../../../components/Filters/Labeler";
+import makeLabel from "@bach/components/Filters/Labeler";
+import useStyles from "./style";
 
 function Observations() {
   const classes = useStyles();

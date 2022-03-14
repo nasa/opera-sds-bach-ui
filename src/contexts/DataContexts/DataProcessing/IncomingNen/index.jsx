@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useIncomingNenData } from "../../../../reducers/Reporting/DataProcessing/IncomingNen";
+import { useIncomingNenData } from "@bach/reducers/Reporting/DataProcessing/IncomingNen";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

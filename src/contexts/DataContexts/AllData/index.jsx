@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useAllData } from "../../../reducers/DataSummary/allData";
+import { useAllData } from "@bach/reducers/DataSummary/allData";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

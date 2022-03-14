@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useObservationData } from "../../../reducers/Reporting/Observations";
+import { useObservationData } from "@bach/reducers/Reporting/Observations";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

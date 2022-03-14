@@ -58,6 +58,16 @@ module.exports = {
   ],
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      "@bach/api": path.resolve(__dirname, "src/api"),
+      "@bach/components": path.resolve(__dirname, "src/components"),
+      "@bach/config": path.resolve(__dirname, "src/config"),
+      "@bach/contexts": path.resolve(__dirname, "src/contexts"),
+      "@bach/images": path.resolve(__dirname, "src/images"),
+      "@bach/pages": path.resolve(__dirname, "src/pages"),
+      "@bach/reducers": path.resolve(__dirname, "src/reducers"),
+      "@bach/constants": path.resolve(__dirname, "src/constants"),
+    },
   },
   output: {
     path: path.resolve(__dirname, "dist"),

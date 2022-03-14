@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { NASA_BLUE } from "../../../../constants";
+import { NASA_BLUE } from "@bach/constants";
 
 export default makeStyles(() => ({
   page: {

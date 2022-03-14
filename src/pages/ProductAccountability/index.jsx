@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom"; // withRouter
 
 import { withStyles } from "@material-ui/core/styles";
 
-import TabMenu from "../../components/TabMenu";
+import TabMenu from "@bach/components/TabMenu";
 
 import Downlink from "./Downlink";
 import Observations from "./Observations";

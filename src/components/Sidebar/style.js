@@ -5,7 +5,7 @@ import {
   DRAWER_COLOR,
   ACTIVE_LINK_CLOSED,
   ACTIVE_LINK_OPENED,
-} from "../../constants";
+} from "@bach/constants";
 
 export default makeStyles((theme) => ({
   menuButton: {

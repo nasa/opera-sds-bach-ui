@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useIncomingGdsData } from "../../../../reducers/Reporting/DataProcessing/IncomingGds";
+import { useIncomingGdsData } from "@bach/reducers/Reporting/DataProcessing/IncomingGds";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DATA } from "../../../constants";
+import { DATA } from "@bach/constants";
 
 const initialState = {
   data: [],

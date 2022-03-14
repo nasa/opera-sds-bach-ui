@@ -16,27 +16,27 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
 import {
   StateContext,
   DispatchContext,
-} from "../../../contexts/DataSummaryContexts";
+} from "@bach/contexts/DataSummaryContexts";
 
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
-} from "../../../contexts/DataContexts/AllData";
+} from "@bach/contexts/DataContexts/AllData";
 
-import PageWrapper from "../../../components/PageWrapper";
+import PageWrapper from "@bach/components/PageWrapper";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterTableGrid from "../../../components/FilterTableGrid";
-import FilterController from "../../../components/FilterController";
-import Table from "../../../components/Table";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import CheckboxFilter from "../../../components/Filters/CheckboxFilter";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
+import FilterController from "@bach/components/FilterController";
+import Table from "@bach/components/Table";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
 import useStyles from "./style";
 

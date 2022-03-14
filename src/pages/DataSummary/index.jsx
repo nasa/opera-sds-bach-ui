@@ -4,10 +4,10 @@ import { Route, Redirect } from "react-router-dom"; // withRouter
 
 import { withStyles } from "@material-ui/core/styles";
 
-import TabMenu from "../../components/TabMenu";
-import IncomingData from "./IncomingData";
-import OutputData from "./OutputData";
-import AllData from "./AllData";
+import TabMenu from "@bach/components/TabMenu";
+import IncomingData from "@bach/pages/DataSummary/IncomingData";
+import OutputData from "@bach/pages/DataSummary/OutputData";
+import AllData from "@bach/pages/DataSummary/AllData";
 
 import styles from "./style";
 

@@ -1,10 +1,9 @@
 import axios from "axios";
-import { DEFAULT_HOST, SUFFIX } from "../../config";
-import mozartConfig from "../../config/mozartConfig.json";
+import { DEFAULT_HOST, SUFFIX } from "@bach/config";
+import mozartConfig from "@bach/config/mozartConfig.json";
 
+import { URL_TO_VALUES_DICT, VALUES_TO_URL_DICT } from "@bach/constants";
 import { buildAPIUrl } from "../utils";
-
-import { URL_TO_VALUES_DICT, VALUES_TO_URL_DICT } from "../../constants";
 
 export async function makeAPIGet(paths, params, data) {
   const url = buildAPIUrl(paths, `${DEFAULT_HOST}${SUFFIX}`);

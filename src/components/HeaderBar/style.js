@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH } from "../../constants";
+import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH } from "@bach/constants";
 
 export default makeStyles((theme) => ({
   appBar: {

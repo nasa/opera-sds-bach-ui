@@ -9,16 +9,16 @@ import {
 import clsx from "clsx";
 import { CssBaseline } from "@material-ui/core";
 
-import HeaderBar from "../../components/HeaderBar";
-import Sidebar from "../../components/Sidebar";
+import HeaderBar from "@bach/components/HeaderBar";
+import Sidebar from "@bach/components/Sidebar";
 
+import { SIDEBAR_OPENED_LS, MISSION_TITLE } from "@bach/constants";
+import { BASEPATH } from "@bach/config"; // will be used when ready for production
 import DataSummary from "../DataSummary";
 import Reporting from "../Reporting";
 import ProductAccountability from "../ProductAccountability";
 import NotFound from "../NotFound";
 
-import { SIDEBAR_OPENED_LS, MISSION_TITLE } from "../../constants";
-import { BASEPATH } from "../../config"; // will be used when ready for production
 
 import useStyles from "./style";
 

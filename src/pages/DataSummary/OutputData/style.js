@@ -1,4 +1,4 @@
-import { NASA_BLUE } from "../../../constants";
+import { NASA_BLUE } from "@bach/constants";
 
 const useStyles = () => ({
   page: {

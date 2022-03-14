@@ -4,9 +4,9 @@ import MomentUtils from "@date-io/moment";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-import Routes from "./pages/Routes";
+import Routes from "@bach/pages/Routes";
 
-import Contexts from "./contexts";
+import Contexts from "@bach/contexts";
 
 const defaultTheme = createTheme({
   palette: {

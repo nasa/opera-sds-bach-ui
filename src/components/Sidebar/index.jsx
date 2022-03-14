@@ -24,7 +24,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import MenuLink from "../MenuLink";
 import Profile from "../Profile";
-import { SIDEBAR_OPENED_LS } from "../../constants";
+import { SIDEBAR_OPENED_LS } from "@bach/constants";
 
 import useStyles from "./style";
 

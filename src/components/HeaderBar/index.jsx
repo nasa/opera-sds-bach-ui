@@ -6,9 +6,9 @@ import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
+import operaLogo from "@bach/images/opera_logo.png";
+import nasaLogo from "@bach/images/nasa_logo.svg";
 import useStyles from "./style";
-import operaLogo from "../../images/opera_logo.png";
-import nasaLogo from "../../images/nasa_logo.svg";
 
 export function hashCode(str) {
   let hash = 0;

@@ -9,26 +9,26 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
 import {
   DispatchContext,
   StateContext,
-} from "../../../contexts/DataSummaryContexts";
+} from "@bach/contexts/DataSummaryContexts";
 
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
-} from "../../../contexts/DataContexts/Output";
+} from "@bach/contexts/DataContexts/Output";
 
-import PageWrapper from "../../../components/PageWrapper";
-import FilterTableGrid from "../../../components/FilterTableGrid";
+import PageWrapper from "@bach/components/PageWrapper";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterController from "../../../components/FilterController";
-import Table from "../../../components/Table";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterController from "@bach/components/FilterController";
+import Table from "@bach/components/Table";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
 
 function OutputData() {
   const history = useHistory();

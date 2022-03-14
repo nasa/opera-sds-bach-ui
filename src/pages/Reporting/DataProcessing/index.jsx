@@ -12,45 +12,45 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
-import { getPathTail } from "../../../api/utils";
+import { getPathTail } from "@bach/api/utils";
 
 import {
   DispatchContext,
   StateContext,
-} from "../../../contexts/ReportingContexts";
+} from "@bach/contexts/ReportingContexts";
 
 import {
   StateContext as DataStateIncomingL2HLSFilesContext,
   DispatchContext as DataDispatchL2HLSFilesContext,
-} from "../../../contexts/DataContexts/DataProcessing/IncomingNen";
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingNen";
 
 import {
   StateContext as DataStateGdsContext,
   DispatchContext as DataDispatchGdsContext,
-} from "../../../contexts/DataContexts/DataProcessing/IncomingGds";
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingGds";
 
 import {
   StateContext as DataStateGeneratedContext,
   DispatchContext as DataDispatchGeneratedContext,
-} from "../../../contexts/DataContexts/DataProcessing/GeneratedSds";
+} from "@bach/contexts/DataContexts/DataProcessing/GeneratedSds";
 
 import {
   StateContext as DataStateOutgoingContext,
   DispatchContext as DataDispatchOutgoingContext,
-} from "../../../contexts/DataContexts/DataProcessing/OutgoingDaac";
+} from "@bach/contexts/DataContexts/DataProcessing/OutgoingDaac";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterController from "../../../components/FilterController";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import SelectFilter from "../../../components/Filters/SelectFilter";
-import RadioFilter from "../../../components/Filters/RadioFilter";
-import SummaryTable from "../../../components/SummaryTable";
-import TabMenu from "../../../components/TabMenu";
-import PageWrapper from "../../../components/PageWrapper";
-import FilterTableGrid from "../../../components/FilterTableGrid";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterController from "@bach/components/FilterController";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
+import SelectFilter from "@bach/components/Filters/SelectFilter";
+import RadioFilter from "@bach/components/Filters/RadioFilter";
+import SummaryTable from "@bach/components/SummaryTable";
+import TabMenu from "@bach/components/TabMenu";
+import PageWrapper from "@bach/components/PageWrapper";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
 
 import IncomingNenProducts from "./IncomingNenProducts";
 import IncomingGdsProducts from "./IncomingGdsProducts";

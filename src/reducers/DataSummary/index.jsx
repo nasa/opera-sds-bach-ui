@@ -9,7 +9,7 @@ import {
   PRODUCT_TYPE,
   SOURCE,
   DATA,
-} from "../../constants";
+} from "@bach/constants";
 
 const actionTypes = {
   startDate: START_DATE,

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
 
-import Table from "../../../../components/Table";
+import Table from "@bach/components/Table";
 
 import useStyles from "./style";
 

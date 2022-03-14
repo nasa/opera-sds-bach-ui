@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useReporting } from "../../reducers/Reporting";
+import { useReporting } from "@bach/reducers/Reporting";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { MISSION_TITLE } from "../../constants";
+import { MISSION_TITLE } from "@bach/constants";
 
 import HeaderBar, { LocationDisplay } from "./index";
 
