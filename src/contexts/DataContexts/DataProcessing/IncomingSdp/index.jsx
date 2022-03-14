@@ -2,14 +2,14 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useIncomingNenData } from "@bach/reducers/Reporting/DataProcessing/IncomingNen";
+import { useIncomingSdpData } from "@bach/reducers/Reporting/DataProcessing/IncomingSdp";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();
 
-export default function IncomingNenContexts(props) {
+export default function IncomingSdpContexts(props) {
   const { children } = props;
-  const reducer = useIncomingNenData();
+  const reducer = useIncomingSdpData();
   const { data, summary, setData, setSummary } = reducer;
 
   return (
@@ -26,6 +26,6 @@ export default function IncomingNenContexts(props) {
   );
 }
 
-IncomingNenContexts.propTypes = {
+IncomingSdpContexts.propTypes = {
   children: PropTypes.element.isRequired,
 };

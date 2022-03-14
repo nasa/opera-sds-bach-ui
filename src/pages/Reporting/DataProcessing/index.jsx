@@ -24,7 +24,7 @@ import {
 import {
   StateContext as DataStateIncomingL2HLSFilesContext,
   DispatchContext as DataDispatchL2HLSFilesContext,
-} from "@bach/contexts/DataContexts/DataProcessing/IncomingNen";
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingSdp";
 
 import {
   StateContext as DataStateGdsContext,
@@ -52,7 +52,7 @@ import TabMenu from "@bach/components/TabMenu";
 import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
 
-import IncomingNenProducts from "./IncomingNenProducts";
+import IncomingSdpProducts from "./IncomingSdpProducts";
 import IncomingGdsProducts from "./IncomingGdsProducts";
 import GeneratedSdsProducts from "./GeneratedSdsProducts";
 import OutgoingDaacProducts from "./OutgoingDaacProducts";
@@ -387,7 +387,7 @@ function DataProcessing(props) {
             <Route
               path={`${match.path}/incoming-l2-hls`}
               render={() => (
-                <IncomingNenProducts data={incomingL2HLSFilesData} loading={loading} />
+                <IncomingSdpProducts data={incomingL2HLSFilesData} loading={loading} />
               )}
             />
             <Route

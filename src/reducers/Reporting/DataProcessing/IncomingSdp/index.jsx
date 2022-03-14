@@ -7,7 +7,7 @@ const initialState = {
   summary: {},
 };
 
-function incomingNenReducer(state, action) {
+function incomingSdpReducer(state, action) {
   switch (action.type) {
     case DATA: {
       return { ...state, data: action.payload };
@@ -27,7 +27,7 @@ function incomingNenReducer(state, action) {
  * @param {*} reducer
  * @returns Object
  */
-function useIncomingNenData({ reducer = incomingNenReducer } = {}) {
+function useIncomingSdpData({ reducer = incomingSdpReducer } = {}) {
   const [{ data, summary }, dispatch] = React.useReducer(reducer, initialState);
   const setData = (val) => dispatch({ type: DATA, payload: val });
   const setSummary = (val) => dispatch({ type: SUMMARY, payload: val });
@@ -40,4 +40,4 @@ function useIncomingNenData({ reducer = incomingNenReducer } = {}) {
   };
 }
 
-export { useIncomingNenData, initialState, incomingNenReducer };
+export { useIncomingSdpData, initialState, incomingSdpReducer };

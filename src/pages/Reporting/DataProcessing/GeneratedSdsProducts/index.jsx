@@ -8,7 +8,7 @@ import Table from "@bach/components/Table";
 
 import useStyles from "./style";
 
-function IncomingNenProducts(props) {
+function IncomingSdpProducts(props) {
   const classes = useStyles();
 
   const { data, loading } = props;
@@ -37,13 +37,13 @@ function IncomingNenProducts(props) {
   );
 }
 
-IncomingNenProducts.propTypes = {
+IncomingSdpProducts.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape),
 };
 
-IncomingNenProducts.defaultProps = {
+IncomingSdpProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingNenProducts);
+export default withRouter(IncomingSdpProducts);
