@@ -46,8 +46,5 @@ export default makeStyles((theme) => ({
     verticalAlign: "baseline",
     position: "fixed",
   },
-  actionArea: {
-    maxHeight: "60vh",
-    overflow: "auto",
-  },
+  actionArea: {},
 }));

@@ -11,7 +11,7 @@ export default function FilterTableGrid(props) {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={4} className={classes.gridContainer}>
+    <Grid container className={classes.gridContainer}>
       {!filtersHidden ? (
         <Grid item className={classes.leftGridChild}
               xs={12}
