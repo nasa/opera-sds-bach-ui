@@ -10,9 +10,7 @@ export default makeStyles(() => ({
   menuButton: {
     marginRight: 36,
   },
-  content: {
-    // marginTop: APP_BAR_HEIGHT,
-  },
+  content: {},
   drawerOpen: {
     marginLeft: `${DRAWER_WIDTH}px`,
     width: `calc(100% - ${DRAWER_WIDTH}px)`,
