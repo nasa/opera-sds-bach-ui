@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import clsx from "clsx";
-import { CssBaseline, Toolbar } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 
 import HeaderBar from "../../components/HeaderBar";
 import Sidebar from "../../components/Sidebar";
