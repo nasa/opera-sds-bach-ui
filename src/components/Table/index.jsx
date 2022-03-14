@@ -34,32 +34,28 @@ export default function Table(props) {
   };
 
   return (
-    <div className={classes.parentDiv}>
+    <>
       <JsonModal
         name={jsonData.id}
         json={jsonData}
         open={open}
         setOpen={setOpen}
       />
-      <div className={classes.dataGridDiv}>
-        <DataGrid
-          autoHeight
-          headerHeight={42}
-          rowHeight={50}
-          rows={data}
-          columns={columns}
-          checkboxSelection={checkboxSelection}
-          loading={loading}
-          className={classes.dataGrid}
-          page={page}
-          onPageChange={handleChangePage}
-          pageSize={pageSize}
-          onPageSizeChange={handlePageSize}
-          rowsPerPageOptions={rowsPerPageOptions}
-          pagination
-        />
-      </div>
-    </div>
+      <DataGrid
+        autoHeight
+        density="compact"
+        rows={data}
+        columns={columns}
+        checkboxSelection={checkboxSelection}
+        loading={loading}
+        page={page}
+        onPageChange={handleChangePage}
+        pageSize={pageSize}
+        onPageSizeChange={handlePageSize}
+        rowsPerPageOptions={rowsPerPageOptions}
+        pagination
+      />
+    </>
   );
 }
 

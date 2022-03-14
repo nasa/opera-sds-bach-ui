@@ -14,16 +14,20 @@ function GeneratedSdsProducts(props) {
   const { data, loading } = props;
 
   const columns = [
-    { field: "id", headerName: "File Name", width: 360 },
+    {
+      field: "id",
+      headerName: "File Name",
+      width: 400,
+    },
     {
       field: "num_ingested",
       headerName: "Files Ingested",
-      width: 360,
+      width: 170,
     },
     {
       field: "volume",
       headerName: "Volume (Bytes)",
-      width: 360,
+      width: 180,
       valueFormatter: (params) => {
         return `${String(params.value)}`;
       },

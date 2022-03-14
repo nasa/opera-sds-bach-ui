@@ -67,8 +67,18 @@ function IncomingData() {
   };
 
   const columns = [
-    { field: "id", headerName: "Product Type", flex: 1 },
-    { field: "count", headerName: "Files Ingested", flex: 1 },
+    {
+      field: "id",
+      headerName: "Product Type",
+      flex: 0,
+      minWidth: 170,
+    },
+    {
+      field: "count",
+      headerName: "Files Ingested",
+      flex: 0,
+      minWidth: 170,
+    },
   ];
 
   const toggleFilters = () => setFiltersHidden(!filtersHidden);

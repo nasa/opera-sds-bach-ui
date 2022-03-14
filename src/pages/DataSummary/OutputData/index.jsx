@@ -67,11 +67,17 @@ function OutputData() {
   };
 
   const columns = [
-    { field: "id", headerName: "Product Type", width: 350 },
+    {
+      field: "id",
+      headerName: "Product Type",
+      flex: 0,
+      width: 170,
+    },
     {
       field: "count",
       headerName: "Files Generated",
-      width: 350,
+      flex: 0,
+      width: 200,
     },
   ];
 

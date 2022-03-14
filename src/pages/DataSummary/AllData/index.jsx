@@ -191,11 +191,17 @@ function AllData() {
   ];
 
   const columns = [
-    { field: "dataset_type", headerName: "Product Type", width: 160 },
+    {
+      field: "dataset_type",
+      headerName: "Product Type",
+      flex: 0,
+      minWidth: 170,
+    },
     {
       field: "FileName",
       headerName: "File Name",
-      width: 620,
+      flex: 0,
+      minWidth: 400,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
@@ -223,13 +229,16 @@ function AllData() {
     {
       field: "product_recieved_time",
       headerName: "Recieved Date/Time",
-      width: 210,
+      flex: 0,
+      minWidth: 220,
       valueGetter: (params) =>
         `${params.row.metadata.ProductReceivedTime || ""}`,
     },
     {
       field: "transfer_status",
       headerName: "Transfer Status",
+      flex: 0,
+      minWidth: 200,
       renderCell: (params) => {
         const { value } = params;
         if (Object.keys(transferFormats).includes(value)) {
@@ -237,7 +246,6 @@ function AllData() {
         }
         return "Unknown";
       },
-      width: 151,
     },
   ];
 
