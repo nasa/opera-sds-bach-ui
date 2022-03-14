@@ -182,7 +182,7 @@ function DataProcessing(props) {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "nen",
-      mime: "invalid", // TODO chrisjrd: fix bug in Bach API. "json" should return JSON, but instead returns a string of JSON
+      mime: "application/json",
     };
     let results = {};
     try {
@@ -231,8 +231,7 @@ function DataProcessing(props) {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "gds_ancillary",
-      mime: "invalid", // TODO chrisjrd: fix bug in Bach API. "json" should return JSON, but instead returns a string of JSON
-
+      mime: "application/json",
     };
     let results = {};
     try {
