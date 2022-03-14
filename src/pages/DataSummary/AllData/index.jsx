@@ -201,7 +201,7 @@ function AllData() {
       field: "FileName",
       headerName: "File Name",
       flex: 0,
-      minWidth: 400,
+      minWidth: 550,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
@@ -227,8 +227,8 @@ function AllData() {
       },
     },
     {
-      field: "product_recieved_time",
-      headerName: "Recieved Date/Time",
+      field: "product_received_time",
+      headerName: "Received Date/Time",
       flex: 0,
       minWidth: 220,
       valueGetter: (params) =>
