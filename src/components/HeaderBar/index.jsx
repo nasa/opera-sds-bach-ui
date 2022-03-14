@@ -55,7 +55,7 @@ export default function HeaderBar(props) {
           [classes.appBarShift]: opened,
           [classes.appBarClose]: !opened,
         })}
-        color="background"
+        color="transparent"
       >
         <Toolbar>
           <img
