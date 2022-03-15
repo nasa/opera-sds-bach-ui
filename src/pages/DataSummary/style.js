@@ -1,7 +1,5 @@
 const useStyles = () => ({
-  subPage: {
-    backgroundColor: "#FFFFFF",
-  },
+  subPage: {},
 });
 
 export default useStyles;

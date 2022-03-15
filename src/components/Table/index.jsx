@@ -42,6 +42,12 @@ export default function Table(props) {
         setOpen={setOpen}
       />
       <DataGrid
+        classes={{
+          root: classes.root,
+          columnHeader: classes.columnHeader,
+          cell: classes.cell,
+          row: classes.row,
+        }}
         autoHeight
         density="compact"
         rows={data}
