@@ -2,14 +2,14 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useIncomingGdsData } from "@bach/reducers/Reporting/DataProcessing/IncomingGds";
+import { useIncomingAncillaryData } from "@bach/reducers/Reporting/DataProcessing/IncomingAncillary";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();
 
-export default function IncomingGdsContexts(props) {
+export default function IncomingAncillaryContexts(props) {
   const { children } = props;
-  const reducer = useIncomingGdsData();
+  const reducer = useIncomingAncillaryData();
   const { data, summary, setData, setSummary } = reducer;
 
   return (
@@ -26,6 +26,6 @@ export default function IncomingGdsContexts(props) {
   );
 }
 
-IncomingGdsContexts.propTypes = {
+IncomingAncillaryContexts.propTypes = {
   children: PropTypes.element.isRequired,
 };

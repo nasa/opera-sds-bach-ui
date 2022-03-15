@@ -27,9 +27,9 @@ import {
 } from "@bach/contexts/DataContexts/DataProcessing/IncomingSdp";
 
 import {
-  StateContext as DataStateGdsContext,
-  DispatchContext as DataDispatchGdsContext,
-} from "@bach/contexts/DataContexts/DataProcessing/IncomingGds";
+  StateContext as DataStateAncillaryContext,
+  DispatchContext as DataDispatchAncillaryContext,
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingAncillary";
 
 import {
   StateContext as DataStateGeneratedContext,
@@ -53,7 +53,7 @@ import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
 
 import IncomingSdpProducts from "./IncomingSdpProducts";
-import IncomingGdsProducts from "./IncomingGdsProducts";
+import IncomingAncillaryProducts from "./IncomingAncillaryProducts";
 import GeneratedSdsProducts from "./GeneratedSdsProducts";
 import OutgoingDaacProducts from "./OutgoingDaacProducts";
 
@@ -67,7 +67,7 @@ function DataProcessing(props) {
 
   const links = [
     { path: "incoming-l2-hls", label: "Incoming L2 HLS Files" },
-    { path: "incoming-gds", label: "Incoming GDS Ancillary Files" },
+    { path: "incoming-ancillary", label: "Incoming Ancillary Files" },
     { path: "generated-sds", label: "Generated SDS Products" },
     { path: "outgoing-to-daac", label: "Outgoing Products To DAAC" },
   ];
@@ -80,8 +80,8 @@ function DataProcessing(props) {
   const incomingL2HLSFilesDataState = React.useContext(DataStateIncomingL2HLSFilesContext);
   const incomingL2HLSFilesDataDispatch = React.useContext(DataDispatchL2HLSFilesContext);
 
-  const gdsDataState = React.useContext(DataStateGdsContext);
-  const gdsDataDispatch = React.useContext(DataDispatchGdsContext);
+  const ancillaryDataState = React.useContext(DataStateAncillaryContext);
+  const ancillaryDataDispatch = React.useContext(DataDispatchAncillaryContext);
 
   const generatedDataState = React.useContext(DataStateGeneratedContext);
   const generatedDataDispatch = React.useContext(DataDispatchGeneratedContext);
@@ -103,10 +103,10 @@ function DataProcessing(props) {
   const setIncomingL2HLSFilesData = incomingL2HLSFilesDataDispatch.setData;
   const setIncomingL2HLSFilesSummary = incomingL2HLSFilesDataDispatch.setSummary;
 
-  const gdsData = gdsDataState.data;
-  const gdsSummary = gdsDataState.summary;
-  const setGdsData = gdsDataDispatch.setData;
-  const setGdsSummary = gdsDataDispatch.setSummary;
+  const ancillaryData = ancillaryDataState.data;
+  const ancillarySummary = ancillaryDataState.summary;
+  const setAncillaryData = ancillaryDataDispatch.setData;
+  const setAncillarySummary = ancillaryDataDispatch.setSummary;
 
   const generatedData = generatedDataState.data;
   const generatedSummary = generatedDataState.summary;
@@ -193,12 +193,12 @@ function DataProcessing(props) {
     return results;
   };
 
-  const getIncomingGds = async () => {
+  const getIncomingAncillary = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "ancillary",
     };
     let results = {};
     try {
@@ -214,7 +214,7 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "ancillary",
     };
     let results = {};
     try {
@@ -230,7 +230,7 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "ancillary",
       mime: "application/json",
     };
     let results = {};
@@ -258,8 +258,8 @@ function DataProcessing(props) {
     switch (reportName) {
       case "incoming-l2-hls":
         return getIncomingL2HLSFiles();
-      case "incoming-gds":
-        return getIncomingGds();
+      case "incoming-ancillary":
+        return getIncomingAncillary();
       case "generated-sds":
         return getGeneratedSdsProducts();
       case "outgoing-to-daac":
@@ -275,9 +275,9 @@ function DataProcessing(props) {
         setIncomingL2HLSFilesSummary(results.data.header);
         setIncomingL2HLSFilesData(formatReportData("name", results.data.products));
         return true;
-      case "incoming-gds":
-        setGdsSummary(results.data.header);
-        setGdsData(formatReportData("name", results.data.products));
+      case "incoming-ancillary":
+        setAncillarySummary(results.data.header);
+        setAncillaryData(formatReportData("name", results.data.products));
         return true;
       case "generated-sds":
         setGeneratedSummary(results.data.header);
@@ -299,8 +299,8 @@ function DataProcessing(props) {
         return {};
       case "incoming-l2-hls":
         return incomingL2HLSFilesSummary || {};
-      case "incoming-gds":
-        return gdsSummary || {};
+      case "incoming-ancillary":
+        return ancillarySummary || {};
       case "generated-sds":
         return generatedSummary || {};
       case "outgoing-to-daac":
@@ -391,9 +391,9 @@ function DataProcessing(props) {
               )}
             />
             <Route
-              path={`${match.path}/incoming-gds`}
+              path={`${match.path}/incoming-ancillary`}
               render={() => (
-                <IncomingGdsProducts data={gdsData} loading={loading} />
+                <IncomingAncillaryProducts data={ancillaryData} loading={loading} />
               )}
             />
             <Route

@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import IncomingSdpContexts from "./IncomingSdp";
-import IncomingGdsContexts from "./IncomingGds";
+import IncomingAncillaryContexts from "./IncomingAncillary";
 import GeneratedSdsContexts from "./GeneratedSds";
 import OutgoingDaacContexts from "./OutgoingDaac";
 
@@ -12,11 +12,11 @@ export default function DataProcessingContexts(props) {
 
   return (
     <IncomingSdpContexts>
-      <IncomingGdsContexts>
+      <IncomingAncillaryContexts>
         <OutgoingDaacContexts>
           <GeneratedSdsContexts>{children}</GeneratedSdsContexts>
         </OutgoingDaacContexts>
-      </IncomingGdsContexts>
+      </IncomingAncillaryContexts>
     </IncomingSdpContexts>
   );
 }

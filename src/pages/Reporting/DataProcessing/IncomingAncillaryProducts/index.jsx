@@ -8,7 +8,7 @@ import Table from "@bach/components/Table";
 
 import useStyles from "./style";
 
-function IncomingGdsProducts(props) {
+function IncomingAncillaryProducts(props) {
   const classes = useStyles();
 
   const { data, loading } = props;
@@ -37,13 +37,13 @@ function IncomingGdsProducts(props) {
   );
 }
 
-IncomingGdsProducts.propTypes = {
+IncomingAncillaryProducts.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape),
 };
 
-IncomingGdsProducts.defaultProps = {
+IncomingAncillaryProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingGdsProducts);
+export default withRouter(IncomingAncillaryProducts);
