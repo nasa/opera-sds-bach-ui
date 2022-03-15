@@ -181,7 +181,7 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "nen",
+      reportType: "sdp",
       mime: "application/json",
     };
     let results = {};
