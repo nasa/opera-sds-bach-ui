@@ -5,7 +5,7 @@ import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH } from "@bach/constants";
 export default makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    color: "black",
+    color: theme.palette.text.primary,
   },
   appBarShift: {
     marginLeft: DRAWER_WIDTH,

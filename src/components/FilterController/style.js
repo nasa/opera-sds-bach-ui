@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   filterControlPaper: {
     display: "flex",
     flexDirection: "row",
@@ -16,8 +16,8 @@ export default makeStyles(() => ({
     left: 0,
     top: 0,
     borderRadius: 4,
-    color: "#007DFF",
-    borderColor: "#007DFF",
+    color: theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: 500,

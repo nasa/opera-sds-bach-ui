@@ -18,11 +18,11 @@ export default makeStyles((theme) => ({
   },
   drawerOpen: {
     width: DRAWER_WIDTH,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: theme.palette.background.default,
   },
   drawerClose: {
     overflowX: "hidden",
-    backgroundColor: DRAWER_COLOR,
+    backgroundColor: theme.palette.background.default,
     width: theme.spacing(9) + 1,
   },
   drawerList: {
