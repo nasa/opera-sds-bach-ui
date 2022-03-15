@@ -1,7 +1,7 @@
 export const HEADER_MENU_HEIGHT = 48;
 export const APP_BAR_HEIGHT = 108;
 export const APP_BAR_COLOR = "#F5F5F5";
-export const NASA_BLUE = "#007DFF";
+export const NASA_BLUE = "#10B0AB";
 
 export const DRAWER_WIDTH = 268;
 export const DRAWER_CLOSED_WIDTH = 72;
