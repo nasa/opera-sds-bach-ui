@@ -17,17 +17,20 @@ function GeneratedSdsProducts(props) {
     {
       field: "id",
       headerName: "File Name",
-      width: 400,
+      flex: 0,
+      minWidth: 150,
     },
     {
       field: "num_ingested",
       headerName: "Files Ingested",
-      width: 170,
+      flex: 0,
+      minWidth: 170,
     },
     {
       field: "volume",
       headerName: "Volume (Bytes)",
-      width: 180,
+      flex: 0,
+      minWidth: 180,
       valueFormatter: (params) => {
         return `${String(params.value)}`;
       },

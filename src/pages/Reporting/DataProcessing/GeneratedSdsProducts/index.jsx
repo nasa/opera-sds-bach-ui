@@ -14,16 +14,23 @@ function IncomingSdpProducts(props) {
   const { data, loading } = props;
 
   const columns = [
-    { field: "id", headerName: "File Name", width: 450 },
+    {
+      field: "id",
+      headerName: "File Name",
+      flex: 0,
+      minWidth: 150,
+    },
     {
       field: "files_produced",
       headerName: "Files Ingested",
-      width: 330,
+      flex: 0,
+      minWidth: 170,
     },
     {
       field: "volume",
       headerName: "Volume (Bytes)",
-      width: 360,
+      flex: 0,
+      minWidth: 180,
       valueFormatter: (params) => {
         return `${String(params.value)}`;
       },
