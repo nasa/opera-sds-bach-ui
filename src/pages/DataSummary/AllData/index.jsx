@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import { Button, Tooltip } from "@material-ui/core";
+import { Button, Tooltip, useTheme } from "@material-ui/core";
 
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -42,6 +42,7 @@ import useStyles from "./style";
 
 function AllData() {
   const classes = useStyles();
+  const theme = useTheme();
   const history = useHistory();
   const [filtersHidden, setFiltersHidden] = React.useState(false);
 
@@ -140,12 +141,12 @@ function AllData() {
         <HourglassEmptyIcon />,
         "Processing",
         "Sent to CNM",
-        "#007DFF"
+        theme.palette.primary.main
       ),
       value: transferProcessing,
       setValue: toggleTransferProcessing,
       color: "primary",
-      labelColor: "#007DFF",
+      labelColor: theme.palette.primary.main,
     },
     cnm_r_failure: {
       label: makeLabel(

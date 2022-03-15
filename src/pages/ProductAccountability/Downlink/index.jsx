@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import { Button, Tooltip } from "@material-ui/core";
+import { Button, Tooltip, useTheme } from "@material-ui/core";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
@@ -46,6 +46,7 @@ import useStyles from "./style";
 
 function Downlink() {
   const classes = useStyles();
+  const theme = useTheme();
   const history = useHistory();
 
   const state = React.useContext(StateContext);
@@ -256,13 +257,13 @@ function Downlink() {
         <HourglassEmptyIcon />,
         "Processing",
         "Sent to CNM",
-        "#007DFF",
+        theme.palette.primary.main,
         classes
       ),
       value: tempProcessing,
       setValue: toggleProcessing,
       color: "primary",
-      labelColor: "#007DFF",
+      labelColor: theme.palette.primary.main,
     },
     workflowFailed: {
       label: makeLabel(

@@ -41,10 +41,12 @@ import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import RadioFilter from "@bach/components/Filters/RadioFilter";
 
 import makeLabel from "@bach/components/Filters/Labeler";
+import { useTheme } from "@material-ui/core";
 import useStyles from "./style";
 
 function Observations() {
   const classes = useStyles();
+  const theme = useTheme();
   const history = useHistory();
 
   const state = React.useContext(StateContext);
@@ -255,13 +257,13 @@ function Observations() {
         <HourglassEmptyIcon />,
         "Processing",
         "Sent to CNM",
-        "#007DFF",
+        theme.palette.primary.main,
         classes
       ),
       value: tempProcessing,
       setValue: toggleProcessing,
       color: "primary",
-      labelColor: "#007DFF",
+      labelColor: theme.palette.primary.main,
     },
     workflowFailed: {
       label: makeLabel(
