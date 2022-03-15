@@ -17,7 +17,9 @@ export default function FilterController(props) {
     <Paper
       position="fixed"
       elevation={0}
-      className={clsx(classes.filterControlPaper)}
+      classes={{
+        root: classes.filterControlPaper,
+      }}
     >
       <Button
         variant="outlined"
