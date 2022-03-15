@@ -1,27 +1,3 @@
-import { NASA_BLUE } from "@bach/constants";
-
-const useStyles = () => ({
-  page: {
-    backgroundColor: "#FFFFFF",
-    height: "100vh",
-  },
-  pageContent: {
-    padding: 25,
-  },
-  tabWrapper: {
-    backgroundColor: NASA_BLUE,
-  },
-  tab: {
-    color: "#FFFFFF",
-    fontSize: 15,
-  },
-  hide: {
-    display: "none",
-  },
-  show: {
-    display: "flow-root",
-    position: "relative",
-  },
-});
+const useStyles = () => ({});
 
 export default useStyles;
