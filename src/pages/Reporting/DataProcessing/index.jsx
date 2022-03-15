@@ -149,7 +149,7 @@ function DataProcessing(props) {
 
   const keyMap = {
     crid: "CRID",
-    data_recieved_time_range: "Data Recieved Time Range",
+    data_received_time_range: "Data Received Time Range",
     processing_mode: "Processing Mode",
     time_of_report: "Time of Report",
     total_data_volume: "Total Data Volume",
