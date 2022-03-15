@@ -125,8 +125,7 @@ function AllData() {
     cnm_r_success: {
       label: makeLabel(
         <CheckCircleOutlineIcon />,
-        "Success",
-        "Sent to DAAC",
+        "Published",
         "#4CAF50"
       ),
       name: "success",
@@ -139,8 +138,7 @@ function AllData() {
       name: "processing",
       label: makeLabel(
         <HourglassEmptyIcon />,
-        "Processing",
-        "Sent to CNM",
+        "Notified",
         theme.palette.primary.main
       ),
       value: transferProcessing,
@@ -151,8 +149,7 @@ function AllData() {
     cnm_r_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
-        "Failed",
-        "Failed to send to DAAC",
+        "Failed to publish",
         "#F44336"
       ),
       name: "failed",
@@ -164,8 +161,7 @@ function AllData() {
     cnm_s_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
-        "Failed",
-        "Failed to send to CNM",
+        "Failed to notify",
         "#F44336"
       ),
       name: "failed",
@@ -176,7 +172,7 @@ function AllData() {
     },
     unknown: {
       name: "unknown",
-      label: makeLabel(<HelpIcon />, "Unknown", "N/A", "rgba(0, 0, 0, 0.54)"),
+      label: makeLabel(<HelpIcon />, "N/A", "N/A", "rgba(0, 0, 0, 0.54)"),
       value: transferUnknown,
       setValue: toggleTransferUnknown,
       color: "primary",
@@ -217,9 +213,14 @@ function AllData() {
         return (
           <Tooltip title={value}>
             <Button
+              variant="text"
               color="primary"
               onClick={handleJsonData}
-              style={{ justifyContent: "right", textTransform: "none" }}
+              style={{
+                textTransform: "none",
+                textDecoration: "underline",
+                color: theme.palette.primary.dark,
+              }}
             >
               {value}
             </Button>

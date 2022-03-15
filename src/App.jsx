@@ -13,6 +13,7 @@ const defaultTheme = createTheme({
   palette: {
     primary: {
       main: NASA_BLUE,
+      dark: "#069995",
     },
     secondary: {
       main: "#EEEEEE",

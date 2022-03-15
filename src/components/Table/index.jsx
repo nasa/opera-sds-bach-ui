@@ -49,10 +49,11 @@ export default function Table(props) {
           row: classes.row,
         }}
         autoHeight
-        density="compact"
         rows={data}
         columns={columns}
         checkboxSelection={checkboxSelection}
+        density="compact"
+        disableSelectionOnClick
         loading={loading}
         page={page}
         onPageChange={handleChangePage}
