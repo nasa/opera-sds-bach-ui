@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   searchDiv: {
     /* Button */
 
@@ -44,7 +44,7 @@ export default makeStyles(() => ({
 
     /* primary / main */
 
-    background: "#007DFF",
+    background: theme.palette.primary.main,
     /* Shadow / 2 */
 
     boxShadow:

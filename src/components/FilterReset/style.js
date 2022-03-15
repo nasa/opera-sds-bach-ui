@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   resetBtn: {
     /* baseButton */
 
@@ -22,7 +22,7 @@ export default makeStyles(() => ({
     border: "1px solid rgba(0, 125, 255, 0.5)",
     boxSizing: "border-box",
     borderRadius: "4px",
-    color: "#007DFF",
+    color: theme.palette.primary.main,
 
     /* Inside Auto Layout */
 
