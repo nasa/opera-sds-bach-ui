@@ -7,12 +7,11 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Routes from "@bach/pages/Routes";
 
 import Contexts from "@bach/contexts";
-import { NASA_BLUE } from "@bach/constants";
 
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: NASA_BLUE,
+      main: "#10B0AB",
       dark: "#069995",
     },
     secondary: {

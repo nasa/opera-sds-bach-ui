@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid } from "@material-ui/core";
+import { Grid, useTheme } from "@material-ui/core";
 
 import useStyles from "./style";
 
@@ -9,9 +9,12 @@ export default function FilterTableGrid(props) {
   const { filtersHidden, children } = props;
 
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
-    <Grid container className={classes.gridContainer}>
+    <Grid container className={classes.gridContainer}
+      spacing={1} style={{ padding: theme.spacing(1) }}
+    >
       {!filtersHidden ? (
         <Grid item className={classes.leftGridChild}
               xs={12}
