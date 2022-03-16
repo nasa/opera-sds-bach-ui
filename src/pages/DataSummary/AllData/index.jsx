@@ -289,7 +289,7 @@ function AllData() {
       transferFilters.push("unknown");
     }
 
-    if (!transferFilters) {
+    if (transferFilters.length === 0) {
       return data;
     }
 
