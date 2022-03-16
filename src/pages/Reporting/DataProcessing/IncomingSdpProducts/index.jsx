@@ -8,6 +8,27 @@ import Table from "@bach/components/Table";
 
 import useStyles from "./style";
 
+function toByteString(value) {
+  if (!Number.isInteger(value)) return `${String(value)}`;
+
+  if (value < 1024) {
+    return `${String(value)} bytes`;
+  }
+  if (value < 1024 * 1024) {
+    return `${String(Math.round(value / 1024))} KB`;
+  }
+  if (value < 1024 * 1024 * 1024) {
+    return `${String(Math.round(value / 1024 / 1024))} MB`;
+  }
+  if (value < 1024 * 1024 * 1024 * 1024) {
+    return `${String(Math.round(value / 1024 / 1024 / 1024))} GB`;
+  }
+  if (value < 1024 * 1024 * 1024 * 1024 * 1024) {
+    return `${String(Math.round(value / 1024 / 1024 / 1024 / 1024))} TB`;
+  }
+  return `${String(Math.round(value / 1024 / 1024 / 1024 / 1024))} PB`;
+}
+
 function GeneratedSdsProducts(props) {
   const classes = useStyles();
 
@@ -28,11 +49,12 @@ function GeneratedSdsProducts(props) {
     },
     {
       field: "volume",
-      headerName: "Volume (Bytes)",
+      headerName: "Volume",
       flex: 0,
       minWidth: 180,
       valueFormatter: (params) => {
-        return `${String(params.value)}`;
+        const { value } = params;
+        return toByteString(value);
       },
     },
   ];
