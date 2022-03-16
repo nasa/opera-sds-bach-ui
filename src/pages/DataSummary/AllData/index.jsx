@@ -104,11 +104,10 @@ function AllData() {
     return results;
   };
 
-  const toggleTransferSuccess = () => setTransferSuccess(!transferSuccess);
-  const toggleTransferFailed = () => setTransferFailed(!transferFailed);
-  const toggleTransferProcessing = () =>
-    setTransferProcessing(!transferProcessing);
-  const toggleTransferUnknown = () => setTransferUnknown(!transferUnknown);
+  const toggleTransferSuccess = (event) => setTransferSuccess(event.target.checked);
+  const toggleTransferFailed = (event) => setTransferFailed(event.target.checked);
+  const toggleTransferProcessing = (event) => setTransferProcessing(event.target.checked);
+  const toggleTransferUnknown = (event) => setTransferUnknown(event.target.checked);
 
   const makeLabel = (icon, text, hoverText, color) => (
     <div className={classes.iconLabel}>
@@ -274,30 +273,27 @@ function AllData() {
     return results;
   }
 
-  const filterData = (dataToFilter) => {
+  const filterData = (data) => {
     const transferFilters = [];
-    let noFilter = true;
     if (transferSuccess) {
-      transferFilters.push("cnm_s_success");
       transferFilters.push("cnm_r_success");
-      noFilter = false;
+    }
+    if (transferProcessing) {
+      transferFilters.push("cnm_s_success");
     }
     if (transferFailed) {
       transferFilters.push("cnm_s_failure");
       transferFilters.push("cnm_r_failure");
-      noFilter = false;
     }
-
     if (transferUnknown) {
       transferFilters.push("unknown");
-      noFilter = false;
     }
 
-    if (noFilter) {
-      return dataToFilter;
+    if (!transferFilters) {
+      return data;
     }
 
-    const filteredData = dataToFilter.filter((entry) =>
+    const filteredData = data.filter((entry) =>
       transferFilters.includes(entry.transfer_status)
     );
 
