@@ -139,6 +139,7 @@ function AllData() {
       label: makeLabel(
         <HourglassEmptyIcon />,
         "Notified",
+        "Notified",
         theme.palette.primary.main
       ),
       value: transferProcessing,
@@ -149,6 +150,7 @@ function AllData() {
     cnm_r_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
+        "Failed to publish",
         "Failed to publish",
         "#F44336"
       ),
@@ -161,6 +163,7 @@ function AllData() {
     cnm_s_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
+        "Failed to notify",
         "Failed to notify",
         "#F44336"
       ),
