@@ -7,6 +7,7 @@ import "@testing-library/jest-dom";
 import { MISSION_TITLE } from "@bach/constants";
 
 import HeaderBar, { LocationDisplay } from "./index";
+import { PageTitleContextProvider } from "@bach/contexts/PageTitleContext";
 
 const renderWithRouter = (ui, { route = "/" } = {}) => {
   window.history.pushState({}, "Test page", route);
@@ -23,9 +24,14 @@ describe("Location Display test and Header Bar", () => {
   });
 
   const renderComponent = ({ missionTitle, opened }) =>
-    render(<HeaderBar missionTitle={missionTitle} opened={opened} />, {
-      wrapper: BrowserRouter,
-    });
+    render(
+      <BrowserRouter>
+        <HeaderBar missionTitle={missionTitle} opened={opened} />
+      </BrowserRouter>,
+      {
+        wrapper: PageTitleContextProvider,
+      }
+    );
 
   test("renders HeaderBar component", () => {
     const opened = true;

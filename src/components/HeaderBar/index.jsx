@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { useLocation } from "react-router-dom";
@@ -8,6 +8,8 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
 import operaLogo from "@bach/images/opera_logo.png";
 import nasaLogo from "@bach/images/nasa_logo.svg";
+import { PageTitleContext } from "@bach/contexts/PageTitleContext";
+
 import useStyles from "./style";
 
 export function hashCode(str) {
@@ -33,19 +35,7 @@ export default function HeaderBar(props) {
 
   const classes = useStyles();
 
-  // TODO: remove ROOT_PATH (/bach-ui) in production
-  const location = useLocation();
-  const { pathname } = location;
-  let paths =
-    pathname[0] === "/" ? pathname.slice(1).split("/") : pathname.split("/");
-  paths = paths
-    .filter((p) => p.trim() !== "")
-    .map((p) =>
-      p
-        .split("-")
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(" ")
-    );
+  const { pageTitle } = useContext(PageTitleContext);
 
   return (
     <>
@@ -69,14 +59,7 @@ export default function HeaderBar(props) {
           <div>
             <Typography className={classes.title}>{missionTitle}</Typography>
             <Typography variant="h4" className={classes.subTitle}>
-              {paths.map((path, i) => [
-                i > 0 && (
-                  <span key={hashCode(path)} className={classes.divider}>
-                    {": "}
-                  </span>
-                ),
-                <span key={path}>{path}</span>,
-              ])}
+              {pageTitle}
             </Typography>
           </div>
           <div className={classes.logoRight}>
