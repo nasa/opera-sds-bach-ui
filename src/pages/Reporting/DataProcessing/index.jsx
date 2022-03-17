@@ -194,6 +194,7 @@ function DataProcessing(props) {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "ancillary",
+      mime: "application/json",
     };
     let results = {};
     try {
@@ -209,7 +210,7 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "ancillary",
+      reportType: "sdp",
       mime: "application/json",
     };
     let results = {};
@@ -226,7 +227,7 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "ancillary",
+      reportType: "sdp",
       mime: "application/json",
     };
     let results = {};

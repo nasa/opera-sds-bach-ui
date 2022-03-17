@@ -84,7 +84,7 @@ function OutputData() {
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
   const getOutputDataCount = async () => {
-    const paths = ["product", "list", "count"];
+    const paths = ["data", "list", "count"];
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
