@@ -215,6 +215,7 @@ function DataProcessing(props) {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "ancillary",
+      mime: "application/json",
     };
     let results = {};
     try {
