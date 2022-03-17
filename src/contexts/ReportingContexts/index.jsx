@@ -15,13 +15,11 @@ export default function ReportingContexts(props) {
     endDate,
     preset,
     processingMode,
-    crid,
     reportType,
     setStartDate,
     setEndDate,
     setPreset,
     setProcessingMode,
-    setCRID,
     setReportType,
   } = reducer;
 
@@ -32,12 +30,11 @@ export default function ReportingContexts(props) {
         setEndDate,
         setPreset,
         setProcessingMode,
-        setCRID,
         setReportType,
       }}
     >
       <StateContext.Provider
-        value={{ startDate, endDate, preset, processingMode, crid, reportType }}
+        value={{ startDate, endDate, preset, processingMode, reportType }}
       >
         {children}
       </StateContext.Provider>

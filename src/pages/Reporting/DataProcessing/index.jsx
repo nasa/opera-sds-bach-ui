@@ -93,7 +93,6 @@ function DataProcessing(props) {
     startDate,
     endDate,
     preset,
-    crid,
     processingMode,
     reportType,
   } = state;
@@ -121,7 +120,6 @@ function DataProcessing(props) {
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
   const [tempPreset, setTempPreset] = React.useState(preset);
-  const [tempCRID, setTempCRID] = React.useState(crid);
   const [tempProcessingMode, setTempProcessingMode] = React.useState(
     processingMode
   );
@@ -133,7 +131,6 @@ function DataProcessing(props) {
     tempStartDate,
     tempEndDate,
     tempPreset,
-    tempCRID,
     tempProcessingMode,
     tempReportType,
   };
@@ -142,13 +139,11 @@ function DataProcessing(props) {
     setStartDate: setTempStartDate,
     setEndDate: setTempEndDate,
     setPreset: setTempPreset,
-    setCRID: setTempCRID,
     setProcessingMode: setTempProcessingMode,
     setReportType: setTempReportType,
   };
 
   const keyMap = {
-    crid: "CRID",
     data_received_time_range: "Data Received Time Range",
     processing_mode: "Processing Mode",
     time_of_report: "Time of Report",
@@ -326,7 +321,6 @@ function DataProcessing(props) {
     setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempPreset("Today");
-    setTempCRID("");
     setTempReportType("brief");
   };
 
@@ -349,11 +343,6 @@ function DataProcessing(props) {
             presetValue={tempPreset}
             setPresetValue={setTempPreset}
             presets
-          />
-          <StringFilter
-            label="Component Release ID (CRID)"
-            value={tempCRID}
-            setValue={setTempCRID}
           />
           <SelectFilter
             label="Processing Mode"
@@ -423,3 +412,4 @@ DataProcessing.propTypes = {
 };
 
 export default withRouter(DataProcessing);
+export { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
