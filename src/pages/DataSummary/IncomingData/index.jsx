@@ -84,10 +84,11 @@ function IncomingData() {
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
   async function getIncomingDataCount() {
-    const paths = ["ancillary", "list", "count"];
+    const paths = ["data", "list", "count"];
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
+      category: "incoming",
     };
     let results = {};
     try {

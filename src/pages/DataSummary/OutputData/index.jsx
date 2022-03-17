@@ -88,6 +88,7 @@ function OutputData() {
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
+      category: "outgoing",
     };
     let results = {};
     try {
