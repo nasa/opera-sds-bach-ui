@@ -6,6 +6,8 @@ import { Grid } from "@material-ui/core";
 
 import Table from "@bach/components/Table";
 
+import { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
+
 import useStyles from "./style";
 
 function IncomingSdpProducts(props) {
@@ -28,11 +30,12 @@ function IncomingSdpProducts(props) {
     },
     {
       field: "volume",
-      headerName: "Volume (Bytes)",
+      headerName: "Volume",
       flex: 0,
       minWidth: 180,
       valueFormatter: (params) => {
-        return `${String(params.value)}`;
+        const { value } = params;
+        return toByteString(value);
       },
     },
   ];
