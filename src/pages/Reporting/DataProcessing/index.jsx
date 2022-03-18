@@ -66,7 +66,7 @@ function DataProcessing(props) {
   const { match } = props;
 
   const links = [
-    { path: "incoming-l2-hls", label: "Incoming L2 HLS Files" },
+    { path: "incoming-l2-hls", label: "Incoming SDP Files" },
     { path: "incoming-ancillary", label: "Incoming Ancillary Files" },
     { path: "generated-sds", label: "Generated SDS Products" },
     { path: "outgoing-to-daac", label: "Outgoing Products To DAAC" },
@@ -240,6 +240,8 @@ function DataProcessing(props) {
   };
 
   const formatReportData = (idField, reportData) => {
+    if (!reportData) return reportData;
+
     const newData = reportData.map((val) => {
       const newVal = val;
       const id = newVal[idField];
@@ -269,8 +271,8 @@ function DataProcessing(props) {
   const setReportInfo = (reportName, results) => {
     switch (reportName) {
       case "incoming-l2-hls":
-        setIncomingL2HLSFilesSummary(results.data.header);
-        setIncomingL2HLSFilesData(formatReportData("name", results.data.products));
+        setIncomingL2HLSFilesSummary(results.data?.header);
+        setIncomingL2HLSFilesData(formatReportData("name", results.data?.products));
         return true;
       case "incoming-ancillary":
         setAncillarySummary(results.data.header);
@@ -308,11 +310,15 @@ function DataProcessing(props) {
   };
 
   const search = async () => {
+    // WORKAROUND: spinner is rendered below table rows.
+    //  Clear table on subsequent search so users can see the spinner.
+    const path = getPathTail(history);
+    // setReportInfo(path, {products: []});
+
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
     pushUrlParams(getTempValues(state, tempState, true), history);
-    const path = getPathTail(history);
     const results = await getReport(path);
     setLoading(false);
     setReportInfo(path, results);

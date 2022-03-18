@@ -100,6 +100,10 @@ function OutputData() {
   };
 
   const search = async () => {
+    // WORKAROUND: spinner is rendered below table rows.
+    //  Clear table on subsequent search so users can see the spinner.
+    setData([]);
+
     setLoading(true);
     pushTempToState(dispatch, tempState);
 

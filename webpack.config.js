@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { BASEPATH } = require("./src/config");
 
 module.exports = {
+  devtool: "eval-source-map",
   entry: ["babel-polyfill", "./src/index.js"],
   module: {
     rules: [

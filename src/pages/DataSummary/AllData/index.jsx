@@ -184,8 +184,9 @@ function AllData() {
 
   const transferOptions = [
     transferFormats.cnm_r_success,
-    transferFormats.cnm_r_failure,
     transferFormats.cnm_s_success,
+    transferFormats.cnm_r_failure,
+    transferFormats.cnm_s_failure,
     transferFormats.unknown,
   ];
 
@@ -301,6 +302,10 @@ function AllData() {
   };
 
   const search = async () => {
+    // WORKAROUND: spinner is rendered below table rows.
+    //  Clear table on subsequent search so users can see the spinner.
+    setData([]);
+
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
