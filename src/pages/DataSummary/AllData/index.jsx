@@ -235,6 +235,10 @@ function AllData() {
       minWidth: 220,
       valueGetter: (params) =>
         `${params.row.metadata.ProductReceivedTime || ""}`,
+      renderCell: (params) => {
+        const { value } = params;
+        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+      },
     },
     {
       field: "transfer_status",
@@ -320,6 +324,8 @@ function AllData() {
     setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempPreset("Today");
     setTempProductType("");
+
+    setTileId("");
   };
 
   React.useEffect(() => {
