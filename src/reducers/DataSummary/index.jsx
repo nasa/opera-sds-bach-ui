@@ -16,7 +16,6 @@ const actionTypes = {
   endDate: END_DATE,
   preset: PRESET,
   productType: PRODUCT_TYPE,
-  tileId: "TILE_ID",
   source: SOURCE,
   data: DATA,
 };
@@ -26,7 +25,6 @@ const initialState = {
   endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
   preset: "",
   productType: "",
-  tileId: "",
   source: "",
   data: [],
 };
@@ -45,9 +43,6 @@ function dataSummaryReducer(state, action) {
     case actionTypes.productType: {
       return { ...state, productType: action.payload };
     }
-    case actionTypes.tileId: {
-      return { ...state, tileId: action.payload };
-    }
     case actionTypes.source: {
       return { ...state, source: action.payload };
     }
@@ -62,14 +57,13 @@ function dataSummaryReducer(state, action) {
 
 function useDataSummary({ reducer = dataSummaryReducer } = {}) {
   const [
-    { startDate, endDate, preset, productType, tileId, source, data },
+    { startDate, endDate, preset, productType, source, data },
     dispatch,
   ] = React.useReducer(reducer, {
     startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
     endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
     preset: "Today",
     productType: "",
-    tileId: "",
     source: "",
     data: [],
   });
@@ -83,8 +77,6 @@ function useDataSummary({ reducer = dataSummaryReducer } = {}) {
     dispatch({ type: actionTypes.preset, payload: val });
   const setProductType = (val) =>
     dispatch({ type: actionTypes.productType, payload: val });
-  const setTileId = (val) =>
-    dispatch({ type: actionTypes.tileId, payload: val });
   const setSource = (val) =>
     dispatch({ type: actionTypes.source, payload: val });
   const setData = (val) => dispatch({ type: actionTypes.data, payload: val });
@@ -94,14 +86,12 @@ function useDataSummary({ reducer = dataSummaryReducer } = {}) {
     endDate,
     preset,
     productType,
-    tileId,
     source,
     data,
     setStartDate,
     setEndDate,
     setPreset,
     setProductType,
-    setTileId,
     setSource,
     setData,
   };

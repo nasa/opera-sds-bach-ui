@@ -10,15 +10,11 @@ export const StateContext = createContext();
 export default function AllDataContexts(props) {
   const { children } = props;
   const reducer = useAllData();
-  const { data, setData } = reducer;
+  const { data, setData, tileId, setTileId } = reducer;
 
   return (
-    <DispatchContext.Provider
-      value={{
-        setData,
-      }}
-    >
-      <StateContext.Provider value={{ data }}>{children}</StateContext.Provider>
+    <DispatchContext.Provider value={{ setData, setTileId }}>
+      <StateContext.Provider value={{ data, tileId }}>{children}</StateContext.Provider>
     </DispatchContext.Provider>
   );
 }

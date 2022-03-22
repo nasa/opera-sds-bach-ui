@@ -54,13 +54,12 @@ function AllData() {
   const { startDate, endDate, preset, productType } = state;
 
   const { data, tileId } = dataState;
-  const { setData } = dataDispatch;
+  const { setData, setTileId } = dataDispatch;
 
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
   const [tempPreset, setTempPreset] = React.useState(preset);
   const [tempProductType, setTempProductType] = React.useState(productType);
-  const [tempTileId, setTempTileId] = React.useState(tileId);
 
   const [transferSuccess, setTransferSuccess] = React.useState(false);
   const [transferFailed, setTransferFailed] = React.useState(false);
@@ -74,7 +73,6 @@ function AllData() {
     tempEndDate,
     tempPreset,
     tempProductType,
-    tempTileId,
   };
 
   const tempDispatch = {
@@ -82,7 +80,6 @@ function AllData() {
     setEndDate: setTempEndDate,
     setPreset: setTempPreset,
     setProductType: setTempProductType,
-    setTileId: setTempTileId,
   };
 
   const [jsonData, setJsonData] = React.useState({});
@@ -267,7 +264,7 @@ function AllData() {
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
-      ...(tempTileId && { "metadata.tile_id": tempTileId }),
+      ...(tileId && { "metadata.tile_id": tileId }),
     };
 
     let results = {};
@@ -354,8 +351,8 @@ function AllData() {
           />
           <StringFilter
             label="Tile ID"
-            value={tempTileId}
-            setValue={setTempTileId}
+            value={tileId}
+            setValue={setTileId}
           />
           <CheckboxFilter label="Transfer Status" options={transferOptions} />
         </FilterMenu>

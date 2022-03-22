@@ -15,14 +15,12 @@ export default function DataSummaryContexts(props) {
     endDate,
     preset,
     productType,
-    tileId,
     source,
     data,
     setStartDate,
     setEndDate,
     setPreset,
     setProductType,
-    setTileId,
     setSource,
     setData,
   } = reducer;
@@ -34,7 +32,6 @@ export default function DataSummaryContexts(props) {
         setEndDate,
         setPreset,
         setProductType,
-        setTileId,
         setSource,
         setData,
       }}
@@ -45,7 +42,6 @@ export default function DataSummaryContexts(props) {
           endDate,
           preset,
           productType,
-          tileId,
           source,
           data,
         }}
