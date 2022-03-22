@@ -85,9 +85,6 @@ function AllData() {
   const [jsonData, setJsonData] = React.useState({});
   const [open, setOpen] = React.useState(false);
 
-  const rowsPerPageOptions = [10, 20, 50];
-  const defaultPageSize = rowsPerPageOptions[0];
-
   const getJsonData = async (id) => {
     const paths = ["data"];
     const params = {
@@ -363,8 +360,6 @@ function AllData() {
           open={open}
           setOpen={setOpen}
           loading={loading}
-          rowsPerPageOptions={rowsPerPageOptions}
-          initialPageSize={defaultPageSize}
         />
       </FilterTableGrid>
     </PageWrapper>

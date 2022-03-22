@@ -17,10 +17,9 @@ export default function Table(props) {
     checkboxSelection,
     loading,
     rowsPerPageOptions,
-    initialPageSize,
   } = props;
 
-  const [pageSize, setPageSize] = React.useState(initialPageSize);
+  const [pageSize, setPageSize] = React.useState(rowsPerPageOptions[0]);
   const [page, setPage] = React.useState(0);
 
   const classes = useStyles();
@@ -75,7 +74,6 @@ Table.propTypes = {
   checkboxSelection: PropTypes.bool,
   loading: PropTypes.bool,
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
-  initialPageSize: PropTypes.number,
 };
 
 Table.defaultProps = {
@@ -86,6 +84,5 @@ Table.defaultProps = {
   setOpen: () => {},
   checkboxSelection: false,
   loading: false,
-  rowsPerPageOptions: [5, 10, 20],
-  initialPageSize: 5,
+  rowsPerPageOptions: [25, 50, 100],
 };
