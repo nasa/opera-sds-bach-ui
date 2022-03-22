@@ -53,13 +53,14 @@ function AllData() {
 
   const { startDate, endDate, preset, productType } = state;
 
-  const { data } = dataState;
+  const { data, tileId } = dataState;
   const { setData } = dataDispatch;
 
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
   const [tempPreset, setTempPreset] = React.useState(preset);
   const [tempProductType, setTempProductType] = React.useState(productType);
+  const [tempTileId, setTempTileId] = React.useState(tileId);
 
   const [transferSuccess, setTransferSuccess] = React.useState(false);
   const [transferFailed, setTransferFailed] = React.useState(false);
@@ -73,6 +74,7 @@ function AllData() {
     tempEndDate,
     tempPreset,
     tempProductType,
+    tempTileId,
   };
 
   const tempDispatch = {
@@ -80,6 +82,7 @@ function AllData() {
     setEndDate: setTempEndDate,
     setPreset: setTempPreset,
     setProductType: setTempProductType,
+    setTileId: setTempTileId,
   };
 
   const [jsonData, setJsonData] = React.useState({});
@@ -153,7 +156,7 @@ function AllData() {
         "Failed to publish",
         "#F44336"
       ),
-      name: "failed",
+      name: "failed_publish",
       value: transferFailed,
       setValue: toggleTransferFailed,
       color: "primary",
@@ -166,7 +169,7 @@ function AllData() {
         "Failed to notify",
         "#F44336"
       ),
-      name: "failed",
+      name: "failed_notify",
       value: transferFailed,
       setValue: toggleTransferFailed,
       color: "primary",
@@ -264,7 +267,9 @@ function AllData() {
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
+      ...(tempTileId && { "metadata.tile_id": tempTileId }),
     };
+
     let results = {};
     try {
       results = await makeAPIGet(paths, params);
@@ -346,6 +351,11 @@ function AllData() {
             label="Product Type"
             value={tempProductType}
             setValue={setTempProductType}
+          />
+          <StringFilter
+            label="Tile ID"
+            value={tempTileId}
+            setValue={setTempTileId}
           />
           <CheckboxFilter label="Transfer Status" options={transferOptions} />
         </FilterMenu>
