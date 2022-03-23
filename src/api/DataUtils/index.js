@@ -7,15 +7,12 @@ import { buildAPIUrl } from "@bach/api/utils";
 
 export async function makeAPIGet(paths, params, data) {
   const url = buildAPIUrl(paths, `${DEFAULT_HOST}${SUFFIX}`);
-  try {
-    const config = { method: "GET", url };
-    if (data !== null) config.data = data;
-    const response = await axios.get(url, { params });
-    return response;
-  } catch (err) {
-    console.error(err);
-    return {};
+  const config = { method: "GET", url };
+  if (data !== null) {
+    config.data = data;
   }
+  const response = await axios.get(url, { params });
+  return response;
 }
 
 export function getVenue() {

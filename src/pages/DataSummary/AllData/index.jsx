@@ -23,6 +23,8 @@ import {
   DispatchContext,
 } from "@bach/contexts/DataSummaryContexts";
 
+import { ModalDialogContext } from "@bach/contexts/ModelDialogContext";
+
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
@@ -45,6 +47,8 @@ function AllData() {
   const theme = useTheme();
   const history = useHistory();
   const [filtersHidden, setFiltersHidden] = React.useState(false);
+  const modalDialogState = React.useContext(ModalDialogContext);
+  const { setState: setModalDialogState } = modalDialogState;
 
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
@@ -96,6 +100,11 @@ function AllData() {
       results = await makeAPIGet(paths, params);
     } catch (err) {
       console.error(err);
+      setModalDialogState({
+        open: true,
+        title: "Something went wrong",
+        contentText: "Please try again.",
+      });
     }
     setLoading(false);
     return results;
@@ -273,6 +282,11 @@ function AllData() {
       results = await makeAPIGet(paths, params);
     } catch (err) {
       console.error(err);
+      setModalDialogState({
+        open: true,
+        title: "Something went wrong",
+        contentText: "Please try again.",
+      });
     }
     return results;
   }

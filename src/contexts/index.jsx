@@ -2,6 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import { ModalDialogContextProvider } from "@bach/contexts/ModelDialogContext";
 import DataSummaryContexts from "./DataSummaryContexts";
 import ReportingContexts from "./ReportingContexts";
 import ProductAccountabilityContexts from "./ProductAccountabilityContexts";
@@ -14,17 +15,19 @@ export default function Contexts(props) {
   const { children } = props;
 
   return (
-    <PageTitleContextProvider>
-      <DataContexts>
-        <DataSummaryContexts>
-          <ReportingContexts>
-            <ProductAccountabilityContexts>
-              {children}
-            </ProductAccountabilityContexts>
-          </ReportingContexts>
-        </DataSummaryContexts>
-      </DataContexts>
-    </PageTitleContextProvider>
+    <ModalDialogContextProvider>
+      <PageTitleContextProvider>
+        <DataContexts>
+          <DataSummaryContexts>
+            <ReportingContexts>
+              <ProductAccountabilityContexts>
+                {children}
+              </ProductAccountabilityContexts>
+            </ReportingContexts>
+          </DataSummaryContexts>
+        </DataContexts>
+      </PageTitleContextProvider>
+    </ModalDialogContextProvider>
   );
 }
 
