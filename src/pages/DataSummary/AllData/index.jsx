@@ -45,20 +45,23 @@ import useStyles from "./style";
 function AllData() {
   const classes = useStyles();
   const theme = useTheme();
+
   const history = useHistory();
+
   const [filtersHidden, setFiltersHidden] = React.useState(false);
-  const modalDialogState = React.useContext(ModalDialogContext);
-  const { setState: setModalDialogState } = modalDialogState;
 
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
   const dataState = React.useContext(DataStateContext);
   const dataDispatch = React.useContext(DataDispatchContext);
+  const modalDialogState = React.useContext(ModalDialogContext);
 
   const { startDate, endDate, preset, productType } = state;
 
   const { data, tileId } = dataState;
   const { setData, setTileId } = dataDispatch;
+
+  const { setState: setModalDialogState } = modalDialogState;
 
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);

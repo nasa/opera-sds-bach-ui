@@ -4,6 +4,14 @@ import { withRouter, useHistory } from "react-router-dom";
 import moment from "moment";
 
 import {
+  onMount,
+  pushUrlParams,
+  pushTempToState,
+  getTempValues,
+  makeAPIGet,
+} from "@bach/api/DataUtils";
+
+import {
   DispatchContext,
   StateContext,
 } from "@bach/contexts/DataSummaryContexts";
@@ -13,13 +21,7 @@ import {
   DispatchContext as DataDispatchContext,
 } from "@bach/contexts/DataContexts/Incoming";
 
-import {
-  onMount,
-  pushUrlParams,
-  pushTempToState,
-  getTempValues,
-  makeAPIGet,
-} from "@bach/api/DataUtils";
+import { ModalDialogContext } from "@bach/contexts/ModelDialogContext";
 
 import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
@@ -33,10 +35,13 @@ import StringFilter from "@bach/components/Filters/StringFilter";
 function IncomingData() {
   const history = useHistory();
 
+  const [filtersHidden, setFiltersHidden] = React.useState(false);
+
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
   const dataState = React.useContext(DataStateContext);
   const dataDispatch = React.useContext(DataDispatchContext);
+  const modalDialogState = React.useContext(ModalDialogContext);
 
   const { startDate, endDate, preset, source } = state;
 
@@ -47,10 +52,9 @@ function IncomingData() {
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
   const [tempPreset, setTempPreset] = React.useState(preset);
   const [tempSource, setTempSource] = React.useState(source);
+  const { setState: setModalDialogState } = modalDialogState;
 
   const [loading, setLoading] = React.useState(false);
-
-  const [filtersHidden, setFiltersHidden] = React.useState(false);
 
   const tempState = {
     tempStartDate,
@@ -95,6 +99,11 @@ function IncomingData() {
       results = await makeAPIGet(paths, params);
     } catch (err) {
       console.error(err);
+      setModalDialogState({
+        open: true,
+        title: "Something went wrong",
+        contentText: "Please try again.",
+      });
     }
     return results;
   }
