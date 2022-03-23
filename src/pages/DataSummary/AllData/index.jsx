@@ -134,6 +134,7 @@ function AllData() {
       label: makeLabel(
         <CheckCircleOutlineIcon />,
         "Published",
+        "Published",
         "#4CAF50"
       ),
       name: "success",
