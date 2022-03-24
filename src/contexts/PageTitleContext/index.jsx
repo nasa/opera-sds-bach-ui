@@ -14,7 +14,11 @@ export const PageTitleContextProvider = (props) => {
   };
 
   return (
-    <PageTitleContext.Provider value={{ pageTitle, setPageTitle, updatePageTitle }}>{children}</PageTitleContext.Provider>
+    <PageTitleContext.Provider
+      value={{ pageTitle, setPageTitle, updatePageTitle }}
+    >
+      {children}
+    </PageTitleContext.Provider>
   );
 };
 

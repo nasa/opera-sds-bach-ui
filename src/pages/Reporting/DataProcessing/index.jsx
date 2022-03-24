@@ -44,7 +44,6 @@ import {
 import FilterMenu from "@bach/components/FilterMenu";
 import FilterController from "@bach/components/FilterController";
 import DateFilter from "@bach/components/Filters/DateFilter";
-import StringFilter from "@bach/components/Filters/StringFilter";
 import SelectFilter from "@bach/components/Filters/SelectFilter";
 import RadioFilter from "@bach/components/Filters/RadioFilter";
 import SummaryTable from "@bach/components/SummaryTable";

@@ -14,7 +14,9 @@ export default function AllDataContexts(props) {
 
   return (
     <DispatchContext.Provider value={{ setData, setTileId }}>
-      <StateContext.Provider value={{ data, tileId }}>{children}</StateContext.Provider>
+      <StateContext.Provider value={{ data, tileId }}>
+        {children}
+      </StateContext.Provider>
     </DispatchContext.Provider>
   );
 }

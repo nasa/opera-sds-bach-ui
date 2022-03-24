@@ -6,8 +6,8 @@ import "@testing-library/jest-dom";
 
 import { MISSION_TITLE } from "@bach/constants";
 
-import HeaderBar, { LocationDisplay } from "./index";
 import { PageTitleContextProvider } from "@bach/contexts/PageTitleContext";
+import HeaderBar, { LocationDisplay } from "./index";
 
 const renderWithRouter = (ui, { route = "/" } = {}) => {
   window.history.pushState({}, "Test page", route);

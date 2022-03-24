@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import { Typography, Button, Paper } from "@material-ui/core";
 
 import useStyles from "./style";

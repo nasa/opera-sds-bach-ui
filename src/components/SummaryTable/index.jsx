@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import useStyles from "./style";
 
 export default function SummaryTable(props) {

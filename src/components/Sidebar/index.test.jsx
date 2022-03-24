@@ -25,8 +25,10 @@ describe("Sidebar test", () => {
 
     expect(getByText(/Data Summary/i)).toBeInTheDocument();
     expect(getByText(/Product Accountability/i)).toBeInTheDocument();
+    // hidden for OPERA
     // expect(getByText(/Process Monitoring/i)).toBeInTheDocument();
     expect(getByText(/Reporting/i)).toBeInTheDocument();
+    // hidden for OPERA
     // expect(getByText(/Cluster Health/i)).toBeInTheDocument();
     expect(getByText(/Information/i)).toBeInTheDocument();
     expect(getByText(/Logout/i)).toBeInTheDocument();

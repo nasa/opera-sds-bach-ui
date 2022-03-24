@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   DRAWER_WIDTH,
-  DRAWER_COLOR,
   ACTIVE_LINK_CLOSED,
   ACTIVE_LINK_OPENED,
 } from "@bach/constants";

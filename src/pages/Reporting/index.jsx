@@ -4,7 +4,8 @@ import { Route, Redirect } from "react-router-dom"; // withRouter
 
 import TabMenu from "@bach/components/TabMenu";
 import { PageTitleContext } from "@bach/contexts/PageTitleContext";
-import Observations from "./Observations";
+// hidden for OPERA
+// import Observations from "./Observations";
 import DataProcessing from "./DataProcessing";
 
 import useStyles from "./style";
@@ -37,6 +38,7 @@ export default function Reporting(props) {
         />
 
         {/* todo: may move this to config file and map over array */}
+        {/* hidden for OPERA */}
         {/* <Route path={`${match.path}/observations`} component={Observations} /> */}
         <Route
           path={`${match.path}/data-processing`}

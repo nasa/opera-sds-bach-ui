@@ -16,11 +16,13 @@ export default function FilterTableGrid(props) {
       spacing={1} style={{ padding: theme.spacing(1) }}
     >
       {!filtersHidden ? (
-        <Grid item className={classes.leftGridChild}
-              xs={12}
-              md={4}
-              lg={4}
-              xl={2}
+        <Grid
+          item
+          className={classes.leftGridChild}
+          xs={12}
+          md={4}
+          lg={4}
+          xl={2}
         >
           {children[0]}
         </Grid>

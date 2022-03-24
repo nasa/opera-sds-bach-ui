@@ -18,7 +18,7 @@
     "test": "jest --silent",
     "lint": "eslint src --ext .jsx",
     "lint:js": "eslint src --ext .js",
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "prod": "webpack-dev-server --open --mode production",
     "start2": "webpack-dev-server --config ./webpack.config.js"
