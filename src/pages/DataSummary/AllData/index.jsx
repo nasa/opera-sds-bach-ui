@@ -58,8 +58,8 @@ function AllData() {
 
   const { startDate, endDate, preset, productType } = state;
 
-  const { data, tileId } = dataState;
-  const { setData, setTileId } = dataDispatch;
+  const { data, sensor, tileId } = dataState;
+  const { setData, setSensor, setTileId } = dataDispatch;
 
   const { setState: setModalDialogState } = modalDialogState;
 
@@ -279,6 +279,7 @@ function AllData() {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
       ...(tileId && { "metadata.tile_id": tileId }),
+      ...(sensor && { "metadata.sensor": sensor }),
     };
 
     let results = {};
@@ -344,6 +345,7 @@ function AllData() {
     setTempProductType("");
 
     setTileId("");
+    setSensor("");
   };
 
   React.useEffect(() => {
@@ -369,6 +371,11 @@ function AllData() {
             label="Product Type"
             value={tempProductType}
             setValue={setTempProductType}
+          />
+          <StringFilter
+            label="Sensor"
+            value={sensor}
+            setValue={setSensor}
           />
           <StringFilter
             label="Tile ID"
