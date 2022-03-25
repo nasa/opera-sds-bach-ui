@@ -21,8 +21,10 @@ export default function Reporting(props) {
     // hidden for OPERA
     // { path: "observations", label: "Observations" },
     { path: "data-processing", label: "Data Processing" },
-    { path: "latency", label: "Latency" },
-    { path: "urgent-response", label: "Urgent Response" },
+    { path: "production-time", label: "Production Time" },
+    { path: "retrieval-time", label: "Retrieval Time" },
+    // hidden for OPERA
+    // { path: "urgent-response", label: "Urgent Response" },
   ];
 
   return (
