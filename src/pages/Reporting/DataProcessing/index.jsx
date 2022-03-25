@@ -418,4 +418,3 @@ DataProcessing.propTypes = {
 };
 
 export default withRouter(DataProcessing);
-export { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
