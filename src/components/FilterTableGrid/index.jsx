@@ -21,7 +21,7 @@ export default function FilterTableGrid(props) {
           className={classes.leftGridChild}
           xs={12}
           md={4}
-          lg={4}
+          lg={3}
           xl={2}
         >
           {children[0]}
@@ -32,7 +32,7 @@ export default function FilterTableGrid(props) {
           item
           xs={filtersHidden ? 12 : 12}
           md={filtersHidden ? 12 : 8}
-          lg={filtersHidden ? 12 : 8}
+          lg={filtersHidden ? 12 : 9}
           xl={filtersHidden ? 12 : 10}
           className={classes.rightGridChild}
         >
