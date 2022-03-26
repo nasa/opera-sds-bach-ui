@@ -16,6 +16,17 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.(woff|woff2|ttf|svg|eot|gif)$/,
         use: [
           {
