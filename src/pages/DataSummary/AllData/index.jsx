@@ -120,9 +120,12 @@ function AllData() {
 
   const makeLabel = (icon, text, hoverText, color) => (
     <div className={classes.iconLabel}>
-      <Tooltip title={hoverText} aria-label={hoverText} style={{ color }}>
-        {icon}
-      </Tooltip>
+      {
+        (!icon) ? <></> :
+          <Tooltip title={hoverText} aria-label={hoverText} style={{ color }}>
+            {icon}
+          </Tooltip>
+      }
       <span className={classes.spanLabel} style={{ color }}>
         {text}
       </span>
@@ -184,9 +187,14 @@ function AllData() {
     },
     unknown: {
       name: "unknown",
-      label: makeLabel(<HelpIcon />, "N/A", "N/A", "rgba(0, 0, 0, 0.54)"),
+      label: makeLabel(<HelpIcon />, "Unknown", "Unknown", "rgba(0, 0, 0, 0.54)"),
       value: transferUnknown,
       setValue: toggleTransferUnknown,
+      color: "primary",
+      labelColor: "#EEEEEE",
+    },
+    not_applicable: {
+      label: makeLabel(<></>, "N/A", "N/A", "rgba(0, 0, 0, 0.54)"),
       color: "primary",
       labelColor: "#EEEEEE",
     },
@@ -316,9 +324,7 @@ function AllData() {
       return data;
     }
 
-    const filteredData = data.filter((entry) =>
-      transferFilters.includes(entry.transfer_status)
-    );
+    const filteredData = data.filter((entry) => transferFilters.includes(entry.transfer_status));
 
     return filteredData;
   };
