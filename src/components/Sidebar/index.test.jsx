@@ -24,7 +24,8 @@ describe("Sidebar test", () => {
     });
 
     expect(getByText(/Data Summary/i)).toBeInTheDocument();
-    expect(getByText(/Product Accountability/i)).toBeInTheDocument();
+    // TODO chrisjrd: unhide when implementing
+    // expect(getByText(/Product Accountability/i)).toBeInTheDocument();
     // hidden for OPERA
     // expect(getByText(/Process Monitoring/i)).toBeInTheDocument();
     expect(getByText(/Reporting/i)).toBeInTheDocument();
