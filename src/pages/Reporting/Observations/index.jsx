@@ -192,12 +192,13 @@ function Observations() {
             value={tempCRID}
             setValue={setTempCRID}
           />
-          <SelectFilter
+          {/* TODO chrisjrd: hidden for this release */}
+          {/* <SelectFilter
             label="Processing Mode"
             options={[]}
             value={tempProcessingMode}
             setValue={setTempProcessingMode}
-          />
+          /> */}
           <RadioFilter
             label="Report Type"
             value={tempReportType}

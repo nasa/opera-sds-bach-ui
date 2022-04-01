@@ -43,11 +43,12 @@ export default function Sidebar(props) {
       path: "/data-summary",
       icon: TableChartIcon,
     },
-    {
-      label: "Product Accountability",
-      path: "/product-accountability",
-      icon: CheckCircleIcon,
-    },
+    // TODO chrisjrd: unhide when implementing
+    // {
+    //   label: "Product Accountability",
+    //   path: "/product-accountability",
+    //   icon: CheckCircleIcon,
+    // },
     // hidden for OPERA
     // {
     //   label: "Process Monitoring",

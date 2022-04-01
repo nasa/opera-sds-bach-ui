@@ -7,6 +7,8 @@ import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 // hidden for OPERA
 // import Observations from "./Observations";
 import DataProcessing from "./DataProcessing";
+import ProductionTime from "./ProductionTime";
+import RetrievalTime from "./RetrievalTime";
 
 import useStyles from "./style";
 
@@ -46,6 +48,8 @@ export default function Reporting(props) {
           path={`${match.path}/data-processing`}
           component={DataProcessing}
         />
+        <Route path={`${match.path}/production-time`} component={ProductionTime} />
+        <Route path={`${match.path}/retrieval-time`} component={RetrievalTime} />
       </div>
     </>
   );

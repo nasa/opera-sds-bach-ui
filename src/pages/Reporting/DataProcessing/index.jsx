@@ -11,6 +11,7 @@ import {
   pushUrlParams,
   pushTempToState,
   getTempValues,
+  getVenue,
   makeAPIGet,
 } from "@bach/api/DataUtils";
 
@@ -177,6 +178,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "sdp",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {

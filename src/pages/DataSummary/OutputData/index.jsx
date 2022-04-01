@@ -150,11 +150,12 @@ function OutputData() {
             setPresetValue={setTempPreset}
             presets
           />
-          <StringFilter
+          {/* TODO chrisjrd: hidden for this release */}
+          {/* <StringFilter
             label="Source"
             value={tempSource}
             setValue={setTempSource}
-          />
+          /> */}
         </FilterMenu>
         <Table data={data} columns={columns} loading={loading} />
       </FilterTableGrid>

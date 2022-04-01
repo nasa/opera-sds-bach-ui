@@ -24,7 +24,7 @@ function OutgoingDaacProducts(props) {
     },
     {
       field: "products_delivered",
-      headerName: "Files Ingested",
+      headerName: "Files Published",
       flex: 0,
       minWidth: 170,
     },
