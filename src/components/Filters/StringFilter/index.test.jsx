@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@bach/test-utils";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
@@ -11,22 +11,15 @@ describe("String Filter", () => {
     setValue: jest.fn(),
     label: "String",
   };
-
-  const renderComponent = ({ value, setValue, label }) =>
-    render(<StringFilter value={value} setValue={setValue} label={label} />);
-
+  
   test("Renders a Select Filter preset filter works", () => {
-    const { getByText, getByTestId } = renderComponent({
-      value: defaultProps.value,
-      setValue: defaultProps.setValue,
-      label: defaultProps.label,
-    });
+    render(<StringFilter value={defaultProps.value} setValue={defaultProps.setValue} label={defaultProps.label} />);
 
-    expect(getByText(/String/i)).toBeInTheDocument();
+    expect(screen.getByText(/String/i)).toBeInTheDocument();
 
-    expect(getByTestId("string-filter-field")).toBeTruthy();
+    expect(screen.getByTestId("string-filter-field")).toBeTruthy();
 
-    const stringInput = getByTestId("string-filter-field");
+    const stringInput = screen.getByTestId("string-filter-field");
 
     userEvent.type(stringInput, "Hello");
 

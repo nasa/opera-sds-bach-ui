@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter"
@@ -27,26 +27,18 @@ describe("CheckboxFilter", () => {
       },
     ],
   };
-
-  const renderComponent = ({ label, options }) =>
-    render(<CheckboxFilter label={label} options={options} />);
+    
   test("Renders a checkbox filter to test", () => {
-    const { getByText } = renderComponent({
-      label: defaultProps.label,
-      options: defaultProps.options,
-    });
+    render(<CheckboxFilter label={defaultProps.label} options={defaultProps.options} />);
 
-    expect(getByText(/Test/i)).toBeInTheDocument();
+    expect(screen.getByText(/Test/i)).toBeInTheDocument();
 
-    expect(getByText(/option1/i)).toBeInTheDocument();
-    expect(getByText(/option2/i)).toBeInTheDocument();
-
-    const option1 = getByText(/option1/i);
+    const option1 = screen.getByText(/option1/i);
 
     fireEvent.click(option1);
 
     expect(defaultProps.options[0].setValue).toHaveBeenCalled();
-    const option2 = getByText(/option2/i);
+    const option2 = screen.getByText(/option2/i);
 
     fireEvent.click(option2);
 
@@ -55,23 +47,16 @@ describe("CheckboxFilter", () => {
 
   test("Renders a checkbox filter to test but one of the checkboxes is checked", () => {
     defaultProps.options[0].value = true;
+    render(<CheckboxFilter label={defaultProps.label} options={defaultProps.options} />);
 
-    const { getByText } = renderComponent({
-      label: defaultProps.label,
-      options: defaultProps.options,
-    });
+    expect(screen.getByText(/Test/i)).toBeInTheDocument();
 
-    expect(getByText(/Test/i)).toBeInTheDocument();
-
-    expect(getByText(/option1/i)).toBeInTheDocument();
-    expect(getByText(/option2/i)).toBeInTheDocument();
-
-    const option1 = getByText(/option1/i);
+    const option1 = screen.getByText(/option1/i);
 
     fireEvent.click(option1);
 
     expect(defaultProps.options[0].setValue).toHaveBeenCalled();
-    const option2 = getByText(/option2/i);
+    const option2 = screen.getByText(/option2/i);
 
     fireEvent.click(option2);
 

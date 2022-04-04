@@ -1,7 +1,6 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@bach/test-utils";
 import "@testing-library/jest-dom";
-// import userEvent from "@testing-library/user-event";
 import moment from "moment";
 
 import DateFilter from "@bach/components/Filters/DateFilter"
@@ -18,56 +17,31 @@ describe("Date Filter", () => {
     presets: true,
   };
 
-  const renderComponent = ({
-    startValue,
-    endValue,
-    setStartValue,
-    setEndValue,
-    presetValue,
-    setPresetValue,
-    label,
-    presets,
-  }) =>
+  test("Renders a Date Filter preset filter works", () => {
     render(
       <DateFilter
-        startValue={startValue}
-        setStartValue={setStartValue}
-        endValue={endValue}
-        setEndValue={setEndValue}
-        label={label}
-        presetValue={presetValue}
-        setPresetValue={setPresetValue}
-        presets={presets}
+        startValue={defaultProps.startValue}
+        setStartValue={defaultProps.setStartDate}
+        endValue={defaultProps.endValue}
+        setEndValue={defaultProps.setEndDate}
+        label={defaultProps.label}
+        presetValue={defaultProps.preset}
+        setPresetValue={defaultProps.setPreset}
+        presets={defaultProps.presets}
       />
     );
 
-  test("Renders a Date Filter preset filter works", () => {
-    const { getByTestId } = renderComponent({
-      startValue: defaultProps.startValue,
-      setStartValue: defaultProps.setStartDate,
-      endValue: defaultProps.endValue,
-      setEndValue: defaultProps.setEndDate,
-      presetValue: defaultProps.preset,
-      setPresetValue: defaultProps.setPreset,
-      label: defaultProps.label,
-      presets: defaultProps.presets,
-    });
-
     expect(screen.getByText(/Date/i)).toBeInTheDocument();
-
     expect(screen.getByText(/Today/i)).toBeInTheDocument();
 
-    expect(screen.getByText(/Today/i)).toBeInTheDocument();
-
-    // const datetimeLabel = getByLabelText("datetime-local");
-    const startDatetimeInput = getByTestId("start-datetime-test-input");
+    const startDatetimeInput = screen.getByTestId("start-datetime-test-input");
 
     fireEvent.change(startDatetimeInput, {
       target: { value: "2020-04-08T21:24" },
     });
     expect(defaultProps.setStartDate).toHaveBeenCalled();
 
-    const endDatetimeInput = getByTestId("end-datetime-test-input");
+    const endDatetimeInput = screen.getByTestId("end-datetime-test-input");
 
     fireEvent.change(endDatetimeInput, {
       target: { value: "2020-04-08T21:24" },
@@ -76,24 +50,26 @@ describe("Date Filter", () => {
   });
 
   test("Test the select component", () => {
-    const { getByRole } = renderComponent({
-      startValue: defaultProps.startValue,
-      setStartValue: defaultProps.setStartDate,
-      endValue: defaultProps.endValue,
-      setEndValue: defaultProps.setEndDate,
-      presetValue: "Yesterday",
-      setPresetValue: defaultProps.setPreset,
-      label: defaultProps.label,
-      presets: defaultProps.presets,
-    });
+    render(
+      <DateFilter
+        startValue={defaultProps.startValue}
+        setStartValue={defaultProps.setStartDate}
+        endValue={defaultProps.endValue}
+        setEndValue={defaultProps.setEndDate}
+        label={defaultProps.label}
+        presetValue="Yesterday"
+        setPresetValue={defaultProps.setPreset}
+        presets={defaultProps.presets}
+      />
+    );
 
     expect(screen.queryByText(/Today/i)).not.toBeInTheDocument();
 
-    const input = getByRole("button");
+    const input = screen.getByRole("button");
 
     fireEvent.mouseDown(input);
 
-    const listbox = within(getByRole("listbox"));
+    const listbox = within(screen.getByRole("listbox"));
     fireEvent.click(listbox.getByText("Yesterday"));
 
     fireEvent.mouseUp(input);
