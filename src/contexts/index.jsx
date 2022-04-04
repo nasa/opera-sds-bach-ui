@@ -3,10 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { ModalDialogContextProvider } from "@bach/contexts/ModelDialogContext";
-import DataSummaryContexts from "./DataSummaryContexts";
-import ReportingContexts from "./ReportingContexts";
-import ProductAccountabilityContexts from "./ProductAccountabilityContexts";
-import DataContexts from "./DataContexts";
+import DataSummaryContexts from "@bach/contexts/DataSummaryContexts";
+import ReportingContexts from "@bach/contexts/ReportingContexts";
+import ProductAccountabilityContexts from "@bach/contexts/ProductAccountabilityContexts";
+import DataContexts from "@bach/contexts/DataContexts";
 import { PageTitleContextProvider } from "@bach/contexts/PageTitleContext";
 
 export const MyContext = React.createContext();

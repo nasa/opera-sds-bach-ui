@@ -1,10 +1,16 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@bach/test-utils";
 import "@testing-library/jest-dom";
 
 import Sidebar from "./index";
+
+const renderWithRouter = (ui, { route = "/" } = {}) => {
+  window.history.pushState({}, "Test page", route);
+
+  return render(ui, { wrapper: BrowserRouter });
+};
 
 describe("Sidebar test", () => {
   const defaultProps = {
@@ -12,16 +18,8 @@ describe("Sidebar test", () => {
     toggleSidebar: jest.fn(),
   };
 
-  const renderComponent = ({ opened, toggleSidebar }) =>
-    render(<Sidebar opened={opened} toggleSidebar={toggleSidebar} />, {
-      wrapper: BrowserRouter,
-    });
-
   test("checking that sidebar has all the necessary links", () => {
-    const { getByText, getByTestId } = renderComponent({
-      opened: defaultProps.opened,
-      toggleSidebar: defaultProps.toggleSidebar,
-    });
+    const { getByText, getByTestId } = renderWithRouter(<Sidebar opened={true} toggleSidebar={defaultProps.toggleSidebar} />);
 
     expect(getByText(/Data Summary/i)).toBeInTheDocument();
     // TODO chrisjrd: unhide when implementing

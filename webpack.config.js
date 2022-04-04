@@ -67,6 +67,7 @@ module.exports = {
       "@bach/pages": path.resolve(__dirname, "src/pages"),
       "@bach/reducers": path.resolve(__dirname, "src/reducers"),
       "@bach/constants": path.resolve(__dirname, "src/constants"),
+      "@bach/test-utils": path.resolve(__dirname, "src/test_utils.jsx"),
     },
   },
   output: {
