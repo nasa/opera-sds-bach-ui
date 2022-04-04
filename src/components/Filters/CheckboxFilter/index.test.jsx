@@ -3,7 +3,7 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import CheckboxFilter from "./index";
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter"
 
 describe("CheckboxFilter", () => {
   const defaultProps = {

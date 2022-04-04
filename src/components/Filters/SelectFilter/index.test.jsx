@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 // import userEvent from "@testing-library/user-event";
 
-import SelectFilter from "./index";
+import SelectFilter from "@bach/components/Filters/SelectFilter"
 
 describe("Select Filter", () => {
   const defaultProps = {

@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-import StringFilter from "./index";
+import StringFilter from "@bach/components/Filters/StringFilter"
 
 describe("String Filter", () => {
   const defaultProps = {

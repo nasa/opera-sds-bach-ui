@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 // import userEvent from "@testing-library/user-event";
 
-import RadioFilter from "./index";
+import RadioFilter from "@bach/components/Filters/RadioFilter"
 
 describe("Select Filter", () => {
   const defaultProps = {

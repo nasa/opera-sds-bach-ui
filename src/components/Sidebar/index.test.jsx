@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { render, fireEvent } from "@bach/test-utils";
 import "@testing-library/jest-dom";
 
-import Sidebar from "./index";
+import Sidebar from "@bach/components/Sidebar";
 
 const renderWithRouter = (ui, { route = "/" } = {}) => {
   window.history.pushState({}, "Test page", route);

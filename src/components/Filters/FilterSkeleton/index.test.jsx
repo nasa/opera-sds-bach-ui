@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 // import userEvent from "@testing-library/user-event";
 
-import FilterSkeleton from "./index";
+import FilterSkeleton from "@bach/components/Filters/FilterSkeleton"
 
 describe("Date Filter", () => {
   const defaultProps = {
