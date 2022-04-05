@@ -1,10 +1,10 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import WarningIcon from "@material-ui/icons/Warning";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
+import WarningIcon from "@mui/icons-material/Warning";
 import moment from "moment";
 
 import PageWrapper from "@bach/components/PageWrapper";

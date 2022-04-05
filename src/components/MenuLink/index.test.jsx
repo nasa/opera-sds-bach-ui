@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import InfoIcon from "@material-ui/icons/Info";
+import InfoIcon from "@mui/icons-material/Info";
 
 import MenuLink from "@bach/components/MenuLink"
 

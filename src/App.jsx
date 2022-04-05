@@ -1,7 +1,7 @@
 import React from "react";
 
-import MomentUtils from "@date-io/moment";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import AdapterMoment from "@mui/lab/AdapterMoment";
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Routes from "@bach/pages/Routes";
@@ -22,13 +22,13 @@ const defaultTheme = createTheme({
 
 function App() {
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
       <ThemeProvider theme={defaultTheme}>
         <Contexts>
           <Routes />
         </Contexts>
       </ThemeProvider>
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 
