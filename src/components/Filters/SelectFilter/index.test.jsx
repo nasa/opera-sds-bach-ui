@@ -1,9 +1,10 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { render, screen, fireEvent } from "@bach/test-utils";
+import '@testing-library/jest-dom'
+
 // import userEvent from "@testing-library/user-event";
 
-import SelectFilter from "./index";
+import SelectFilter from "@bach/components/Filters/SelectFilter"
 
 describe("Select Filter", () => {
   const defaultProps = {
@@ -11,43 +12,28 @@ describe("Select Filter", () => {
     value: "",
     setFunc: jest.fn(),
     options: [
-      {
-        label: "option1",
-        value: "1",
-      },
-      {
-        label: "option2",
-        value: "2",
-      },
+      { label: "option1", value: "1", },
+      { label: "option2", value: "2", },
     ],
   };
 
-  const renderComponent = ({ value, setValue, label, options }) =>
+  test("Renders a Select Filter preset filter works", () => {
     render(
       <SelectFilter
-        value={value}
-        setValue={setValue}
-        label={label}
-        options={options}
+        value={defaultProps.value}
+        setValue={defaultProps.setFunc}
+        label={defaultProps.label}
+        options={defaultProps.options}
       />
     );
 
-  test("Renders a Select Filter preset filter works", () => {
-    const { getByText, getByTestId } = renderComponent({
-      value: defaultProps.value,
-      setValue: defaultProps.setFunc,
-      label: defaultProps.label,
-      options: defaultProps.options,
-    });
+    expect(screen.getByTestId("select-test-id")).toBeInTheDocument();
 
-    expect(getByText(/Select/i)).toBeInTheDocument();
-
-    expect(getByText(/option1/i)).toBeInTheDocument();
-
-    const select = getByTestId("select-test-id");
+    const select = screen.getByTestId("select-test-id");
 
     fireEvent.change(select, { target: { value: "2" } });
 
+    expect(select).toHaveDisplayValue("option1");
     expect(defaultProps.setFunc).toBeCalled();
   });
 });

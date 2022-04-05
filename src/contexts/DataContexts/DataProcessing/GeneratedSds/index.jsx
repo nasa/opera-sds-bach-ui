@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useGeneratedSdsData } from "../../../../reducers/Reporting/DataProcessing/GeneratedSds";
+import { useGeneratedSdsData } from "@bach/reducers/Reporting/DataProcessing/GeneratedSds";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

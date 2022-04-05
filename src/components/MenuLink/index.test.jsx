@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 import InfoIcon from "@material-ui/icons/Info";
 
-import MenuLink from "./index";
+import MenuLink from "@bach/components/MenuLink"
 
 describe("Menu Link", () => {
   const renderComponent = ({ label, icon, opened }) =>

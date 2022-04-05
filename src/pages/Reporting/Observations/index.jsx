@@ -11,28 +11,28 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
 import {
   DispatchContext,
   StateContext,
-} from "../../../contexts/ReportingContexts";
+} from "@bach/contexts/ReportingContexts";
 
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
-} from "../../../contexts/DataContexts/ObservationsReport";
+} from "@bach/contexts/DataContexts/ObservationsReport";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterController from "../../../components/FilterController";
-import Table from "../../../components/Table";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import SelectFilter from "../../../components/Filters/SelectFilter";
-import RadioFilter from "../../../components/Filters/RadioFilter";
-import SummaryTable from "../../../components/SummaryTable";
-import PageWrapper from "../../../components/PageWrapper";
-import FilterTableGrid from "../../../components/FilterTableGrid";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterController from "@bach/components/FilterController";
+import Table from "@bach/components/Table";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
+import SelectFilter from "@bach/components/Filters/SelectFilter";
+import RadioFilter from "@bach/components/Filters/RadioFilter";
+import SummaryTable from "@bach/components/SummaryTable";
+import PageWrapper from "@bach/components/PageWrapper";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
 
 import useStyles from "./style";
 
@@ -192,12 +192,13 @@ function Observations() {
             value={tempCRID}
             setValue={setTempCRID}
           />
-          <SelectFilter
+          {/* TODO chrisjrd: hidden for this release */}
+          {/* <SelectFilter
             label="Processing Mode"
             options={[]}
             value={tempProcessingMode}
             setValue={setTempProcessingMode}
-          />
+          /> */}
           <RadioFilter
             label="Report Type"
             value={tempReportType}

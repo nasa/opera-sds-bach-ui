@@ -11,49 +11,49 @@ import {
   pushUrlParams,
   pushTempToState,
   getTempValues,
+  getVenue,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
-import { getPathTail } from "../../../api/utils";
+import { getPathTail } from "@bach/api/utils";
 
 import {
   DispatchContext,
   StateContext,
-} from "../../../contexts/ReportingContexts";
+} from "@bach/contexts/ReportingContexts";
 
 import {
-  StateContext as DataStateNenContext,
-  DispatchContext as DataDispatchNenContext,
-} from "../../../contexts/DataContexts/DataProcessing/IncomingNen";
+  StateContext as DataStateIncomingL2HLSFilesContext,
+  DispatchContext as DataDispatchL2HLSFilesContext,
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingSdp";
 
 import {
-  StateContext as DataStateGdsContext,
-  DispatchContext as DataDispatchGdsContext,
-} from "../../../contexts/DataContexts/DataProcessing/IncomingGds";
+  StateContext as DataStateAncillaryContext,
+  DispatchContext as DataDispatchAncillaryContext,
+} from "@bach/contexts/DataContexts/DataProcessing/IncomingAncillary";
 
 import {
   StateContext as DataStateGeneratedContext,
   DispatchContext as DataDispatchGeneratedContext,
-} from "../../../contexts/DataContexts/DataProcessing/GeneratedSds";
+} from "@bach/contexts/DataContexts/DataProcessing/GeneratedSds";
 
 import {
   StateContext as DataStateOutgoingContext,
   DispatchContext as DataDispatchOutgoingContext,
-} from "../../../contexts/DataContexts/DataProcessing/OutgoingDaac";
+} from "@bach/contexts/DataContexts/DataProcessing/OutgoingDaac";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterController from "../../../components/FilterController";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import SelectFilter from "../../../components/Filters/SelectFilter";
-import RadioFilter from "../../../components/Filters/RadioFilter";
-import SummaryTable from "../../../components/SummaryTable";
-import TabMenu from "../../../components/TabMenu";
-import PageWrapper from "../../../components/PageWrapper";
-import FilterTableGrid from "../../../components/FilterTableGrid";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterController from "@bach/components/FilterController";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import SelectFilter from "@bach/components/Filters/SelectFilter";
+import RadioFilter from "@bach/components/Filters/RadioFilter";
+import SummaryTable from "@bach/components/SummaryTable";
+import TabMenu from "@bach/components/TabMenu";
+import PageWrapper from "@bach/components/PageWrapper";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
 
-import IncomingNenProducts from "./IncomingNenProducts";
-import IncomingGdsProducts from "./IncomingGdsProducts";
+import IncomingSdpProducts from "./IncomingSdpProducts";
+import IncomingAncillaryProducts from "./IncomingAncillaryProducts";
 import GeneratedSdsProducts from "./GeneratedSdsProducts";
 import OutgoingDaacProducts from "./OutgoingDaacProducts";
 
@@ -66,8 +66,8 @@ function DataProcessing(props) {
   const { match } = props;
 
   const links = [
-    { path: "incoming-nen", label: "Incoming NEN Files" },
-    { path: "incoming-gds", label: "Incoming GDS Ancillary Files" },
+    { path: "incoming-l2-hls", label: "Incoming SDP Files" },
+    { path: "incoming-ancillary", label: "Incoming Ancillary Files" },
     { path: "generated-sds", label: "Generated SDS Products" },
     { path: "outgoing-to-daac", label: "Outgoing Products To DAAC" },
   ];
@@ -77,11 +77,11 @@ function DataProcessing(props) {
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
 
-  const nenDataState = React.useContext(DataStateNenContext);
-  const nenDataDispatch = React.useContext(DataDispatchNenContext);
+  const incomingL2HLSFilesDataState = React.useContext(DataStateIncomingL2HLSFilesContext);
+  const incomingL2HLSFilesDataDispatch = React.useContext(DataDispatchL2HLSFilesContext);
 
-  const gdsDataState = React.useContext(DataStateGdsContext);
-  const gdsDataDispatch = React.useContext(DataDispatchGdsContext);
+  const ancillaryDataState = React.useContext(DataStateAncillaryContext);
+  const ancillaryDataDispatch = React.useContext(DataDispatchAncillaryContext);
 
   const generatedDataState = React.useContext(DataStateGeneratedContext);
   const generatedDataDispatch = React.useContext(DataDispatchGeneratedContext);
@@ -93,20 +93,19 @@ function DataProcessing(props) {
     startDate,
     endDate,
     preset,
-    crid,
     processingMode,
     reportType,
   } = state;
 
-  const nenData = nenDataState.data;
-  const nenSummary = nenDataState.summary;
-  const setNenData = nenDataDispatch.setData;
-  const setNenSummary = nenDataDispatch.setSummary;
+  const incomingL2HLSFilesData = incomingL2HLSFilesDataState.data;
+  const incomingL2HLSFilesSummary = incomingL2HLSFilesDataState.summary;
+  const setIncomingL2HLSFilesData = incomingL2HLSFilesDataDispatch.setData;
+  const setIncomingL2HLSFilesSummary = incomingL2HLSFilesDataDispatch.setSummary;
 
-  const gdsData = gdsDataState.data;
-  const gdsSummary = gdsDataState.summary;
-  const setGdsData = gdsDataDispatch.setData;
-  const setGdsSummary = gdsDataDispatch.setSummary;
+  const ancillaryData = ancillaryDataState.data;
+  const ancillarySummary = ancillaryDataState.summary;
+  const setAncillaryData = ancillaryDataDispatch.setData;
+  const setAncillarySummary = ancillaryDataDispatch.setSummary;
 
   const generatedData = generatedDataState.data;
   const generatedSummary = generatedDataState.summary;
@@ -121,7 +120,6 @@ function DataProcessing(props) {
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
   const [tempPreset, setTempPreset] = React.useState(preset);
-  const [tempCRID, setTempCRID] = React.useState(crid);
   const [tempProcessingMode, setTempProcessingMode] = React.useState(
     processingMode
   );
@@ -133,7 +131,6 @@ function DataProcessing(props) {
     tempStartDate,
     tempEndDate,
     tempPreset,
-    tempCRID,
     tempProcessingMode,
     tempReportType,
   };
@@ -142,14 +139,12 @@ function DataProcessing(props) {
     setStartDate: setTempStartDate,
     setEndDate: setTempEndDate,
     setPreset: setTempPreset,
-    setCRID: setTempCRID,
     setProcessingMode: setTempProcessingMode,
     setReportType: setTempReportType,
   };
 
   const keyMap = {
-    crid: "CRID",
-    data_recieved_time_range: "Data Recieved Time Range",
+    data_received_time_range: "Data Received Time Range",
     processing_mode: "Processing Mode",
     time_of_report: "Time of Report",
     total_data_volume: "Total Data Volume",
@@ -176,12 +171,14 @@ function DataProcessing(props) {
 
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
-  const getIncomingNen = async () => {
+  const getIncomingL2HLSFiles = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "nen",
+      reportType: "sdp",
+      mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
@@ -192,12 +189,13 @@ function DataProcessing(props) {
     return results;
   };
 
-  const getIncomingGds = async () => {
+  const getIncomingAncillary = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "ancillary",
+      mime: "application/json",
     };
     let results = {};
     try {
@@ -213,7 +211,8 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "sdp",
+      mime: "application/json",
     };
     let results = {};
     try {
@@ -229,7 +228,8 @@ function DataProcessing(props) {
     const params = {
       startDateTime: `${tempStartDate}:00Z`,
       endDateTime: `${tempEndDate}:00Z`,
-      reportType: "gds_ancillary",
+      reportType: "sdp",
+      mime: "application/json",
     };
     let results = {};
     try {
@@ -241,6 +241,8 @@ function DataProcessing(props) {
   };
 
   const formatReportData = (idField, reportData) => {
+    if (!reportData) return reportData;
+
     const newData = reportData.map((val) => {
       const newVal = val;
       const id = newVal[idField];
@@ -254,10 +256,10 @@ function DataProcessing(props) {
 
   const getReport = async (reportName) => {
     switch (reportName) {
-      case "incoming-nen":
-        return getIncomingNen();
-      case "incoming-gds":
-        return getIncomingGds();
+      case "incoming-l2-hls":
+        return getIncomingL2HLSFiles();
+      case "incoming-ancillary":
+        return getIncomingAncillary();
       case "generated-sds":
         return getGeneratedSdsProducts();
       case "outgoing-to-daac":
@@ -269,13 +271,13 @@ function DataProcessing(props) {
 
   const setReportInfo = (reportName, results) => {
     switch (reportName) {
-      case "incoming-nen":
-        setNenSummary(results.data.header);
-        setNenData(formatReportData("name", results.data.products));
+      case "incoming-l2-hls":
+        setIncomingL2HLSFilesSummary(results.data?.header);
+        setIncomingL2HLSFilesData(formatReportData("name", results.data?.products));
         return true;
-      case "incoming-gds":
-        setGdsSummary(results.data.header);
-        setGdsData(formatReportData("name", results.data.products));
+      case "incoming-ancillary":
+        setAncillarySummary(results.data.header);
+        setAncillaryData(formatReportData("name", results.data.products));
         return true;
       case "generated-sds":
         setGeneratedSummary(results.data.header);
@@ -295,10 +297,10 @@ function DataProcessing(props) {
     switch (currentPath) {
       case "data-processing":
         return {};
-      case "incoming-nen":
-        return nenSummary || {};
-      case "incoming-gds":
-        return gdsSummary || {};
+      case "incoming-l2-hls":
+        return incomingL2HLSFilesSummary || {};
+      case "incoming-ancillary":
+        return ancillarySummary || {};
       case "generated-sds":
         return generatedSummary || {};
       case "outgoing-to-daac":
@@ -309,11 +311,15 @@ function DataProcessing(props) {
   };
 
   const search = async () => {
+    // WORKAROUND: spinner is rendered below table rows.
+    //  Clear table on subsequent search so users can see the spinner.
+    const path = getPathTail(history);
+    // setReportInfo(path, {products: []});
+
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
     pushUrlParams(getTempValues(state, tempState, true), history);
-    const path = getPathTail(history);
     const results = await getReport(path);
     setLoading(false);
     setReportInfo(path, results);
@@ -323,7 +329,6 @@ function DataProcessing(props) {
     setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempPreset("Today");
-    setTempCRID("");
     setTempReportType("brief");
   };
 
@@ -346,11 +351,6 @@ function DataProcessing(props) {
             presetValue={tempPreset}
             setPresetValue={setTempPreset}
             presets
-          />
-          <StringFilter
-            label="Component Release ID (CRID)"
-            value={tempCRID}
-            setValue={setTempCRID}
           />
           <SelectFilter
             label="Processing Mode"
@@ -378,20 +378,20 @@ function DataProcessing(props) {
             <Route
               exact
               path={`${match.path}`}
-              render={() => <Redirect to={`${match.path}/incoming-nen`} />}
+              render={() => <Redirect to={`${match.path}/incoming-l2-hls`} />}
             />
 
             {/* todo: may move this to config file and map over array */}
             <Route
-              path={`${match.path}/incoming-nen`}
+              path={`${match.path}/incoming-l2-hls`}
               render={() => (
-                <IncomingNenProducts data={nenData} loading={loading} />
+                <IncomingSdpProducts data={incomingL2HLSFilesData} loading={loading} />
               )}
             />
             <Route
-              path={`${match.path}/incoming-gds`}
+              path={`${match.path}/incoming-ancillary`}
               render={() => (
-                <IncomingGdsProducts data={gdsData} loading={loading} />
+                <IncomingAncillaryProducts data={ancillaryData} loading={loading} />
               )}
             />
             <Route

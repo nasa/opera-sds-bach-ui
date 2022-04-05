@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-import FilterReset from "./index";
+import FilterReset from "@bach/components/FilterReset"
 
 describe("Reset Filter", () => {
   const defaultProps = {

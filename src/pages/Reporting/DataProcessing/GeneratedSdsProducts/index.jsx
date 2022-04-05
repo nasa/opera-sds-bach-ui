@@ -4,28 +4,38 @@ import { withRouter } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
 
-import Table from "../../../../components/Table";
+import Table from "@bach/components/Table";
+
+import { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
 
 import useStyles from "./style";
 
-function IncomingNenProducts(props) {
+function IncomingSdpProducts(props) {
   const classes = useStyles();
 
   const { data, loading } = props;
 
   const columns = [
-    { field: "id", headerName: "File Name", width: 450 },
+    {
+      field: "id",
+      headerName: "File Name",
+      flex: 0,
+      minWidth: 150,
+    },
     {
       field: "files_produced",
       headerName: "Files Ingested",
-      width: 330,
+      flex: 0,
+      minWidth: 170,
     },
     {
       field: "volume",
-      headerName: "Volume (Bytes)",
-      width: 360,
+      headerName: "Volume",
+      flex: 0,
+      minWidth: 180,
       valueFormatter: (params) => {
-        return `${String(params.value)}`;
+        const { value } = params;
+        return toByteString(value);
       },
     },
   ];
@@ -37,13 +47,13 @@ function IncomingNenProducts(props) {
   );
 }
 
-IncomingNenProducts.propTypes = {
+IncomingSdpProducts.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape),
 };
 
-IncomingNenProducts.defaultProps = {
+IncomingSdpProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingNenProducts);
+export default withRouter(IncomingSdpProducts);

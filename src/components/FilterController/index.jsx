@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import { Typography, Button, Paper } from "@material-ui/core";
 
 import useStyles from "./style";
@@ -17,7 +15,9 @@ export default function FilterController(props) {
     <Paper
       position="fixed"
       elevation={0}
-      className={clsx(classes.filterControlPaper)}
+      classes={{
+        root: classes.filterControlPaper,
+      }}
     >
       <Button
         variant="outlined"

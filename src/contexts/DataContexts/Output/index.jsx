@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useOutputData } from "../../../reducers/DataSummary/output";
+import { useOutputData } from "@bach/reducers/DataSummary/output";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

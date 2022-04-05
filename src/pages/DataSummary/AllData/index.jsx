@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import { Button, Tooltip } from "@material-ui/core";
+import { Button, Tooltip, useTheme } from "@material-ui/core";
 
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
@@ -16,44 +16,52 @@ import {
   pushTempToState,
   getTempValues,
   makeAPIGet,
-} from "../../../api/DataUtils";
+} from "@bach/api/DataUtils";
 
 import {
   StateContext,
   DispatchContext,
-} from "../../../contexts/DataSummaryContexts";
+} from "@bach/contexts/DataSummaryContexts";
+
+import { ModalDialogContext } from "@bach/contexts/ModelDialogContext";
 
 import {
   StateContext as DataStateContext,
   DispatchContext as DataDispatchContext,
-} from "../../../contexts/DataContexts/AllData";
+} from "@bach/contexts/DataContexts/AllData";
 
-import PageWrapper from "../../../components/PageWrapper";
+import PageWrapper from "@bach/components/PageWrapper";
 
-import FilterMenu from "../../../components/FilterMenu";
-import FilterTableGrid from "../../../components/FilterTableGrid";
-import FilterController from "../../../components/FilterController";
-import Table from "../../../components/Table";
-import DateFilter from "../../../components/Filters/DateFilter";
-import StringFilter from "../../../components/Filters/StringFilter";
-import CheckboxFilter from "../../../components/Filters/CheckboxFilter";
+import FilterMenu from "@bach/components/FilterMenu";
+import FilterTableGrid from "@bach/components/FilterTableGrid";
+import FilterController from "@bach/components/FilterController";
+import Table from "@bach/components/Table";
+import DateFilter from "@bach/components/Filters/DateFilter";
+import StringFilter from "@bach/components/Filters/StringFilter";
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
 import useStyles from "./style";
 
 function AllData() {
   const classes = useStyles();
+  const theme = useTheme();
+
   const history = useHistory();
+
   const [filtersHidden, setFiltersHidden] = React.useState(false);
 
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
   const dataState = React.useContext(DataStateContext);
   const dataDispatch = React.useContext(DataDispatchContext);
+  const modalDialogState = React.useContext(ModalDialogContext);
 
   const { startDate, endDate, preset, productType } = state;
 
-  const { data } = dataState;
-  const { setData } = dataDispatch;
+  const { data, sensor, tileId } = dataState;
+  const { setData, setSensor, setTileId } = dataDispatch;
+
+  const { setState: setModalDialogState } = modalDialogState;
 
   const [tempStartDate, setTempStartDate] = React.useState(startDate);
   const [tempEndDate, setTempEndDate] = React.useState(endDate);
@@ -95,22 +103,29 @@ function AllData() {
       results = await makeAPIGet(paths, params);
     } catch (err) {
       console.error(err);
+      setModalDialogState({
+        open: true,
+        title: "Something went wrong",
+        contentText: "Please try again.",
+      });
     }
     setLoading(false);
     return results;
   };
 
-  const toggleTransferSuccess = () => setTransferSuccess(!transferSuccess);
-  const toggleTransferFailed = () => setTransferFailed(!transferFailed);
-  const toggleTransferProcessing = () =>
-    setTransferProcessing(!transferProcessing);
-  const toggleTransferUnknown = () => setTransferUnknown(!transferUnknown);
+  const toggleTransferSuccess = (event) => setTransferSuccess(event.target.checked);
+  const toggleTransferFailed = (event) => setTransferFailed(event.target.checked);
+  const toggleTransferProcessing = (event) => setTransferProcessing(event.target.checked);
+  const toggleTransferUnknown = (event) => setTransferUnknown(event.target.checked);
 
   const makeLabel = (icon, text, hoverText, color) => (
     <div className={classes.iconLabel}>
-      <Tooltip title={hoverText} aria-label={hoverText} style={{ color }}>
-        {icon}
-      </Tooltip>
+      {
+        (!icon) ? <></> :
+          <Tooltip title={hoverText} aria-label={hoverText} style={{ color }}>
+            {icon}
+          </Tooltip>
+      }
       <span className={classes.spanLabel} style={{ color }}>
         {text}
       </span>
@@ -121,8 +136,8 @@ function AllData() {
     cnm_r_success: {
       label: makeLabel(
         <CheckCircleOutlineIcon />,
-        "Success",
-        "Sent to DAAC",
+        "Published",
+        "Published",
         "#4CAF50"
       ),
       name: "success",
@@ -135,23 +150,23 @@ function AllData() {
       name: "processing",
       label: makeLabel(
         <HourglassEmptyIcon />,
-        "Processing",
-        "Sent to CNM",
-        "#007DFF"
+        "Notified",
+        "Notified",
+        theme.palette.primary.main
       ),
       value: transferProcessing,
       setValue: toggleTransferProcessing,
       color: "primary",
-      labelColor: "#007DFF",
+      labelColor: theme.palette.primary.main,
     },
     cnm_r_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
-        "Failed",
-        "Failed to send to DAAC",
+        "Failed to publish",
+        "Failed to publish",
         "#F44336"
       ),
-      name: "failed",
+      name: "failed_publish",
       value: transferFailed,
       setValue: toggleTransferFailed,
       color: "primary",
@@ -160,11 +175,11 @@ function AllData() {
     cnm_s_failure: {
       label: makeLabel(
         <ErrorOutlineOutlinedIcon />,
-        "Failed",
-        "Failed to send to CNM",
+        "Failed to notify",
+        "Failed to notify",
         "#F44336"
       ),
-      name: "failed",
+      name: "failed_notify",
       value: transferFailed,
       setValue: toggleTransferFailed,
       color: "primary",
@@ -172,9 +187,14 @@ function AllData() {
     },
     unknown: {
       name: "unknown",
-      label: makeLabel(<HelpIcon />, "Unknown", "N/A", "rgba(0, 0, 0, 0.54)"),
+      label: makeLabel(<HelpIcon />, "Unknown", "Unknown", "rgba(0, 0, 0, 0.54)"),
       value: transferUnknown,
       setValue: toggleTransferUnknown,
+      color: "primary",
+      labelColor: "#EEEEEE",
+    },
+    not_applicable: {
+      label: makeLabel(<></>, "N/A", "N/A", "rgba(0, 0, 0, 0.54)"),
       color: "primary",
       labelColor: "#EEEEEE",
     },
@@ -182,17 +202,24 @@ function AllData() {
 
   const transferOptions = [
     transferFormats.cnm_r_success,
-    transferFormats.cnm_r_failure,
     transferFormats.cnm_s_success,
+    transferFormats.cnm_r_failure,
+    transferFormats.cnm_s_failure,
     transferFormats.unknown,
   ];
 
   const columns = [
-    { field: "dataset_type", headerName: "Product Type", width: 160 },
+    {
+      field: "dataset_type",
+      headerName: "Product Type",
+      flex: 0,
+      minWidth: 170,
+    },
     {
       field: "FileName",
       headerName: "File Name",
-      width: 620,
+      flex: 0,
+      minWidth: 550,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
@@ -207,9 +234,14 @@ function AllData() {
         return (
           <Tooltip title={value}>
             <Button
+              variant="text"
               color="primary"
               onClick={handleJsonData}
-              style={{ justifyContent: "right", textTransform: "none" }}
+              style={{
+                textTransform: "none",
+                textDecoration: "underline",
+                color: theme.palette.primary.dark,
+              }}
             >
               {value}
             </Button>
@@ -218,15 +250,22 @@ function AllData() {
       },
     },
     {
-      field: "product_recieved_time",
-      headerName: "Recieved Date/Time",
-      width: 210,
+      field: "product_received_time",
+      headerName: "Received Date/Time",
+      flex: 0,
+      minWidth: 220,
       valueGetter: (params) =>
         `${params.row.metadata.ProductReceivedTime || ""}`,
+      renderCell: (params) => {
+        const { value } = params;
+        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+      },
     },
     {
       field: "transfer_status",
       headerName: "Transfer Status",
+      flex: 0,
+      minWidth: 200,
       renderCell: (params) => {
         const { value } = params;
         if (Object.keys(transferFormats).includes(value)) {
@@ -234,7 +273,6 @@ function AllData() {
         }
         return "Unknown";
       },
-      width: 151,
     },
   ];
 
@@ -248,47 +286,54 @@ function AllData() {
     const params = {
       start: `${tempStartDate}:00Z`,
       end: `${tempEndDate}:00Z`,
+      ...(tileId && { "metadata.tile_id": tileId }),
+      ...(sensor && { "metadata.sensor": sensor }),
     };
+
     let results = {};
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
       console.error(err);
+      setModalDialogState({
+        open: true,
+        title: "Something went wrong",
+        contentText: "Please try again.",
+      });
     }
     return results;
   }
 
-  const filterData = (dataToFilter) => {
+  const filterData = (data) => {
     const transferFilters = [];
-    let noFilter = true;
     if (transferSuccess) {
-      transferFilters.push("cnm_s_success");
       transferFilters.push("cnm_r_success");
-      noFilter = false;
+    }
+    if (transferProcessing) {
+      transferFilters.push("cnm_s_success");
     }
     if (transferFailed) {
       transferFilters.push("cnm_s_failure");
       transferFilters.push("cnm_r_failure");
-      noFilter = false;
     }
-
     if (transferUnknown) {
       transferFilters.push("unknown");
-      noFilter = false;
     }
 
-    if (noFilter) {
-      return dataToFilter;
+    if (transferFilters.length === 0) {
+      return data;
     }
 
-    const filteredData = dataToFilter.filter((entry) =>
-      transferFilters.includes(entry.transfer_status)
-    );
+    const filteredData = data.filter((entry) => transferFilters.includes(entry.transfer_status));
 
     return filteredData;
   };
 
   const search = async () => {
+    // WORKAROUND: spinner is rendered below table rows.
+    //  Clear table on subsequent search so users can see the spinner.
+    setData([]);
+
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
@@ -304,6 +349,9 @@ function AllData() {
     setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
     setTempPreset("Today");
     setTempProductType("");
+
+    setTileId("");
+    setSensor("");
   };
 
   React.useEffect(() => {
@@ -329,6 +377,16 @@ function AllData() {
             label="Product Type"
             value={tempProductType}
             setValue={setTempProductType}
+          />
+          <StringFilter
+            label="Sensor"
+            value={sensor}
+            setValue={setSensor}
+          />
+          <StringFilter
+            label="Tile ID"
+            value={tileId}
+            setValue={setTileId}
           />
           <CheckboxFilter label="Transfer Status" options={transferOptions} />
         </FilterMenu>

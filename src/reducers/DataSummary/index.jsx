@@ -9,7 +9,7 @@ import {
   PRODUCT_TYPE,
   SOURCE,
   DATA,
-} from "../../constants";
+} from "@bach/constants";
 
 const actionTypes = {
   startDate: START_DATE,
@@ -31,22 +31,22 @@ const initialState = {
 
 function dataSummaryReducer(state, action) {
   switch (action.type) {
-    case START_DATE: {
+    case actionTypes.startDate: {
       return { ...state, startDate: action.payload };
     }
-    case END_DATE: {
+    case actionTypes.endDate: {
       return { ...state, endDate: action.payload };
     }
-    case PRESET: {
+    case actionTypes.preset: {
       return { ...state, preset: action.payload };
     }
-    case PRODUCT_TYPE: {
+    case actionTypes.productType: {
       return { ...state, productType: action.payload };
     }
-    case SOURCE: {
+    case actionTypes.source: {
       return { ...state, source: action.payload };
     }
-    case DATA: {
+    case actionTypes.data: {
       return { ...state, data: action.payload };
     }
     default: {

@@ -2,22 +2,20 @@ import React from "react";
 
 import MomentUtils from "@date-io/moment";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-import Routes from "./pages/Routes";
+import Routes from "@bach/pages/Routes";
 
-import Contexts from "./contexts";
+import Contexts from "@bach/contexts";
 
-const defaultTheme = createMuiTheme({
+const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: "#007DFF",
+      main: "#10B0AB",
+      dark: "#069995",
     },
     secondary: {
       main: "#EEEEEE",
-    },
-    background: {
-      main: "#FFFFFF",
     },
   },
 });

@@ -1,17 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  APP_BAR_HEIGHT,
-  DRAWER_WIDTH,
-  DRAWER_CLOSED_WIDTH,
-} from "../../constants";
+import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH } from "@bach/constants";
 
 export default makeStyles((theme) => ({
   appBar: {
-    height: APP_BAR_HEIGHT,
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: "#F5F5F5",
-    color: "black",
+    color: theme.palette.text.primary,
   },
   appBarShift: {
     marginLeft: DRAWER_WIDTH,

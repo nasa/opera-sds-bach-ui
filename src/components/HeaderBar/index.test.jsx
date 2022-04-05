@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "@bach/test-utils";
 import "@testing-library/jest-dom";
 
-import { MISSION_TITLE } from "../../constants";
+import { MISSION_TITLE } from "@bach/constants";
 
 import HeaderBar, { LocationDisplay } from "./index";
 
@@ -22,18 +22,8 @@ describe("Location Display test and Header Bar", () => {
     expect(screen.getByTestId("location-display")).toHaveTextContent(route);
   });
 
-  const renderComponent = ({ missionTitle, opened }) =>
-    render(<HeaderBar missionTitle={missionTitle} opened={opened} />, {
-      wrapper: BrowserRouter,
-    });
-
   test("renders HeaderBar component", () => {
-    const opened = true;
-
-    const { getByText } = renderComponent({
-      opened,
-      missionTitle: MISSION_TITLE,
-    });
+    const { getByText } = render(<HeaderBar missionTitle={MISSION_TITLE} opened={true} />);
 
     expect(getByText(MISSION_TITLE)).toBeInTheDocument();
   });

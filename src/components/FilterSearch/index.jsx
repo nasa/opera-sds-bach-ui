@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import { Button } from "@material-ui/core";
 
 import useStyles from "./style";
@@ -16,7 +14,7 @@ export default function FilterSearch(props) {
     <div className={classes.searchDiv}>
       <Button
         variant="contained"
-        className={clsx(classes.searchBtn, classes.text)}
+        className={classes.searchBtn}
         onClick={onClick}
         data-testid="search-filter-button"
       >

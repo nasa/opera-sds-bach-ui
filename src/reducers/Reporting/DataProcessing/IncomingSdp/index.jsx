@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { DATA, SUMMARY } from "../../../../constants";
+import { DATA, SUMMARY } from "@bach/constants";
 
 const initialState = {
   data: [],
   summary: {},
 };
 
-function incomingGdsReducer(state, action) {
+function incomingSdpReducer(state, action) {
   switch (action.type) {
     case DATA: {
       return { ...state, data: action.payload };
@@ -27,7 +27,7 @@ function incomingGdsReducer(state, action) {
  * @param {*} reducer
  * @returns Object
  */
-function useIncomingGdsData({ reducer = incomingGdsReducer } = {}) {
+function useIncomingSdpData({ reducer = incomingSdpReducer } = {}) {
   const [{ data, summary }, dispatch] = React.useReducer(reducer, initialState);
   const setData = (val) => dispatch({ type: DATA, payload: val });
   const setSummary = (val) => dispatch({ type: SUMMARY, payload: val });
@@ -40,4 +40,4 @@ function useIncomingGdsData({ reducer = incomingGdsReducer } = {}) {
   };
 }
 
-export { useIncomingGdsData, initialState, incomingGdsReducer };
+export { useIncomingSdpData, initialState, incomingSdpReducer };

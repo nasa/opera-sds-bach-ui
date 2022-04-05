@@ -24,7 +24,7 @@ import {
   FRAME_ID,
   SOURCE,
   DATA,
-} from "../../constants";
+} from "@bach/constants";
 
 const actionTypes = {
   workflowStartDate: WORKFLOW_START_DATE,

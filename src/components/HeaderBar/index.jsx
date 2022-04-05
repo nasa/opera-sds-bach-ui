@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { useLocation } from "react-router-dom";
@@ -6,11 +6,11 @@ import { useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
-import { APP_BAR_HEIGHT } from "../../constants";
+import operaLogo from "@bach/images/opera_logo.png";
+import nasaLogo from "@bach/images/nasa_logo.svg";
+import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 
 import useStyles from "./style";
-import operaLogo from "../../images/opera_logo.png";
-import nasaLogo from "../../images/nasa_logo.svg";
 
 export function hashCode(str) {
   let hash = 0;
@@ -35,33 +35,23 @@ export default function HeaderBar(props) {
 
   const classes = useStyles();
 
-  // TODO: remove ROOT_PATH (/bach-ui) in production
-  const location = useLocation();
-  const { pathname } = location;
-  let paths =
-    pathname[0] === "/" ? pathname.slice(1).split("/") : pathname.split("/");
-  paths = paths
-    .filter((p) => p.trim() !== "")
-    .map((p) =>
-      p
-        .split("-")
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(" ")
-    );
+  const { pageTitle } = useContext(PageTitleContext);
 
   return (
     <>
       <AppBar
-        position="fixed"
+        position="relative"
         elevation={0}
         className={clsx(classes.appBar, classes.header, {
           [classes.appBarShift]: opened,
           [classes.appBarClose]: !opened,
         })}
+        color="transparent"
       >
         <Toolbar>
           <img
-            height={APP_BAR_HEIGHT}
+            width="129px"
+            height="auto"
             alt="logo"
             src={operaLogo}
             className={classes.logo}
@@ -69,18 +59,11 @@ export default function HeaderBar(props) {
           <div>
             <Typography className={classes.title}>{missionTitle}</Typography>
             <Typography variant="h4" className={classes.subTitle}>
-              {paths.map((path, i) => [
-                i > 0 && (
-                  <span key={hashCode(path)} className={classes.divider}>
-                    {": "}
-                  </span>
-                ),
-                <span key={path}>{path}</span>,
-              ])}
+              {pageTitle}
             </Typography>
           </div>
           <div className={classes.logoRight}>
-            <img height={APP_BAR_HEIGHT} alt="logo" src={nasaLogo} />
+            <img width="129px" height="auto" alt="logo" src={nasaLogo} />
           </div>
         </Toolbar>
       </AppBar>
