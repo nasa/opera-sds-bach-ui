@@ -1,22 +1,5 @@
-import { NASA_BLUE } from "../../constants";
-
 const useStyles = () => ({
-  page: {
-    backgroundColor: "#FFFFFF",
-    height: "100vh",
-  },
-  pageContent: {},
-  tabWrapper: {
-    backgroundColor: NASA_BLUE,
-  },
-  tab: {
-    color: "#FFFFFF",
-    fontSize: 15,
-    marginTop: "25px",
-  },
-  subPage: {
-    backgroundColor: "#FFFFFF",
-  },
+  subPage: {},
 });
 
 export default useStyles;

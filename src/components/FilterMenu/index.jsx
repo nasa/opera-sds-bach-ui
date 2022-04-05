@@ -26,60 +26,63 @@ export default function FilterMenu(props) {
 
   const onSearchClick = () => search();
 
-  const GlobalCss = withStyles({
-    "@global": {
-      ".MuiCardHeader-title": {
-        fontSize: "1.2em",
-        alignSelf: "center",
-        position: "relative",
-      },
-      ".MuiCardContent-root": {
-        padding: "0px",
-        display: "flow-root",
-      },
-      ".MuiCardHeader-root": {
-        background: "#EEEEEE",
-        boxShadow: "inset 0px -1px 0px #E0E0E0",
-        /* Inside Auto Layout */
-        flex: "none",
-        order: 0,
-        alignSelf: "normal",
-        flexGrow: 0,
-        margin: "0px 0px",
-      },
-      "MuiFormControl-root": {
-        display: "flex",
-      },
-      ".MuiCardActions-root": {
-        /* Sidebar / Footer */
+  const GlobalCss = withStyles((theme) => {
+    return {
+      "@global": {
+        ".MuiCardHeader-title": {
+          fontSize: "1.2em",
+          alignSelf: "center",
+          position: "relative",
+        },
+        ".MuiCardContent-root": {
+          padding: "0px",
+          display: "flow-root",
+        },
+        ".MuiCardHeader-root": {
+          background: theme.palette.secondary.main,
+          color: theme.palette.secondary.contrastText,
+          boxShadow: "inset 0px -1px 0px #E0E0E0",
+          /* Inside Auto Layout */
+          flex: "none",
+          order: 0,
+          alignSelf: "normal",
+          flexGrow: 0,
+          margin: "0px 0px",
+        },
+        "MuiFormControl-root": {
+          display: "flex",
+        },
+        ".MuiCardActions-root": {
+          /* Sidebar / Footer */
 
-        /* Auto Layout */
+          /* Auto Layout */
 
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "12px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "12px",
 
-        position: "static",
-        width: "-webkit-fill-available",
-        height: "56px",
-        left: "0px",
-        top: "312px",
-        background: "#EEEEEE",
-        border: "1px solid #E0E0E0",
-        boxSizing: "border-box",
-        borderRadius: "0px 0px 4px 4px",
-        verticalAlign: "baseline",
-        /* Inside Auto Layout */
+          position: "static",
+          width: "-webkit-fill-available",
+          height: "56px",
+          left: "0px",
+          top: "312px",
+          background: theme.palette.secondary.main,
+          border: "1px solid #E0E0E0",
+          boxSizing: "border-box",
+          borderRadius: "0px 0px 4px 4px",
+          verticalAlign: "baseline",
+          /* Inside Auto Layout */
 
-        flex: "none",
-        order: 2,
-        alignSelf: "flex-start",
-        flexGrow: 0,
-        margin: "0px 0px",
+          flex: "none",
+          order: 2,
+          alignSelf: "flex-start",
+          flexGrow: 0,
+          margin: "0px 0px",
+        },
       },
-    },
+    };
   })(() => null);
 
   return (

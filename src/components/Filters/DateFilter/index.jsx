@@ -34,24 +34,22 @@ export default function DateFilter(props) {
     "Custom",
   ];
 
-  const startOfDay = moment()
-    .subtract(1, "day")
-    .startOf("day")
-    .format("YYYY-MM-DDTHH:mm");
-  const endOfDay = moment()
-    .subtract(1, "day")
-    .endOf("day")
-    .format("YYYY-MM-DDTHH:mm");
+  const startOfDay = moment().startOf("day").format("YYYY-MM-DDTHH:mm");
+  const endOfDay = moment().endOf("day").format("YYYY-MM-DDTHH:mm");
+
   const startOfYesterday = moment()
     .subtract(1, "day")
     .startOf("day")
     .format("YYYY-MM-DDTHH:mm");
+
   const endOfYesterday = moment()
     .subtract(1, "day")
     .endOf("day")
     .format("YYYY-MM-DDTHH:mm");
+
   const startOfMonth = moment().startOf("month").format("YYYY-MM-DDTHH:mm");
   const endOfMonth = moment().endOf("month").format("YYYY-MM-DDTHH:mm");
+
   const startOfLastMonth = moment()
     .subtract(1, "month")
     .startOf("month")

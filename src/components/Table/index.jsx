@@ -16,9 +16,10 @@ export default function Table(props) {
     setOpen,
     checkboxSelection,
     loading,
+    rowsPerPageOptions,
   } = props;
 
-  const [pageSize, setPageSize] = React.useState(5);
+  const [pageSize, setPageSize] = React.useState(rowsPerPageOptions[0]);
   const [page, setPage] = React.useState(0);
 
   const classes = useStyles();
@@ -32,32 +33,35 @@ export default function Table(props) {
   };
 
   return (
-    <div className={classes.parentDiv}>
+    <>
       <JsonModal
         name={jsonData.id}
         json={jsonData}
         open={open}
         setOpen={setOpen}
       />
-      <div className={classes.dataGridDiv}>
-        <DataGrid
-          autoHeight
-          headerHeight={42}
-          rowHeight={50}
-          rows={data}
-          columns={columns}
-          checkboxSelection={checkboxSelection}
-          loading={loading}
-          className={classes.dataGrid}
-          page={page}
-          onPageChange={handleChangePage}
-          pageSize={pageSize}
-          onPageSizeChange={handlePageSize}
-          rowsPerPageOptions={[5, 10, 20]}
-          pagination
-        />
-      </div>
-    </div>
+      <DataGrid
+        classes={{
+          root: classes.root,
+          columnHeader: classes.columnHeader,
+          cell: classes.cell,
+          row: classes.row,
+        }}
+        autoHeight
+        rows={data}
+        columns={columns}
+        checkboxSelection={checkboxSelection}
+        density="compact"
+        disableSelectionOnClick
+        loading={loading}
+        page={page}
+        onPageChange={handleChangePage}
+        pageSize={pageSize}
+        onPageSizeChange={handlePageSize}
+        rowsPerPageOptions={rowsPerPageOptions}
+        pagination
+      />
+    </>
   );
 }
 
@@ -69,6 +73,7 @@ Table.propTypes = {
   setOpen: PropTypes.func,
   checkboxSelection: PropTypes.bool,
   loading: PropTypes.bool,
+  rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
 };
 
 Table.defaultProps = {
@@ -79,4 +84,5 @@ Table.defaultProps = {
   setOpen: () => {},
   checkboxSelection: false,
   loading: false,
+  rowsPerPageOptions: [25, 50, 100],
 };

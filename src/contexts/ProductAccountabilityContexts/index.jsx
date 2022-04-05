@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useProductAccountability } from "../../reducers/ProductAccountability";
+import { useProductAccountability } from "@bach/reducers/ProductAccountability";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

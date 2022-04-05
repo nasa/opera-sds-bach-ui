@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { DATA, SUMMARY } from "../../../../constants";
+import { DATA, SUMMARY } from "@bach/constants";
 
 const initialState = {
   data: [],
   summary: {},
 };
 
-function incomingNenReducer(state, action) {
+function incomingAncillaryReducer(state, action) {
   switch (action.type) {
     case DATA: {
       return { ...state, data: action.payload };
@@ -27,7 +27,7 @@ function incomingNenReducer(state, action) {
  * @param {*} reducer
  * @returns Object
  */
-function useIncomingNenData({ reducer = incomingNenReducer } = {}) {
+function useIncomingAncillaryData({ reducer = incomingAncillaryReducer } = {}) {
   const [{ data, summary }, dispatch] = React.useReducer(reducer, initialState);
   const setData = (val) => dispatch({ type: DATA, payload: val });
   const setSummary = (val) => dispatch({ type: SUMMARY, payload: val });
@@ -40,4 +40,4 @@ function useIncomingNenData({ reducer = incomingNenReducer } = {}) {
   };
 }
 
-export { useIncomingNenData, initialState, incomingNenReducer };
+export { useIncomingAncillaryData, initialState, incomingAncillaryReducer };

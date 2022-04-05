@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import NotFound from "./index";
+import NotFound from "@bach/pages/NotFound"
 
 describe("Not Found", () => {
   test("renders NotFound component/page", () => {

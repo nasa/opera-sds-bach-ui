@@ -16,15 +16,17 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import TableChartIcon from "@material-ui/icons/TableChart";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+// hidden for OPERA
+// import VisibilityIcon from "@material-ui/icons/Visibility";
 import InsertChartIcon from "@material-ui/icons/InsertChart";
 import InfoIcon from "@material-ui/icons/Info";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// hidden for OPERA
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 
+import { SIDEBAR_OPENED_LS } from "@bach/constants";
 import MenuLink from "../MenuLink";
 import Profile from "../Profile";
-import { SIDEBAR_OPENED_LS } from "../../constants";
 
 import useStyles from "./style";
 
@@ -41,26 +43,29 @@ export default function Sidebar(props) {
       path: "/data-summary",
       icon: TableChartIcon,
     },
-    {
-      label: "Product Accountability",
-      path: "/product-accountability",
-      icon: CheckCircleIcon,
-    },
-    {
-      label: "Process Monitoring",
-      path: "/process-monitoring",
-      icon: VisibilityIcon,
-    },
+    // TODO chrisjrd: unhide when implementing
+    // {
+    //   label: "Product Accountability",
+    //   path: "/product-accountability",
+    //   icon: CheckCircleIcon,
+    // },
+    // hidden for OPERA
+    // {
+    //   label: "Process Monitoring",
+    //   path: "/process-monitoring",
+    //   icon: VisibilityIcon,
+    // },
     {
       label: "Reporting",
       path: "/reporting",
       icon: InsertChartIcon,
     },
-    {
-      label: "Cluster Health",
-      path: "/cluster-health",
-      icon: FavoriteIcon,
-    },
+    // hidden for OPERA
+    // {
+    //   label: "Cluster Health",
+    //   path: "/cluster-health",
+    //   icon: FavoriteIcon,
+    // },
   ];
 
   return (

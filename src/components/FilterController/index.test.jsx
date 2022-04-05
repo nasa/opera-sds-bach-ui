@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 
-import FilterController from "./index";
+import FilterController from "@bach/components/FilterController"
 
 describe("Filter Controller", () => {
   const defaultProps = {

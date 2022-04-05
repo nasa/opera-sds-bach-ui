@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 
 import PropTypes from "prop-types";
 
-import { useOutgoingDaacData } from "../../../../reducers/Reporting/DataProcessing/OutgoingDaac";
+import { useOutgoingDaacData } from "@bach/reducers/Reporting/DataProcessing/OutgoingDaac";
 
 export const DispatchContext = createContext();
 export const StateContext = createContext();

@@ -9,7 +9,7 @@ import {
   CRID,
   PROCESSING_MODE,
   REPORT_TYPE,
-} from "../../constants";
+} from "@bach/constants";
 
 const actionTypes = {
   startDate: START_DATE,

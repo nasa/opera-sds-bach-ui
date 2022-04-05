@@ -2,10 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   DRAWER_WIDTH,
-  DRAWER_COLOR,
   ACTIVE_LINK_CLOSED,
   ACTIVE_LINK_OPENED,
-} from "../../constants";
+} from "@bach/constants";
 
 export default makeStyles((theme) => ({
   menuButton: {
@@ -18,11 +17,11 @@ export default makeStyles((theme) => ({
   },
   drawerOpen: {
     width: DRAWER_WIDTH,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: theme.palette.background.default,
   },
   drawerClose: {
     overflowX: "hidden",
-    backgroundColor: DRAWER_COLOR,
+    backgroundColor: theme.palette.background.default,
     width: theme.spacing(9) + 1,
   },
   drawerList: {

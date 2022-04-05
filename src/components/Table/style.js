@@ -1,19 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
-  parentDiv: {
-    height: "inherit",
-    minHeight: "500px",
+export default makeStyles((theme) => ({
+  root: {},
+  columnHeader: {
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
   },
-  dataGridDiv: {
-    paddingRight: "18px",
-    display: "flex",
-    height: "100%",
-  },
-  innerDataGridDiv: {
-    flexGrow: 1,
-  },
-  dataGrid: {
-    height: "auto",
+  cell: {},
+  row: {
+    backgroundColor: theme.palette.background.paper,
   },
 }));

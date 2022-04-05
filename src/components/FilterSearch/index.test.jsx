@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-import FilterSearch from "./index";
+import FilterSearch from "@bach/components/FilterSearch"
 
 describe("Search Filter", () => {
   const defaultProps = {

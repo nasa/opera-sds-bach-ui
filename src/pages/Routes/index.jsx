@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Route,
   BrowserRouter as Router,
@@ -7,18 +7,29 @@ import {
 } from "react-router-dom";
 
 import clsx from "clsx";
-import { CssBaseline } from "@material-ui/core";
+import {
+  Button,
+  CssBaseline,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core";
 
-import HeaderBar from "../../components/HeaderBar";
-import Sidebar from "../../components/Sidebar";
+import HeaderBar from "@bach/components/HeaderBar";
+import Sidebar from "@bach/components/Sidebar";
 
+import { SIDEBAR_OPENED_LS, MISSION_TITLE } from "@bach/constants";
+import { BASEPATH } from "@bach/config"; // will be used when ready for production
+import {
+  ModalDialogContext,
+  initialState as modalDialogInitialState,
+} from "@bach/contexts/ModelDialogContext";
 import DataSummary from "../DataSummary";
 import Reporting from "../Reporting";
 import ProductAccountability from "../ProductAccountability";
 import NotFound from "../NotFound";
-
-import { SIDEBAR_OPENED_LS, MISSION_TITLE } from "../../constants";
-import { BASEPATH } from "../../config"; // will be used when ready for production
 
 import useStyles from "./style";
 
@@ -26,6 +37,11 @@ const lsSideBar = localStorage.getItem(SIDEBAR_OPENED_LS) === "true";
 
 export default function Routes() {
   const classes = useStyles();
+
+  const {
+    state: modalDialogState,
+    setState: setModalDialogState,
+  } = useContext(ModalDialogContext);
 
   const [sidebarOpen, toggleSidebar] = useState(lsSideBar || false);
 
@@ -66,6 +82,17 @@ export default function Routes() {
             />
             <Route component={NotFound} />
           </Switch>
+          <Dialog open={modalDialogState.open}>
+            <DialogTitle>{modalDialogState.title}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                {modalDialogState.contentText}
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setModalDialogState({...modalDialogInitialState})}>Dismiss</Button>
+            </DialogActions>
+          </Dialog>
         </main>
       </Router>
     </div>

@@ -4,28 +4,38 @@ import { withRouter } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
 
-import Table from "../../../../components/Table";
+import Table from "@bach/components/Table";
+
+import { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
 
 import useStyles from "./style";
 
-function IncomingGdsProducts(props) {
+function IncomingAncillaryProducts(props) {
   const classes = useStyles();
 
   const { data, loading } = props;
 
   const columns = [
-    { field: "id", headerName: "File Name", width: 360 },
+    {
+      field: "id",
+      headerName: "File Name",
+      flex: 0,
+      minWidth: 150,
+    },
     {
       field: "num_ingested",
       headerName: "Files Ingested",
-      width: 360,
+      flex: 0,
+      minWidth: 170,
     },
     {
       field: "volume",
-      headerName: "Volume (Bytes)",
-      width: 360,
+      headerName: "Volume",
+      flex: 0,
+      minWidth: 180,
       valueFormatter: (params) => {
-        return `${String(params.value)}`;
+        const { value } = params;
+        return toByteString(value);
       },
     },
   ];
@@ -37,13 +47,13 @@ function IncomingGdsProducts(props) {
   );
 }
 
-IncomingGdsProducts.propTypes = {
+IncomingAncillaryProducts.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape),
 };
 
-IncomingGdsProducts.defaultProps = {
+IncomingAncillaryProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingGdsProducts);
+export default withRouter(IncomingAncillaryProducts);
