@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import { Button, Tooltip, useTheme } from "@material-ui/core";
+import { Button, Tooltip, useTheme } from "@mui/material";
 
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";

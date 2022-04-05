@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { FormControlLabel, RadioGroup, Radio } from "@material-ui/core";
+import { FormControlLabel, RadioGroup, Radio } from "@mui/material";
 
 import FilterSkeleton from "../FilterSkeleton";
 

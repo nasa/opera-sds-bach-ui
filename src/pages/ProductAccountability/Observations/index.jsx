@@ -41,7 +41,7 @@ import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import RadioFilter from "@bach/components/Filters/RadioFilter";
 
 import makeLabel from "@bach/components/Filters/Labeler";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import useStyles from "./style";
 
 function Observations() {

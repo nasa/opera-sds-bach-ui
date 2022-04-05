@@ -1,5 +1,5 @@
 import React from "react";
-import Tooltip from "@material-ui/core/Tooltip";
+import Tooltip from "@mui/material/Tooltip";
 
 const makeLabel = (icon, text, hoverText, color, classes) => (
   <div className={classes.iconLabel} style={{ color }}>

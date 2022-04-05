@@ -15,7 +15,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import HeaderBar from "@bach/components/HeaderBar";
 import Sidebar from "@bach/components/Sidebar";

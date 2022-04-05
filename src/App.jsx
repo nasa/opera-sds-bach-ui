@@ -2,7 +2,8 @@ import React from "react";
 
 import AdapterMoment from "@mui/lab/AdapterMoment";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 
 import Routes from "@bach/pages/Routes";
 

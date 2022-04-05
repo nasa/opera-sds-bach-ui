@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import moment from "moment";
 
-import { TextField, MenuItem } from "@material-ui/core";
+import { TextField, MenuItem } from "@mui/material";
 
 import useStyles from "./style";
 

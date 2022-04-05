@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter, useHistory, Redirect, Route } from "react-router-dom";
 
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 import moment from "moment";
 

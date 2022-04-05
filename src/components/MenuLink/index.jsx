@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
   Tooltip,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import useStyles from "./style";
 
