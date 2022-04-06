@@ -196,6 +196,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "ancillary",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
@@ -213,6 +214,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "sdp",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
@@ -230,6 +232,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "sdp",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
