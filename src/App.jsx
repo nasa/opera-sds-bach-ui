@@ -3,6 +3,8 @@ import React from "react";
 import AdapterMoment from "@mui/lab/AdapterMoment";
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { StyledEngineProvider } from '@mui/material/styles';
+
 
 
 import Routes from "@bach/pages/Routes";
@@ -23,13 +25,15 @@ const defaultTheme = createTheme({
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterMoment}>
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={defaultTheme}>
-        <Contexts>
-          <Routes />
-        </Contexts>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <Contexts>
+            <Routes />
+          </Contexts>
+        </LocalizationProvider>
       </ThemeProvider>
-    </LocalizationProvider>
+    </StyledEngineProvider>
   );
 }
 
