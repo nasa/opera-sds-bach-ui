@@ -37,7 +37,7 @@ const customRender = (ui, options) => render(ui, {wrapper: AllTheProviders, ...o
 
 const customRenderWithRouter = (ui, options, { route = "/" } = {}) => {
       window.history.pushState({}, "Test page", route);
-    render(ui, {wrapper: AllTheProvidersWithRouter, ...options});
+    return render(ui, {wrapper: AllTheProvidersWithRouter, ...options});
 };
 
 
