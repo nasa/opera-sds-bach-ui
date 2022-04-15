@@ -1,16 +1,16 @@
 import axios from "axios";
 import React from "react";
 import { renderWithRouter, screen } from "@bach/test-utils";
-import IncomingData from "@bach/pages/DataSummary/IncomingData/index";
 import userEvent from "@testing-library/user-event";
 
 import { act } from "react-dom/test-utils";
+import OutputData from "@bach/pages/DataSummary/OutputData/index";
 
 jest.mock("axios");
 
-describe("IncomingData", () => {
+describe("OutputData", () => {
   it("should render properly", () => {
-    renderWithRouter(<IncomingData />);
+    renderWithRouter(<OutputData />);
   });
 
   it("should display data", async () => {
@@ -21,7 +21,7 @@ describe("IncomingData", () => {
       }]});
 
     const user = userEvent.setup();
-    renderWithRouter(<IncomingData />);
+    renderWithRouter(<OutputData />);
 
     // ACT
     await act(async() => {
