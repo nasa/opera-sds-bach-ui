@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-
 import { render, screen } from "@bach/test-utils";
-import "@testing-library/jest-dom";
 
 import { MISSION_TITLE } from "@bach/constants";
 

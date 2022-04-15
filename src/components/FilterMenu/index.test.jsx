@@ -2,8 +2,6 @@ import React from "react";
 import { render } from "@bach/test-utils";
 import userEvent from "@testing-library/user-event";
 
-import "@testing-library/jest-dom";
-
 import FilterMenu from "@bach/components/FilterMenu"
 
 describe("Filter Menu", () => {

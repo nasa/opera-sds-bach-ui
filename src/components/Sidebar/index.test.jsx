@@ -1,7 +1,5 @@
 import React from "react";
-
-import { renderWithRouter, fireEvent, screen } from "@bach/test-utils";
-import "@testing-library/jest-dom";
+import { fireEvent, renderWithRouter, screen } from "@bach/test-utils";
 
 import Sidebar from "@bach/components/Sidebar";
 

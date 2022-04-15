@@ -1,9 +1,8 @@
 import React from "react";
-import { render, screen, fireEvent, within } from "@bach/test-utils";
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen, within } from "@bach/test-utils";
 import moment from "moment";
 
-import DateFilter from "@bach/components/Filters/DateFilter"
+import DateFilter from "@bach/components/Filters/DateFilter";
 
 describe("Date Filter", () => {
   const defaultProps = {

@@ -1,6 +1,5 @@
 import React from "react";
 import { render } from "@bach/test-utils";
-import "@testing-library/jest-dom";
 
 import InfoIcon from "@mui/icons-material/Info";
 

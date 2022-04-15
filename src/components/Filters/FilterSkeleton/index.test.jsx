@@ -1,7 +1,5 @@
 import React from "react";
 import { render } from "@bach/test-utils";
-import "@testing-library/jest-dom";
-// import userEvent from "@testing-library/user-event";
 
 import FilterSkeleton from "@bach/components/Filters/FilterSkeleton"
 
