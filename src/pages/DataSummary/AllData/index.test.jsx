@@ -18,10 +18,10 @@ describe("AllData", () => {
     axios.get.mockResolvedValueOnce({data: [{
         id: "dummy_id",
         dataset_type: "dummy_dataset_type",
+        transfer_status: "cnm_r_success",
         metadata: {
           FileName: "dummy_all_data_filename",
-          ProductReceivedTime: "1970-12-13 14:00+00:00",
-          transfer_status: "cnm_r_success"
+          ProductReceivedTime: "1970-12-13 14:00+00:00"
         }
       }]});
 
