@@ -30,6 +30,7 @@ module.exports = {
       "eslint-import-resolver-custom-alias": {
         alias: {
           "@bach": "./src",
+          "@bach/test-utils": "./src/test_utils.jsx",
         },
         extensions: [".js", ".jsx"],
       },

@@ -8,7 +8,7 @@ describe("DataUtils test", () => {
   it("should parse query params", () => {
     // ARRANGE
     const history = createMemoryHistory();
-    render(<Router history={history}><></></Router>)
+    render(<Router history={history} />);
     history.push("/dummyPath?param1&param2=value2");
 
     // ACT
