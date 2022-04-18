@@ -35,6 +35,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.17.9",
+    "@babel/eslint-parser": "^7.17.0",
     "@date-io/moment": "^2.13.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -46,7 +47,6 @@
     "@mui/x-data-grid": "^5.8.0",
     "@mui/x-data-grid-pro": "^5.8.0",
     "axios": "^0.26.1",
-    "@babel/eslint-parser": "^7.17.0",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
     "babel-runtime": "^6.26.0",
