@@ -26,15 +26,7 @@ module.exports = {
     react: {
       version: "detect",
     },
-    "import/resolver": {
-      "eslint-import-resolver-custom-alias": {
-        alias: {
-          "@bach": "./src",
-          "@bach/test-utils": "./src/test_utils.jsx",
-        },
-        extensions: [".js", ".jsx"],
-      },
-    },
+    "import/resolver": "webpack",
   },
   rules: {
     "prettier/prettier": ["error", { singleQuote: false, parser: "flow" }],

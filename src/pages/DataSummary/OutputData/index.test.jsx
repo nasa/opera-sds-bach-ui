@@ -1,25 +1,35 @@
 import axios from "axios";
 import React from "react";
+import { act } from "react-dom/test-utils";
+import sinon from "sinon";
 import { renderWithRouter, screen } from "@bach/test-utils";
 import userEvent from "@testing-library/user-event";
-
-import { act } from "react-dom/test-utils";
 import OutputData from "@bach/pages/DataSummary/OutputData/index";
 
-jest.mock("axios");
-
 describe("OutputData", () => {
+  let stub;
+
+  beforeEach(() => {
+    stub = sinon.stub(axios, "get");
+  });
+
+  afterEach(() => {
+    stub.restore();
+  });
   it("should render properly", () => {
     renderWithRouter(<OutputData />);
   });
 
   it("should display data", async () => {
     // ARRANGE
-    axios.get.mockResolvedValueOnce({data: [{
-        id: "dummy_incoming_file_id",
-        "count": 123
-      }]});
-
+    stub.returns({
+      data: [
+        {
+          id: "dummy_incoming_file_id",
+          count: 123,
+        },
+      ],
+    });
     const user = userEvent.setup();
     renderWithRouter(<OutputData />);
 
@@ -29,7 +39,6 @@ describe("OutputData", () => {
     });
 
     // ASSERT
-    expect(axios.get).toHaveBeenCalled();
     expect(await screen.findByRole("cell", { name: "dummy_incoming_file_id"})).toBeInTheDocument();
     expect(await screen.findByRole("cell", { name: "123"})).toBeInTheDocument();
   });
