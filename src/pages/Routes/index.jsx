@@ -3,6 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
   Redirect,
+  Switch
 } from "react-router-dom";
 
 import clsx from "clsx";
@@ -58,7 +59,7 @@ export default function Routes() {
             [classes.drawerClose]: !sidebarOpen,
           })}
         >
-          <Routes>
+          <Switch>
             <Route
               exact
               path="/"
@@ -80,7 +81,7 @@ export default function Routes() {
               opened={sidebarOpen}
             />
             <Route children={<NotFound />} />
-          </Routes>
+          </Switch>
           <Dialog open={modalDialogState.open}>
             <DialogTitle>{modalDialogState.title}</DialogTitle>
             <DialogContent>
