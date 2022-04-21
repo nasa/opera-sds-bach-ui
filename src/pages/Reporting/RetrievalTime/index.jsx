@@ -59,4 +59,4 @@ function RetrievalTime(props) {
   )
 }
 
-export default withRouter(RetrievalTime);
+export default RetrievalTime;

@@ -35,9 +35,6 @@ export default function TabMenu(props) {
 }
 
 TabMenu.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
   links: PropTypes.instanceOf(Array),
   // eslint-disable-next-line react/require-default-props
   classes: PropTypes.oneOfType([PropTypes.string, PropTypes.any]),

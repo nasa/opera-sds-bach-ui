@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Typography } from "@mui/material";
 
@@ -221,4 +221,4 @@ function Observations() {
   );
 }
 
-export default withRouter(Observations);
+export default Observations;

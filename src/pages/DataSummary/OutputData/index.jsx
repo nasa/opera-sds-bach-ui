@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import moment from "moment";
 
@@ -163,4 +163,4 @@ function OutputData() {
   );
 }
 
-export default withRouter(OutputData);
+export default OutputData;

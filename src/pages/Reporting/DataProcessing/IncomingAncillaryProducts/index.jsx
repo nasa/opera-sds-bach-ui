@@ -46,4 +46,4 @@ IncomingAncillaryProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingAncillaryProducts);
+export default IncomingAncillaryProducts;

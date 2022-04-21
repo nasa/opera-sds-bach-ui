@@ -8,9 +8,10 @@ import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 import Observations from "./Observations";
 
 import useStyles from "./style";
+import { useRouteMatch } from "react-router";
 
 export default function ProductAccountability(props) {
-  const { match } = props;
+  const match = useRouteMatch();
   const classes = useStyles();
   const { updatePageTitle } = useContext(PageTitleContext);
   updatePageTitle("Product Accountability");
@@ -30,7 +31,7 @@ export default function ProductAccountability(props) {
           render={() => <Redirect to={`${match.path}/downlink`} />}
         />
 
-        <Route path={`${match.path}/observations`} component={Observations} />
+        <Route path={`${match.path}/observations`} children={<Observations />} />
 
         {/* todo: may move this to config file and map over array */}
       </div>
@@ -39,7 +40,4 @@ export default function ProductAccountability(props) {
 }
 
 ProductAccountability.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
 };

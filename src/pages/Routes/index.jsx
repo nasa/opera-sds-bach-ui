@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   Route,
   BrowserRouter as Router,
-  Switch,
   Redirect,
 } from "react-router-dom";
 
@@ -59,7 +58,7 @@ export default function Routes() {
             [classes.drawerClose]: !sidebarOpen,
           })}
         >
-          <Switch>
+          <Routes>
             <Route
               exact
               path="/"
@@ -67,7 +66,7 @@ export default function Routes() {
             />
             <Route
               path="/data-summary"
-              component={DataSummary}
+              children={<DataSummary />}
               opened={sidebarOpen}
             />
             <Route
@@ -77,11 +76,11 @@ export default function Routes() {
             />
             <Route
               path="/product-accountability"
-              component={ProductAccountability}
+              children={<ProductAccountability />}
               opened={sidebarOpen}
             />
-            <Route component={NotFound} />
-          </Switch>
+            <Route children={<NotFound />} />
+          </Routes>
           <Dialog open={modalDialogState.open}>
             <DialogTitle>{modalDialogState.title}</DialogTitle>
             <DialogContent>

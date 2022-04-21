@@ -47,4 +47,4 @@ GeneratedSdsProducts.defaultProps = {
   loading: false,
 };
 
-export default withRouter(GeneratedSdsProducts);
+export default GeneratedSdsProducts;

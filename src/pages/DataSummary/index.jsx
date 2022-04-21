@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { useRouteMatch } from "react-router";
 import { Redirect, Route } from "react-router-dom"; // withRouter
 
 import TabMenu from "@bach/components/TabMenu";
@@ -12,7 +13,7 @@ import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 import useStyles from "./style";
 
 export default function DataSummary(props) {
-  const { match } = props;
+  const match = useRouteMatch();
   const classes = useStyles();
   const { updatePageTitle } = useContext(PageTitleContext);
   updatePageTitle("Data Summary");
@@ -37,16 +38,16 @@ export default function DataSummary(props) {
         />
 
         {/* todo: may move this to config file and map over array */}
-        <Route path={`${match.path}/incoming`} component={IncomingData} />
-        <Route path={`${match.path}/output`} component={OutputData} />
-        <Route path={`${match.path}/all`} component={AllData} />
+        <Route path={`${match.path}/incoming`} children={<IncomingData />}>
+        </Route>
+        <Route path={`${match.path}/output`} children={<OutputData />}>
+        </Route>
+        <Route path={`${match.path}/all`} children={<AllData />}>
+        </Route>
       </div>
     </>
   );
 }
 
 DataSummary.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
 };

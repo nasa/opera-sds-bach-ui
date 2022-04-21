@@ -59,4 +59,4 @@ function ProductionTime(props) {
   )
 }
 
-export default withRouter(ProductionTime);
+export default ProductionTime;

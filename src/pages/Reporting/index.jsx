@@ -43,21 +43,18 @@ export default function Reporting(props) {
 
         {/* todo: may move this to config file and map over array */}
         {/* hidden for OPERA */}
-        {/* <Route path={`${match.path}/observations`} component={Observations} /> */}
+        {/* <Route path={`${match.path}/observations`} children={<Observations />} /> */}
         <Route
           path={`${match.path}/data-processing`}
-          component={DataProcessing}
+          children={<DataProcessing />}
         />
-        <Route path={`${match.path}/production-time`} component={ProductionTime} />
-        <Route path={`${match.path}/retrieval-time`} component={RetrievalTime} />
+        <Route path={`${match.path}/production-time`} children={<ProductionTime />} />
+        <Route path={`${match.path}/retrieval-time`} children={<RetrievalTime />} />
       </div>
     </>
   );
 }
 
 Reporting.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
   opened: PropTypes.bool.isRequired,
 };

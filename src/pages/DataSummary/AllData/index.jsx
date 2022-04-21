@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { Button, Tooltip, useTheme } from "@mui/material";
 
@@ -403,4 +403,4 @@ function AllData() {
   );
 }
 
-export default withRouter(AllData);
+export default AllData;

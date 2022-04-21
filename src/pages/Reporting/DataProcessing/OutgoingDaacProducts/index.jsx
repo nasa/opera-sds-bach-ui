@@ -46,4 +46,4 @@ OutgoingDaacProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(OutgoingDaacProducts);
+export default OutgoingDaacProducts;

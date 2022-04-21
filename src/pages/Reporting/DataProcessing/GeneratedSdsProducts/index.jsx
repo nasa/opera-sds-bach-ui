@@ -46,4 +46,4 @@ IncomingSdpProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingSdpProducts);
+export default IncomingSdpProducts;

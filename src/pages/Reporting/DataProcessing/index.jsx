@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withRouter, useHistory, Redirect, Route } from "react-router-dom";
+import { useHistory, Redirect, Route } from "react-router-dom";
 
 import { Typography } from "@mui/material";
 
@@ -58,12 +58,13 @@ import GeneratedSdsProducts from "./GeneratedSdsProducts";
 import OutgoingDaacProducts from "./OutgoingDaacProducts";
 
 import useStyles from "./style";
+import { useRouteMatch } from "react-router";
 
 function DataProcessing(props) {
   const history = useHistory();
   const classes = useStyles();
 
-  const { match } = props;
+  const match = useRouteMatch();
 
   const links = [
     { path: "incoming-l2-hls", label: "Incoming SDP Files" },
@@ -417,9 +418,6 @@ function DataProcessing(props) {
 }
 
 DataProcessing.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
-export default withRouter(DataProcessing);
+export default DataProcessing;
