@@ -21,11 +21,11 @@ export function getVenue() {
 
 /**
  * reads query params from URL and converts to object
- * @param {Object} history - React Router object
+ * @param {Object} location - React Router object
  * @returns {Object} urlParams in object form
  */
-export function getUrlParams(history) {
-  const { search } = history.location;
+export function getUrlParams(location) {
+  const { search } = location;
 
   const params = {};
   if (search) {
@@ -45,29 +45,27 @@ export function getUrlParams(history) {
 /**
  * maps state values with VALUES_TO_URL_DICT and pushes them to URL query parameters
  * @param {Object} values - current state values to push to URL
- * @param {Object} history - React router object to update query parameters
+ * @param {Object} navigate - React router object to update query parameters
+ * @param {Object} location - React router object to get pathname
  */
-export function pushUrlParams(values, history) {
+export function pushUrlParams(values, location, navigate) {
   const newUrlParams = Object.entries(values)
     .filter(([k, ,]) => k in VALUES_TO_URL_DICT && values[k]) // checking if value exists in mapper and exists
     .reduce((obj, [k, v]) => ({ ...obj, [VALUES_TO_URL_DICT[k]]: v }), {}); // converting array to object
 
   const queryParams = new URLSearchParams(newUrlParams).toString();
   const urlParamsString = decodeURIComponent(queryParams);
-  history.replace({
-    pathname: history.location.pathname,
-    search: `?${urlParamsString}`,
-  });
+  navigate(`${location.pathname}?${urlParamsString}`);
 }
 
 /**
  * reads URL params then maps & converts to object
  *  for each query param, sets state in parent component
  *  used when mounting the component (see pages/Observations/index.jsx)
- * @param {Object} history - React Router object
+ * @param {Object} location - React Router object
  * @param {Object: func} dispatch - set of reducer dispatch functions
  */
-export function pullUrlParams(history, dispatch) {
+export function pullUrlParams(location, dispatch) {
   const {
     setStartDate,
     setEndDate,
@@ -94,7 +92,7 @@ export function pullUrlParams(history, dispatch) {
     setReportType,
   } = dispatch;
 
-  const params = getUrlParams(history);
+  const params = getUrlParams(location);
 
   const convertedParams = Object.entries(params)
     .filter(([k, ,]) => k in URL_TO_VALUES_DICT && params[k]) // checking if value exists in mapper and exists
@@ -183,10 +181,10 @@ export function pullUrlParams(history, dispatch) {
  * @param {Object} values (url query params in a dictionary format)
  * @param {Object: func} dispatch (reducer dispatch object)
  */
-export function onMount(history, values, dispatch) {
-  if (history.location.search) pullUrlParams(history, dispatch);
-  else pushUrlParams(values, history);
-  return () => console.log(`location has changed ${history.location.pathname}`);
+export function onMount(location, navigate, values, dispatch) {
+  if (location.search) pullUrlParams(location, dispatch);
+  else pushUrlParams(values, location, navigate);
+  return () => console.log(`location has changed ${location.pathname}`);
 }
 
 /**

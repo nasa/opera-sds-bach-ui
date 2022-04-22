@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Typography } from "@mui/material";
 
@@ -37,7 +37,9 @@ import FilterTableGrid from "@bach/components/FilterTableGrid";
 import useStyles from "./style";
 
 function Observations() {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = useStyles();
 
   const [filtersHidden, setFiltersHidden] = React.useState(false);
@@ -150,7 +152,7 @@ function Observations() {
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
-    pushUrlParams(getTempValues(state, tempState, true), history);
+    pushUrlParams(getTempValues(state, tempState, true), location, navigate);
     const results = await getObservationReport();
     results.data = JSON.parse(results.data);
     setLoading(false);
@@ -169,8 +171,8 @@ function Observations() {
 
   React.useEffect(() => {
     // grans url params if they are passed into url manually, otherwise grabs the current state.
-    onMount(history, getTempValues(state, tempState, true), tempDispatch);
-  }, [history.location.pathname]);
+    onMount(location, navigate, getTempValues(state, tempState, true), tempDispatch);
+  }, [location.pathname]);
 
   return (
     <PageWrapper>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Button, Tooltip, useTheme } from "@mui/material";
 
@@ -43,10 +43,11 @@ import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import useStyles from "./style";
 
 function AllData() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const theme = useTheme();
-
-  const history = useHistory();
 
   const [filtersHidden, setFiltersHidden] = React.useState(false);
 
@@ -337,7 +338,7 @@ function AllData() {
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
-    pushUrlParams(getTempValues(state, tempState, true), history);
+    pushUrlParams(getTempValues(state, tempState, true), location, navigate);
     const results = await getAllDataCount();
     setLoading(false);
     const filteredResults = filterData(results.data);
@@ -355,8 +356,8 @@ function AllData() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, null, false), tempDispatch);
-  }, [history.location.pathname]);
+    onMount(location, navigate, getTempValues(state, null, false), tempDispatch);
+  }, [location.pathname]);
 
   return (
     <PageWrapper>
