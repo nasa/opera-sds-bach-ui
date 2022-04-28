@@ -1,0 +1,125 @@
+{
+  "summary_incoming_files": [
+    {
+      "id": "dummy_incoming_file_id",
+      "count": 123
+    }
+  ],
+  "summary_output_data": [
+    {
+      "id": "dummy_output_file_id",
+      "count": 321
+    }
+  ],
+  "summary_all_data": [
+    {
+      "id": "1",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "cnm_r_success",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    },
+    {
+      "id": "2",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "cnm_s_success",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    },
+    {
+      "id": "3",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "cnm_r_failure",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    },
+    {
+      "id": "4",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "cnm_s_failure",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    },
+    {
+      "id": "5",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "unknown",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    },
+    {
+      "id": "6",
+      "dataset_type": "dummy_dataset_type",
+      "transfer_status": "not_applicable",
+      "metadata": {
+        "FileName": "dummy_all_data_filename",
+        "ProductReceivedTime": "1970-12-13 14:00+00:00"
+      }
+    }
+  ],
+  "data": [{
+    "id": "dummy_all_data_filename",
+    "dataset_type": "dummy_dataset_type",
+    "transfer_status": "cnm_r_success",
+    "metadata": {
+      "FileName": "dummy_all_data_filename",
+      "ProductReceivedTime": "1970-12-13 14:00+00:00"
+    }
+  }],
+  "report_incoming_files": {
+    "products": [
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 0,
+        "name": "A"
+      },
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 1024,
+        "name": "B"
+      },
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 1048576,
+        "name": "C"
+      },
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 1073741824,
+        "name": "D"
+      },
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 1099511627776,
+        "name": "E"
+      },
+      {
+        "num_ingested": 1,
+        "files_produced": 1,
+        "products_delivered": 1,
+        "volume": 1125899906842624,
+        "name": "F"
+      }
+    ]
+  }
+}
