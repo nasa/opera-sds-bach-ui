@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import moment from "moment";
 
-import { TextField, MenuItem } from "@material-ui/core";
+import { TextField, MenuItem } from "@mui/material";
 
 import useStyles from "./style";
 
@@ -173,6 +173,7 @@ export default function DateFilter(props) {
         value={startValue}
         onChange={changeStartValue}
         disabled={disabled}
+        margin="normal"
         className={clsx(
           classes.textField,
           classes.filterComponent,
@@ -198,6 +199,7 @@ export default function DateFilter(props) {
         value={endValue}
         disabled={disabled}
         onChange={changeEndValue}
+        margin="normal"
         className={clsx(classes.textField, classes.filterComponent)}
         InputLabelProps={{
           shrink: true,
@@ -219,6 +221,7 @@ export default function DateFilter(props) {
         variant="outlined"
         label="Presets"
         disabled={disabled}
+        margin="normal"
         className={clsx(classes.dateSelect, {
           [classes.show]: presets,
           [classes.hide]: !presets,

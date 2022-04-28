@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import { Select } from "@material-ui/core";
+import { Select } from "@mui/material";
 
 import useStyles from "./style";
 

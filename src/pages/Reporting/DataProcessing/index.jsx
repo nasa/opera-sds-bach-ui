@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter, useHistory, Redirect, Route } from "react-router-dom";
 
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 import moment from "moment";
 
@@ -196,6 +196,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "ancillary",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
@@ -213,6 +214,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "sdp",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {
@@ -230,6 +232,7 @@ function DataProcessing(props) {
       endDateTime: `${tempEndDate}:00Z`,
       reportType: "sdp",
       mime: "application/json",
+      venue: getVenue()
     };
     let results = {};
     try {

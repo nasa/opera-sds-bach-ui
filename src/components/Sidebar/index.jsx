@@ -11,18 +11,18 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import MenuOpenIcon from "@material-ui/icons/MenuOpen";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import TableChartIcon from "@material-ui/icons/TableChart";
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import TableChartIcon from "@mui/icons-material/TableChart";
 // hidden for OPERA
-// import VisibilityIcon from "@material-ui/icons/Visibility";
-import InsertChartIcon from "@material-ui/icons/InsertChart";
-import InfoIcon from "@material-ui/icons/Info";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+// import VisibilityIcon from "@mui/icons-material/Visibility";
+import InsertChartIcon from "@mui/icons-material/InsertChart";
+import InfoIcon from "@mui/icons-material/Info";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 // hidden for OPERA
-// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { SIDEBAR_OPENED_LS } from "@bach/constants";
 import MenuLink from "../MenuLink";

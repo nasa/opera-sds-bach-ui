@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, useHistory } from "react-router-dom";
 
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 import moment from "moment";
 

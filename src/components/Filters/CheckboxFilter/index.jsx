@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { FormControlLabel, Checkbox } from "@material-ui/core";
+import { FormControlLabel, Checkbox } from "@mui/material";
 
 import FilterSkeleton from "../FilterSkeleton";
 

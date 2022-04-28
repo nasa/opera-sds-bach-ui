@@ -5,7 +5,7 @@ import FilterController from "@bach/components/FilterController";
 import DateFilter from "@bach/components/Filters/DateFilter";
 import FilterMenu from "@bach/components/FilterMenu";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
-import { Link, Typography } from "@material-ui/core";
+import { Link, Typography } from "@mui/material";
 
 import {
   DispatchContext,

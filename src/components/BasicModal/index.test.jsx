@@ -1,7 +1,7 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render } from "@bach/test-utils";
 
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 import "@testing-library/jest-dom";
 

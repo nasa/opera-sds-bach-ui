@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-import { Tabs, Tab } from "@material-ui/core";
+import { Tabs, Tab } from "@mui/material";
 import styles from "./style";
 
 export default function TabMenu(props) {

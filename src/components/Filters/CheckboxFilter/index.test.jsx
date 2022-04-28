@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@bach/test-utils";
 import "@testing-library/jest-dom";
 
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter"

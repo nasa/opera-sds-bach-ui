@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid, useTheme } from "@material-ui/core";
+import { Grid, useTheme } from "@mui/material";
 
 import useStyles from "./style";
 

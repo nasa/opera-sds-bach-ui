@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
 import Table from "@bach/components/Table";
 

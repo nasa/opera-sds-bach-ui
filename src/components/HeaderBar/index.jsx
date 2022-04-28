@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 
 import clsx from "clsx";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 import operaLogo from "@bach/images/opera_logo.png";
 import nasaLogo from "@bach/images/nasa_logo.svg";
