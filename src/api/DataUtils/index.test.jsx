@@ -33,7 +33,8 @@ describe("DataUtils test", () => {
         param2: "value2",
         startDate: true, // needs to be truthy
       },
-      history
+      location,
+      navigate
     );
 
     // ASSERT

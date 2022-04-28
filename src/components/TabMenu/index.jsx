@@ -23,11 +23,18 @@ export default function TabMenu(props) {
       {links.map((link) => (
         <Tab
           key={link.path}
-          component={NavLink}
-          to={`${match.path}/${link.path}`}
           className={classes.tab}
-          activeStyle={activeStyle}
-          label={link.label || link.path}
+          label={
+            <NavLink
+              to={link.path}
+              style={({ isActive }) => ({
+                ...{ textDecoration: "none" },
+                ...(isActive ? { fontWeight: "bold", ...activeStyle } : null),
+              })}
+            >
+              {link.label || link.path}
+            </NavLink>
+          }
         />
       ))}
     </Tabs>
