@@ -19,3 +19,7 @@ npx json-server \
 Tip: move these files to the project root dir to instead run using:
 
 `npx json-server --watch db.json --routes routes.json`
+
+# References
+
+* json-server documentation (https://github.com/typicode/json-server)
