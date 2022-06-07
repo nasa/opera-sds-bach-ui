@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Route, Navigate } from "react-router-dom";
+import { Route, Navigate, useMatch } from "react-router-dom";
 
 import TabMenu from "@bach/components/TabMenu";
 
@@ -8,7 +8,6 @@ import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 import Observations from "./Observations";
 
 import useStyles from "./style";
-import { useMatch } from "react-router";
 
 export default function ProductAccountability(props) {
   const match = useMatch("production-time");

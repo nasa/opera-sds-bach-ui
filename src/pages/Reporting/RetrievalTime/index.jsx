@@ -37,7 +37,7 @@ function RetrievalTime(props) {
     <PageWrapper>
       <FilterController hidden={filtersHidden} toggleFilters={toggleFilters} />
       <FilterTableGrid filtersHidden={filtersHidden}>
-        <FilterMenu title="REPORT SETTINGS" search={search} reset={reset}>
+        <FilterMenu title="REPORT SETTINGS" search={search} reset={reset} searchButtonValue="GENERATE">
           <DateFilter
             label="Date"
             startValue={tempStartDate}
@@ -52,7 +52,6 @@ function RetrievalTime(props) {
         <>
           <Typography variant="h6">Report Data</Typography>
           <Typography variant="body1">Coming Spring 2022.</Typography>
-          
         </>
       </FilterTableGrid>
     </PageWrapper>

@@ -36,20 +36,13 @@ export default function Reporting(props) {
       <div className={classes.subPage}>
         <Routes>
           {/* this allows to move to the first tab when clicking the link in the sidebar */}
-          <Route
-            exact
-            path="/"
-            element={<Navigate to="data-processing" />}
-          />
+          <Route path="/" element={<Navigate to="data-processing" />} exact />
 
           {/* todo: may move this to config file and map over array */}
           {/* hidden for OPERA */}
           {/* <Route path="observations" element={<Observations />} /> */}
-          <Route
-            path="data-processing/*"
-            element={<DataProcessing />}
-          />
-          <Route path="production-time" element={<ProductionTime />} />
+          <Route path="data-processing/*" element={<DataProcessing />} />
+          <Route path="production-time/*" element={<ProductionTime />} />
           <Route path="retrieval-time" element={<RetrievalTime />} />
         </Routes>
       </div>
