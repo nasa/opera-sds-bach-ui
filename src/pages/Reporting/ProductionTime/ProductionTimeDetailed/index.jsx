@@ -28,7 +28,7 @@ function ProductionTimeDetailed(props) {
     },
     {
       field: "ProductionTime",
-      headerName: "ProductionTime (HH:mm:ss)",
+      headerName: "Production Time (HH:mm:ss)",
       flex: 0,
       minWidth: 250,
     },

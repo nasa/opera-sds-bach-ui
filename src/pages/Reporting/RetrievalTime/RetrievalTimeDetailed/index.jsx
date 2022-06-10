@@ -29,7 +29,7 @@ function RetrievalTimeDetailed(props) {
     },
     {
       field: "RetrievalTime",
-      headerName: "RetrievalTime (HH:mm:ss)",
+      headerName: "Retrieval Time (HH:mm:ss)",
       flex: 0,
       minWidth: 250,
     },
