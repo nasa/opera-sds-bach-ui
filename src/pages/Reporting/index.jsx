@@ -43,7 +43,7 @@ export default function Reporting(props) {
           {/* <Route path="observations" element={<Observations />} /> */}
           <Route path="data-processing/*" element={<DataProcessing />} />
           <Route path="production-time/*" element={<ProductionTime />} />
-          <Route path="retrieval-time" element={<RetrievalTime />} />
+          <Route path="retrieval-time/*" element={<RetrievalTime />} />
         </Routes>
       </div>
     </>

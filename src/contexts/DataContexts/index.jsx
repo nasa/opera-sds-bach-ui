@@ -11,6 +11,7 @@ import TrackFrameDataContexts from "@bach/contexts/DataContexts/TrackFrameData";
 import ObservationsDataContexts from "@bach/contexts/DataContexts/ObservationsData";
 import DataProcessingContexts from "@bach/contexts/DataContexts/DataProcessing";
 import ProductionTimeContexts from "@bach/contexts/DataContexts/ProductionTimeReport";
+import RetrievalTimeContexts from "@bach/contexts/DataContexts/RetrievalTimeReport";
 
 export default function DataContexts(props) {
   const { children } = props;
@@ -24,7 +25,9 @@ export default function DataContexts(props) {
               <TrackFrameDataContexts>
                 <ObservationsReportContexts>
                   <ProductionTimeContexts>
-                    <DataProcessingContexts>{children}</DataProcessingContexts>
+                    <RetrievalTimeContexts>
+                      <DataProcessingContexts>{children}</DataProcessingContexts>
+                    </RetrievalTimeContexts>
                   </ProductionTimeContexts>
                 </ObservationsReportContexts>
               </TrackFrameDataContexts>
