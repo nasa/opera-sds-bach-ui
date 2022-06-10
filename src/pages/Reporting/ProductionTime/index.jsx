@@ -99,13 +99,13 @@ function ProductionTime(props) {
     return results;
   };
 
-  function setReportInfo(reportName, results) {
+  function setReportInfo(reportName, data) {
     switch (reportName) {
       case "production-time-summary":
-        setProductionTimeSummaryData(results.data);
+        setProductionTimeSummaryData(data);
         break;
       case "production-time-detailed":
-        setProductionTimeLogData(results.data);
+        setProductionTimeLogData(data);
         break;
       default:
         throw new Error(`No such report: ${reportName}`);
@@ -128,7 +128,7 @@ function ProductionTime(props) {
     //  Clear table on subsequent search so users can see the spinner.
 
     const path = getPathTail(location);
-    // setReportInfo(path, {products: []});
+    setReportInfo(path, {});
 
     setLoading(true);
     const results = await getReport(path);
@@ -137,9 +137,8 @@ function ProductionTime(props) {
     }
     setLoading(false);
 
-    // setReportInfo
     const reportName = path;
-    setReportInfo(reportName, results);
+    setReportInfo(reportName, results.data);
   };
   const reset = () => {};
 

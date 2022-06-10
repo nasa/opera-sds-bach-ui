@@ -17,6 +17,7 @@ function RetrievalTimeSummary(props) {
       headerName: "ID",
       flex: 0,
       minWidth: 85,
+      hide: true,
     },
     {
       field: "OPERA Product Short Name",

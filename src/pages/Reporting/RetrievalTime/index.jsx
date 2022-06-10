@@ -105,13 +105,13 @@ function RetrievalTime(props) {
     return results;
   };
 
-  function setReportInfo(reportName, results) {
+  function setReportInfo(reportName, data) {
     switch (reportName) {
       case "retrieval-time-summary":
-        setRetrievalTimeSummaryData(results.data);
+        setRetrievalTimeSummaryData(data);
         break;
       case "retrieval-time-detailed":
-        setRetrievalTimeLogData(results.data);
+        setRetrievalTimeLogData(data);
         break;
       default:
         throw new Error(`No such report: ${reportName}`);
@@ -134,7 +134,7 @@ function RetrievalTime(props) {
     //  Clear table on subsequent search so users can see the spinner.
 
     const path = getPathTail(location);
-    // setReportInfo(path, {products: []});
+    setReportInfo(path, {});
 
     setLoading(true);
     const results = await getReport(path);
@@ -143,9 +143,8 @@ function RetrievalTime(props) {
     }
     setLoading(false);
 
-    // setReportInfo
     const reportName = path;
-    setReportInfo(reportName, results);
+    setReportInfo(reportName, results.data);
   };
   const reset = () => {};
 

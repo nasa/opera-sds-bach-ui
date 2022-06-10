@@ -13,6 +13,7 @@ function RetrievalTimeDetailed(props) {
       headerName: "ID",
       flex: 0,
       minWidth: 85,
+      hide: true,
     },
     {
       field: "OPERA Product File Name",
