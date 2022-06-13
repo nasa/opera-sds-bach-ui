@@ -8,23 +8,15 @@ const initialState = {
 
 function productionTimeDetailedReportReducer(state, action) {
   switch (action.type) {
-    case DATA: {
+    case DATA:
       return { ...state, data: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
-/**
- * [observationData]
- * Takes in a reducer that defaults to the productionTimeDetailedReportReducer. This is just the syntax utilizing
- * the React Reducer functionality. The = {} is just what it would default to otherwise which is required.
- * @param {*} reducer
- * @returns Object
- */
-function useProductionTimeDetailedReportData({ reducer = productionTimeDetailedReportReducer } = {}) {
-  const [{ data }, dispatch] = React.useReducer(reducer, initialState);
+
+function useProductionTimeDetailedReportData() {
+  const [{ data }, dispatch] = React.useReducer(productionTimeDetailedReportReducer, initialState);
   const setData = (val) => dispatch({ type: DATA, payload: val });
 
   return {
@@ -33,4 +25,4 @@ function useProductionTimeDetailedReportData({ reducer = productionTimeDetailedR
   };
 }
 
-export { useProductionTimeDetailedReportData, initialState, productionTimeDetailedReportReducer };
+export { useProductionTimeDetailedReportData, initialState };

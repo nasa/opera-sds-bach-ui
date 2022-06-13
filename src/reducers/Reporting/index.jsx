@@ -31,27 +31,20 @@ const initialState = {
 
 function reportingReducer(state, action) {
   switch (action.type) {
-    case START_DATE: {
+    case START_DATE:
       return { ...state, startDate: action.payload };
-    }
-    case END_DATE: {
+    case END_DATE:
       return { ...state, endDate: action.payload };
-    }
-    case PRESET: {
+    case PRESET:
       return { ...state, preset: action.payload };
-    }
-    case PROCESSING_MODE: {
+    case PROCESSING_MODE:
       return { ...state, productType: action.payload };
-    }
-    case CRID: {
+    case CRID:
       return { ...state, source: action.payload };
-    }
-    case REPORT_TYPE: {
+    case REPORT_TYPE:
       return { ...state, source: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 

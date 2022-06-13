@@ -10,18 +10,14 @@ const initialState = {
 
 function allDataReducer(state, action) {
   switch (action.type) {
-    case DATA: {
+    case DATA:
       return { ...state, data: action.payload };
-    }
-    case "SENSOR": {
+    case "SENSOR":
       return { ...state, sensor: action.payload };
-    }
-    case "TILE_ID": {
+    case "TILE_ID":
       return { ...state, tileId: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 /**

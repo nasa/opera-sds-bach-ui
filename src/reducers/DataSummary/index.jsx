@@ -31,27 +31,20 @@ const initialState = {
 
 function dataSummaryReducer(state, action) {
   switch (action.type) {
-    case actionTypes.startDate: {
+    case actionTypes.startDate:
       return { ...state, startDate: action.payload };
-    }
-    case actionTypes.endDate: {
+    case actionTypes.endDate:
       return { ...state, endDate: action.payload };
-    }
-    case actionTypes.preset: {
+    case actionTypes.preset:
       return { ...state, preset: action.payload };
-    }
-    case actionTypes.productType: {
+    case actionTypes.productType:
       return { ...state, productType: action.payload };
-    }
-    case actionTypes.source: {
+    case actionTypes.source:
       return { ...state, source: action.payload };
-    }
-    case actionTypes.data: {
+    case actionTypes.data:
       return { ...state, data: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 

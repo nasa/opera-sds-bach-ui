@@ -76,72 +76,50 @@ const initialState = {
 
 function productAccountabilityReducer(state, action) {
   switch (action.type) {
-    case WORKFLOW_START_DATE: {
+    case WORKFLOW_START_DATE:
       return { ...state, workflowStartDate: action.payload };
-    }
-    case WORKFLOW_END_DATE: {
+    case WORKFLOW_END_DATE:
       return { ...state, workflowEndDate: action.payload };
-    }
-    case WORKFLOW_PRESET: {
+    case WORKFLOW_PRESET:
       return { ...state, workflowPreset: action.payload };
-    }
-    case LAST_MODIFIED_START_DATE: {
+    case LAST_MODIFIED_START_DATE:
       return { ...state, lastModifiedStartDate: action.payload };
-    }
-    case LAST_MODIFIED_END_DATE: {
+    case LAST_MODIFIED_END_DATE:
       return { ...state, lastModifiedEndDate: action.payload };
-    }
-    case LAST_MODIFIED_PRESET: {
+    case LAST_MODIFIED_PRESET:
       return { ...state, lastModifiedPreset: action.payload };
-    }
-    case OBSERVATION_START_DATE: {
+    case OBSERVATION_START_DATE:
       return { ...state, observationStartDate: action.payload };
-    }
-    case OBSERVATION_END_DATE: {
+    case OBSERVATION_END_DATE:
       return { ...state, observationEndDate: action.payload };
-    }
-    case OBSERVATION_PRESET: {
+    case OBSERVATION_PRESET:
       return { ...state, observationPreset: action.payload };
-    }
-    case OBSERVATION_ID: {
+    case OBSERVATION_ID:
       return { ...state, observationID: action.payload };
-    }
-    case DATATAKE_ID: {
+    case DATATAKE_ID:
       return { ...state, datatakeID: action.payload };
-    }
-    case L0B_RRSD_ID: {
+    case L0B_RRSD_ID:
       return { ...state, l0bRrsdID: action.payload };
-    }
-    case LDF_FILENAME: {
+    case LDF_FILENAME:
       return { ...state, ldfFilename: action.payload };
-    }
-    case VCID: {
+    case VCID:
       return { ...state, vcid: action.payload };
-    }
-    case SHOW_LATEST_VERSION: {
+    case SHOW_LATEST_VERSION:
       return { ...state, showLatestVersion: action.payload };
-    }
-    case CYCLE_REFERENCE_ID: {
+    case CYCLE_REFERENCE_ID:
       return { ...state, cycleReferenceID: action.payload };
-    }
-    case CYCLE_SECONDARY_ID: {
+    case CYCLE_SECONDARY_ID:
       return { ...state, cycleSecondaryID: action.payload };
-    }
-    case TRACK_ID: {
+    case TRACK_ID:
       return { ...state, trackID: action.payload };
-    }
-    case FRAME_ID: {
+    case FRAME_ID:
       return { ...state, frameID: action.payload };
-    }
-    case SOURCE: {
+    case SOURCE:
       return { ...state, source: action.payload };
-    }
-    case DATA: {
+    case DATA:
       return { ...state, data: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 
