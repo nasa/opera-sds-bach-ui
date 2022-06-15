@@ -10,7 +10,6 @@ function ProductionTimeSummary(props) {
 
   const [open, setOpen] = React.useState(false);
 
-
   const columns = [
     {
       field: "id",
@@ -19,37 +18,37 @@ function ProductionTimeSummary(props) {
       minWidth: 85,
     },
     {
-      field: "OPERA Product Short Name",
+      field: "opera_product_short_name",
       headerName: "OPERA Product Short Name",
       flex: 0,
       minWidth: 200,
     },
     {
-      field: "ProductionTime (count)",
+      field: "production_time_count",
       headerName: "Products Produced",
       flex: 0,
       minWidth: 170,
     },
     {
-      field: "ProductionTime (min)",
+      field: "production_time_min",
       headerName: "Production Time (minimum)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "ProductionTime (mean)",
+      field: "production_time_mean",
       headerName: "Production Time (mean)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "ProductionTime (max)",
+      field: "production_time_max",
       headerName: "Production Time (maximum)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "ProductionTime (median)",
+      field: "production_time_median",
       headerName: "Production Time (median)",
       flex: 0,
       minWidth: 270,

@@ -10,7 +10,6 @@ function RetrievalTimeSummary(props) {
 
   const [open, setOpen] = React.useState(false);
 
-
   const columns = [
     {
       field: "id",
@@ -19,37 +18,49 @@ function RetrievalTimeSummary(props) {
       minWidth: 85,
     },
     {
-      field: "OPERA Product Short Name",
+      field: "opera_product_short_name",
       headerName: "OPERA Product Short Name",
       flex: 0,
       minWidth: 200,
     },
     {
-      field: "RetrievalTime (count)",
+      field: "input_product_short_name",
+      headerName: "Input Product Short Name",
+      flex: 0,
+      minWidth: 200,
+    },
+    {
+      field: "retrieval_time_count",
       headerName: "Input Products Retrieved",
       flex: 0,
       minWidth: 170,
     },
     {
-      field: "RetrievalTime (min)",
+      field: "retrieval_time_p90",
+      headerName: "Retrieval Time (90th Percentile)",
+      flex: 0,
+      minWidth: 250,
+    },
+    {
+      field: "retrieval_time_min",
       headerName: "Retrieval Time (minimum)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "RetrievalTime (mean)",
+      field: "retrieval_time_mean",
       headerName: "Retrieval Time (mean)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "RetrievalTime (max)",
+      field: "retrieval_time_max",
       headerName: "Retrieval Time (maximum)",
       flex: 0,
       minWidth: 250,
     },
     {
-      field: "RetrievalTime (median)",
+      field: "retrieval_time_median",
       headerName: "Retrieval Time (median)",
       flex: 0,
       minWidth: 270,

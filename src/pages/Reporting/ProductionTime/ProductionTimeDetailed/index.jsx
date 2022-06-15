@@ -15,19 +15,19 @@ function ProductionTimeDetailed(props) {
       minWidth: 85,
     },
     {
-      field: "OPERA Product File Name",
+      field: "opera_product_filename",
       headerName: "OPERA Product File Name",
       flex: 0,
       minWidth: 680,
     },
     {
-      field: "OPERA Product Short Name",
+      field: "opera_product_short_name",
       headerName: "OPERA Product Short Name",
       flex: 0,
       minWidth: 200,
     },
     {
-      field: "ProductionTime",
+      field: "production_time",
       headerName: "Production Time",
       flex: 0,
       minWidth: 250,
