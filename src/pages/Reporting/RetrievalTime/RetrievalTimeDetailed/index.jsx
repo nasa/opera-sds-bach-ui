@@ -10,10 +10,9 @@ function RetrievalTimeDetailed(props) {
   const columns = [
     {
       field: "id",
-      headerName: "ID",
+      headerName: "#",
       flex: 0,
       minWidth: 85,
-      hide: true,
     },
     {
       field: "OPERA Product File Name",
@@ -29,7 +28,7 @@ function RetrievalTimeDetailed(props) {
     },
     {
       field: "RetrievalTime",
-      headerName: "Retrieval Time (HH:mm:ss)",
+      headerName: "Retrieval Time",
       flex: 0,
       minWidth: 250,
     },

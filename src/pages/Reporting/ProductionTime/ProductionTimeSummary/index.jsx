@@ -14,7 +14,7 @@ function ProductionTimeSummary(props) {
   const columns = [
     {
       field: "id",
-      headerName: "ID",
+      headerName: "#",
       flex: 0,
       minWidth: 85,
     },
@@ -26,31 +26,31 @@ function ProductionTimeSummary(props) {
     },
     {
       field: "ProductionTime (count)",
-      headerName: "Production Time (count)",
+      headerName: "Products Produced",
       flex: 0,
       minWidth: 170,
     },
     {
       field: "ProductionTime (min)",
-      headerName: "Production Time (min) (HH:mm:ss)",
+      headerName: "Production Time (minimum)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "ProductionTime (mean)",
-      headerName: "Production Time (mean) (HH:mm:ss)",
+      headerName: "Production Time (mean)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "ProductionTime (max)",
-      headerName: "Production Time (max) (HH:mm:ss)",
+      headerName: "Production Time (maximum)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "ProductionTime (median)",
-      headerName: "Production Time (median) (HH:mm:ss)",
+      headerName: "Production Time (median)",
       flex: 0,
       minWidth: 270,
     },

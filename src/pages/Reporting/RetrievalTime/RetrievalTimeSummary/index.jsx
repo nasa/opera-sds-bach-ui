@@ -14,10 +14,9 @@ function RetrievalTimeSummary(props) {
   const columns = [
     {
       field: "id",
-      headerName: "ID",
+      headerName: "#",
       flex: 0,
       minWidth: 85,
-      hide: true,
     },
     {
       field: "OPERA Product Short Name",
@@ -27,31 +26,31 @@ function RetrievalTimeSummary(props) {
     },
     {
       field: "RetrievalTime (count)",
-      headerName: "Retrieval Time (count)",
+      headerName: "Input Products Retrieved",
       flex: 0,
       minWidth: 170,
     },
     {
       field: "RetrievalTime (min)",
-      headerName: "Retrieval Time (min) (HH:mm:ss)",
+      headerName: "Retrieval Time (minimum)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "RetrievalTime (mean)",
-      headerName: "Retrieval Time (mean) (HH:mm:ss)",
+      headerName: "Retrieval Time (mean)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "RetrievalTime (max)",
-      headerName: "Retrieval Time (max) (HH:mm:ss)",
+      headerName: "Retrieval Time (maximum)",
       flex: 0,
       minWidth: 250,
     },
     {
       field: "RetrievalTime (median)",
-      headerName: "Retrieval Time (median) (HH:mm:ss)",
+      headerName: "Retrieval Time (median)",
       flex: 0,
       minWidth: 270,
     },
