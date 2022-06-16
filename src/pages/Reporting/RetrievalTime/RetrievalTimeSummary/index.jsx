@@ -95,7 +95,7 @@ function RetrievalTimeSummary(props) {
           `mime=` + `application/zip`
         }
       >
-        Click here to download the retrieval time summary report for {startDate.replace("T00:00", "")} to {endDate.replace("T23:59", "")}.
+        Click here to download the retrieval time summary report for {startDate} to {endDate}.
       </Link>
       <Table data={data} columns={columns} loading={loading} />
     </>
