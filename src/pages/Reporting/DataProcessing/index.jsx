@@ -363,18 +363,18 @@ function DataProcessing(props) {
             setPresetValue={setTempPreset}
             presets
           />
-          <SelectFilter
-            label="Processing Mode"
-            options={[]}
-            value={tempProcessingMode}
-            setValue={setTempProcessingMode}
-          />
-          <RadioFilter
-            label="Report Type"
-            value={tempReportType}
-            setValue={setTempReportType}
-            options={radioFilterOptions}
-          />
+          {/* <SelectFilter */}
+          {/*   label="Processing Mode" */}
+          {/*   options={[]} */}
+          {/*   value={tempProcessingMode} */}
+          {/*   setValue={setTempProcessingMode} */}
+          {/* /> */}
+          {/* <RadioFilter */}
+          {/*   label="Report Type" */}
+          {/*   value={tempReportType} */}
+          {/*   setValue={setTempReportType} */}
+          {/*   options={radioFilterOptions} */}
+          {/* /> */}
         </FilterMenu>
         <div>
           <div className={classes.summaryTable}>
