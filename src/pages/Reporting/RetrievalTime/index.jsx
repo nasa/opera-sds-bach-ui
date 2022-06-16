@@ -140,7 +140,7 @@ function RetrievalTime(props) {
     const results = await getReport(path);
     // generate row number
     for (let i = 0; i < results.data.length; i++) {
-      results.data[i].id = i;
+      results.data[i].id = i + 1;
     }
     setLoading(false);
 

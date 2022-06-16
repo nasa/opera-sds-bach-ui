@@ -3,6 +3,7 @@ import Table from "@bach/components/Table";
 import React from "react";
 import { Link } from "@mui/material";
 import { DEFAULT_HOST, SUFFIX } from "@bach/config";
+import moment from "moment";
 
 function RetrievalTimeDetailed(props) {
   const { data, loading, startDate, endDate } = props;
@@ -18,7 +19,7 @@ function RetrievalTimeDetailed(props) {
       field: "input_product_filename",
       headerName: "Input Product Filename",
       flex: 0,
-      minWidth: 680,
+      minWidth: 360,
     },
     {
       field: "input_product_type",
@@ -36,25 +37,37 @@ function RetrievalTimeDetailed(props) {
       field: "opera_product_filename",
       headerName: "OPERA Product Filename",
       flex: 0,
-      minWidth: 680,
+      minWidth: 540,
     },
     {
       field: "public_available_datetime",
       headerName: "Public Available Datetime",
       flex: 0,
       minWidth: 250,
+      renderCell: (params) => {
+        const { value } = params;
+        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+      },
     },
     {
       field: "opera_detect_datetime",
       headerName: "OPERA Detect Datetime",
       flex: 0,
       minWidth: 250,
+      renderCell: (params) => {
+        const { value } = params;
+        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+      },
     },
     {
       field: "product_received_datetime",
       headerName: "Product Received Datetime",
       flex: 0,
       minWidth: 250,
+      renderCell: (params) => {
+        const { value } = params;
+        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+      },
     },
     {
       field: "retrieval_time",
