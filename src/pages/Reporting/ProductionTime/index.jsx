@@ -77,6 +77,8 @@ function ProductionTime(props) {
 
   const [loading, setLoading] = React.useState(false);
 
+  const [header, setHeader] = React.useState([]);
+
   const getProductionTimeReport = async (endpoint) => {
     const paths = ["reports", endpoint];
     const params = {
@@ -129,19 +131,33 @@ function ProductionTime(props) {
 
     const path = getPathTail(location);
     setReportInfo(path, {});
+    setHeader([]);
 
     setLoading(true);
+
     const results = await getReport(path);
+    const { header, payload } = results.data;
+    setHeader(header);
+
     // generate row number
-    for (let i = 0; i < results.data.length; i++) {
-      results.data[i].id = i + 1;
+    for (let i = 0; i < payload.length; i++) {
+      payload[i].id = i + 1;
     }
+
     setLoading(false);
 
     const reportName = path;
-    setReportInfo(reportName, results.data);
+    setReportInfo(reportName, payload);
   };
   const reset = () => {};
+
+  const reportHeaderLines = [];
+  for (let i = 0; i < header.length; i++) {
+    const headerLine = header[i];
+    Object.entries(headerLine).forEach(([key, value]) => {
+      reportHeaderLines.push(<Typography>{key}: {value}</Typography>);
+    });
+  }
 
   return (
     <PageWrapper>
@@ -160,6 +176,10 @@ function ProductionTime(props) {
           />
         </FilterMenu>
         <>
+          <div className={classes.summaryTable}>
+            <Typography variant="h6">Report Summary</Typography>
+            {reportHeaderLines}
+          </div>
           <Typography variant="h6">Report Data</Typography>
           <TabMenu links={links} match={match} classes={classes.reportTab} />
 
