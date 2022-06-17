@@ -40,7 +40,6 @@ const customRenderWithRouter = (ui, options, { route = "/" } = {}) => {
     return render(ui, {wrapper: AllTheProvidersWithRouter, ...options});
 };
 
-
 // re-export everything
 export * from '@testing-library/react'
 

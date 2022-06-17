@@ -115,5 +115,5 @@ FilterMenu.propTypes = {
 
 FilterMenu.defaultProps = {
   children: [],
-  searchButtonValue: null,
+  searchButtonValue: "SEARCH",
 };
