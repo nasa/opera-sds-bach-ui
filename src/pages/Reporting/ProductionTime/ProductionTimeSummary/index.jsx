@@ -8,6 +8,7 @@ import BasicModal from "@bach/components/BasicModal";
 function ProductionTimeSummary(props) {
   const { data, loading, startDate, endDate } = props;
 
+  const [selectedHistogram, setSelectedHistogram] = React.useState(<></>);
   const [open, setOpen] = React.useState(false);
 
   const columns = [
@@ -62,10 +63,14 @@ function ProductionTimeSummary(props) {
         const { value } = params;
         const image = (<img src={`data:image/png;base64,${value}`} alt="histogram" style={{ maxWidth: "100%" }} />);
         return (
-          <>
-            <Button onClick={() => setOpen(true)}>View Histogram</Button>
-            <BasicModal title="Histogram" content={image} open={open} setOpen={setOpen}/>
-          </>
+          <Button
+            onClick={() => {
+              setSelectedHistogram(image);
+              setOpen(true);
+            }}
+          >
+            View Histogram
+          </Button>
         );
       },
     },
@@ -86,6 +91,12 @@ function ProductionTimeSummary(props) {
         Click here to download the production time summary report for {startDate} to {endDate}.
       </Link>
       <Table data={data} columns={columns} loading={loading} />
+      <BasicModal
+        title="Histogram"
+        content={selectedHistogram}
+        open={open}
+        setOpen={setOpen}
+      />
     </>
   );
 }
