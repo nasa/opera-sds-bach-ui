@@ -37,7 +37,7 @@ function RetrievalTimeDetailed(props) {
       field: "opera_product_filename",
       headerName: "OPERA Product Filename",
       flex: 0,
-      minWidth: 540,
+      minWidth: 700,
     },
     {
       field: "public_available_datetime",

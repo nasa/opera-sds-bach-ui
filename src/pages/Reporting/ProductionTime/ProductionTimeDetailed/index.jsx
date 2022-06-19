@@ -18,7 +18,7 @@ function ProductionTimeDetailed(props) {
       field: "opera_product_filename",
       headerName: "OPERA Product File Name",
       flex: 0,
-      minWidth: 540,
+      minWidth: 700,
     },
     {
       field: "opera_product_short_name",

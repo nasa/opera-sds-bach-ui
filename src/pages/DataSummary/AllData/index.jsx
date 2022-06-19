@@ -220,7 +220,7 @@ function AllData() {
       field: "FileName",
       headerName: "File Name",
       flex: 0,
-      minWidth: 550,
+      minWidth: 700,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
