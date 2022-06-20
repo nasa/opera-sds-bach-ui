@@ -1,0 +1,8 @@
+{
+  "/data/list/count\\?start=:start&end=:end&category=incoming": "/summary_incoming_files",
+  "/data/list/count\\?start=:start&end=:end&category=outgoing": "/summary_output_data",
+  "/data\\?start=:start&end=:end": "/summary_all_data",
+  "/reports/IncomingFiles*": "/report_incoming_files",
+  "/reports/GeneratedSdsProducts*": "/report_incoming_files",
+  "/reports/DaacOutgoingProducts*": "/report_incoming_files"
+}

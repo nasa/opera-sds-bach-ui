@@ -69,26 +69,22 @@ export default function DateFilter(props) {
     if (presetVals.includes(val)) setPresetValue(val);
 
     switch (val) {
-      case "Today": {
+      case "Today":
         setStartValue(startOfDay);
         setEndValue(endOfDay);
         break;
-      }
-      case "Yesterday": {
+      case "Yesterday":
         setStartValue(startOfYesterday);
         setEndValue(endOfYesterday);
         break;
-      }
-      case "This Month": {
+      case "This Month":
         setStartValue(startOfMonth);
         setEndValue(endOfMonth);
         break;
-      }
-      case "Last Month": {
+      case "Last Month":
         setStartValue(startOfLastMonth);
         setEndValue(endOfLastMonth);
         break;
-      }
       case "Custom":
         break;
       default:

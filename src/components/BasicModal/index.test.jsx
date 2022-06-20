@@ -3,8 +3,6 @@ import { render } from "@bach/test-utils";
 
 import { Typography } from "@mui/material";
 
-import "@testing-library/jest-dom";
-
 import BasicModal from ".";
 
 describe("Filter Menu", () => {

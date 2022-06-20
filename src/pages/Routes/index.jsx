@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import {
-  Route,
   BrowserRouter as Router,
-  Switch,
-  Redirect,
+  Navigate,
+  Route,
+  Routes
 } from "react-router-dom";
 
 import clsx from "clsx";
@@ -35,7 +35,7 @@ import useStyles from "./style";
 
 const lsSideBar = localStorage.getItem(SIDEBAR_OPENED_LS) === "true";
 
-export default function Routes() {
+export default function Root() {
   const classes = useStyles();
 
   const {
@@ -59,29 +59,29 @@ export default function Routes() {
             [classes.drawerClose]: !sidebarOpen,
           })}
         >
-          <Switch>
+          <Routes>
+            {/* this allows to move to the first tab when clicking the link in the sidebar */}
             <Route
               exact
               path="/"
-              render={() => <Redirect to="/data-summary" />}
+              element={<Navigate to="data-summary" />}
             />
             <Route
-              path="/data-summary"
-              component={DataSummary}
+              path="data-summary/*"
+              element={<DataSummary />}
               opened={sidebarOpen}
             />
             <Route
-              path="/reporting"
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              render={(props) => <Reporting {...props} opened={sidebarOpen} />}
+              path="reporting/*"
+              element={<Reporting opened={sidebarOpen} />}
             />
             <Route
-              path="/product-accountability"
-              component={ProductAccountability}
+              path="product-accountability/*"
+              element={<ProductAccountability />}
               opened={sidebarOpen}
             />
-            <Route component={NotFound} />
-          </Switch>
+            <Route element={<NotFound />} />
+          </Routes>
           <Dialog open={modalDialogState.open}>
             <DialogTitle>{modalDialogState.title}</DialogTitle>
             <DialogContent>

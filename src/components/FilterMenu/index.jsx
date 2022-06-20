@@ -19,7 +19,7 @@ import FilterReset from "../FilterReset";
 import useStyles from "./style";
 
 export default function FilterMenu(props) {
-  const { title, children, search, reset } = props;
+  const { title, children, search, reset, searchButtonValue } = props;
   const classes = useStyles();
 
   const onResetClick = () => reset();
@@ -95,7 +95,7 @@ export default function FilterMenu(props) {
         </CardContent>
       </Container>
       <CardActions>
-        <FilterSearch onClick={onSearchClick} />
+        <FilterSearch onClick={onSearchClick} {...(searchButtonValue ? {value: searchButtonValue} : {})} />
         <FilterReset onClick={onResetClick} />
       </CardActions>
     </Card>
@@ -110,8 +110,10 @@ FilterMenu.propTypes = {
   ]),
   search: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  searchButtonValue: PropTypes.string,
 };
 
 FilterMenu.defaultProps = {
   children: [],
+  searchButtonValue: "SEARCH",
 };

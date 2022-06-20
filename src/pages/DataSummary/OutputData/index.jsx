@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import moment from "moment";
 
@@ -33,7 +33,8 @@ import DateFilter from "@bach/components/Filters/DateFilter";
 import StringFilter from "@bach/components/Filters/StringFilter";
 
 function OutputData() {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [filtersHidden, setFiltersHidden] = React.useState(false);
 
@@ -117,7 +118,7 @@ function OutputData() {
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
-    pushUrlParams(getTempValues(state, tempState, true), history);
+    pushUrlParams(getTempValues(state, tempState, true), location, navigate);
     const results = await getOutputDataCount();
     setLoading(false);
     setData(results.data);
@@ -132,8 +133,8 @@ function OutputData() {
 
   React.useEffect(() => {
     // grans url params if they are passed into url manually, otherwise grabs the current state.
-    onMount(history, getTempValues(state, null, false), tempDispatch);
-  }, [history.location.pathname]);
+    onMount(location, navigate, getTempValues(state, null, false), tempDispatch);
+  }, [location.pathname]);
 
   return (
     <PageWrapper>
@@ -163,4 +164,4 @@ function OutputData() {
   );
 }
 
-export default withRouter(OutputData);
+export default OutputData;

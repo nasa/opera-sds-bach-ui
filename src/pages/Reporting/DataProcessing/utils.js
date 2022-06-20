@@ -16,7 +16,7 @@ const toByteString = (value) => {
   if (value < 1024 * 1024 * 1024 * 1024 * 1024) {
     return `${String(Math.round(value / 1024 / 1024 / 1024 / 1024))} TB`;
   }
-  return `${String(Math.round(value / 1024 / 1024 / 1024 / 1024))} PB`;
+  return `${String(Math.round(value / 1024 / 1024 / 1024 / 1024 / 1024))} PB`;
 };
 
 export { toByteString };

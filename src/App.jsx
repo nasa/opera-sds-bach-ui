@@ -5,10 +5,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { createTheme, ThemeProvider, adaptV4Theme } from "@mui/material/styles";
 import { StyledEngineProvider } from '@mui/material/styles';
 
-
-
-import Routes from "@bach/pages/Routes";
-
+import Root from "@bach/pages/Routes";
 import Contexts from "@bach/contexts";
 
 const defaultTheme = createTheme(adaptV4Theme({
@@ -29,7 +26,7 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <Contexts>
-            <Routes />
+            <Root />
           </Contexts>
         </LocalizationProvider>
       </ThemeProvider>

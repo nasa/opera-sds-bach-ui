@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {
@@ -12,18 +13,19 @@ import {
 import useStyles from "./style";
 
 export default function MenuLink(props) {
-  const { opened, icon, label, ...rest } = props;
+  const { opened, icon, label, to, activeStyleFunc, ...rest } = props;
   const classes = useStyles();
-
   const link = (
-    <ListItem className={classes.icon} button {...rest}>
-      <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText
-        disableTypography
-        className={classes.text}
-        primary={label}
-      />
-    </ListItem>
+    <NavLink to={to} style={activeStyleFunc}>
+      <ListItem className={classes.icon} button {...rest}>
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText
+          disableTypography
+          className={classes.text}
+          primary={label}
+        />
+      </ListItem>
+    </NavLink>
   );
   return opened ? (
     link

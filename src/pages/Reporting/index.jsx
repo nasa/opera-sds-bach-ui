@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Route, Redirect } from "react-router-dom"; // withRouter
+import { Navigate, Route, Routes, useMatch } from "react-router-dom";
 
 import TabMenu from "@bach/components/TabMenu";
 import { PageTitleContext } from "@bach/contexts/PageTitleContext";
@@ -13,7 +13,8 @@ import RetrievalTime from "./RetrievalTime";
 import useStyles from "./style";
 
 export default function Reporting(props) {
-  const { match, opened } = props;
+  const match = useMatch("reporting");
+  const { opened } = props;
   const classes = useStyles();
   const { updatePageTitle } = useContext(PageTitleContext);
   updatePageTitle("Reporting");
@@ -32,32 +33,23 @@ export default function Reporting(props) {
   return (
     <>
       <TabMenu links={links} match={match} opened={opened} />
-
       <div className={classes.subPage}>
-        {/* this allows to move to the first tab when clicking the link in the sidebar */}
-        <Route
-          exact
-          path={`${match.path}`}
-          render={() => <Redirect to={`${match.path}/data-processing`} />}
-        />
+        <Routes>
+          {/* this allows to move to the first tab when clicking the link in the sidebar */}
+          <Route path="/" element={<Navigate to="data-processing" />} exact />
 
-        {/* todo: may move this to config file and map over array */}
-        {/* hidden for OPERA */}
-        {/* <Route path={`${match.path}/observations`} component={Observations} /> */}
-        <Route
-          path={`${match.path}/data-processing`}
-          component={DataProcessing}
-        />
-        <Route path={`${match.path}/production-time`} component={ProductionTime} />
-        <Route path={`${match.path}/retrieval-time`} component={RetrievalTime} />
+          {/* todo: may move this to config file and map over array */}
+          {/* hidden for OPERA */}
+          {/* <Route path="observations" element={<Observations />} /> */}
+          <Route path="data-processing/*" element={<DataProcessing />} />
+          <Route path="production-time/*" element={<ProductionTime />} />
+          <Route path="retrieval-time/*" element={<RetrievalTime />} />
+        </Routes>
       </div>
     </>
   );
 }
 
 Reporting.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
   opened: PropTypes.bool.isRequired,
 };

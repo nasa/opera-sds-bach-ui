@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Route, Redirect } from "react-router-dom"; // withRouter
+import { Route, Navigate, useMatch } from "react-router-dom";
 
 import TabMenu from "@bach/components/TabMenu";
 
@@ -10,7 +10,7 @@ import Observations from "./Observations";
 import useStyles from "./style";
 
 export default function ProductAccountability(props) {
-  const { match } = props;
+  const match = useMatch("production-time");
   const classes = useStyles();
   const { updatePageTitle } = useContext(PageTitleContext);
   updatePageTitle("Product Accountability");
@@ -26,11 +26,11 @@ export default function ProductAccountability(props) {
         {/* this allows to move to the first tab when clicking the link in the sidebar */}
         <Route
           exact
-          path={`${match.path}`}
-          render={() => <Redirect to={`${match.path}/downlink`} />}
+          path="/"
+          element={<Navigate to="downlink" />}
         />
 
-        <Route path={`${match.path}/observations`} component={Observations} />
+        <Route path="observations" element={<Observations />} />
 
         {/* todo: may move this to config file and map over array */}
       </div>
@@ -39,7 +39,4 @@ export default function ProductAccountability(props) {
 }
 
 ProductAccountability.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
 };

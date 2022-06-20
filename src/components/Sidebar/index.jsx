@@ -26,7 +26,6 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 import { SIDEBAR_OPENED_LS } from "@bach/constants";
 import MenuLink from "../MenuLink";
-import Profile from "../Profile";
 
 import useStyles from "./style";
 
@@ -109,20 +108,16 @@ export default function Sidebar(props) {
             opened={opened}
             label={link.label}
             icon={<link.icon />}
-            component={NavLink}
             to={link.path}
-            activeClassName={activeLink}
+            activeStyleFunc={({ isActive }) => ({
+              ...{ textDecoration: "none" },
+              ...(isActive ? { background: "rgba(0, 0, 0, 0.25)"} : null),
+            })}
           />
         ))}
       </List>
 
       <div className={classes.filler} />
-
-      <MenuLink label="Information" icon={<InfoIcon />} />
-      <Divider />
-
-      <Profile />
-      <MenuLink opened={opened} label="Logout" icon={<ExitToAppIcon />} />
     </Drawer>
   );
 }

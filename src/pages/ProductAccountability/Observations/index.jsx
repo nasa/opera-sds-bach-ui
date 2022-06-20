@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -45,9 +45,11 @@ import { useTheme } from "@mui/material";
 import useStyles from "./style";
 
 function Observations() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const theme = useTheme();
-  const history = useHistory();
 
   const state = React.useContext(StateContext);
   const dispatch = React.useContext(DispatchContext);
@@ -389,7 +391,7 @@ function Observations() {
 
     pushTempToState(dispatch, tempState);
 
-    pushUrlParams(getTempValues(state, tempState, true), history);
+    pushUrlParams(getTempValues(state, tempState, true), location, navigate);
 
     const results = await getObservationAccountabilityData();
     setLoading(false);
@@ -416,8 +418,8 @@ function Observations() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, null, false), tempDispatch);
-  }, [history.location.pathname]);
+    onMount(location, navigate, getTempValues(state, null, false), tempDispatch);
+  }, [location.pathname]);
 
   return (
     <PageWrapper>
@@ -482,4 +484,4 @@ function Observations() {
   );
 }
 
-export default withRouter(Observations);
+export default Observations;

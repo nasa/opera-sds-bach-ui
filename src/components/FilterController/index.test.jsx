@@ -1,9 +1,7 @@
 import React from "react";
-import { render, fireEvent } from "@bach/test-utils";
+import { fireEvent, render } from "@bach/test-utils";
 
-import "@testing-library/jest-dom";
-
-import FilterController from "@bach/components/FilterController"
+import FilterController from "@bach/components/FilterController";
 
 describe("Filter Controller", () => {
   const defaultProps = {

@@ -12,18 +12,6 @@ import { PageTitleContext } from "@bach/contexts/PageTitleContext";
 
 import useStyles from "./style";
 
-export function hashCode(str) {
-  let hash = 0;
-  let chr = 0;
-  if (str.length === 0) return hash;
-  for (let i = 0; i < str.length; i += 1) {
-    chr = str.charCodeAt(i);
-    hash = (hash < 5) - hash + chr;
-    hash = hash || 0; // Convert to 32bit integer
-  }
-  return hash;
-}
-
 export const LocationDisplay = () => {
   const location = useLocation();
 

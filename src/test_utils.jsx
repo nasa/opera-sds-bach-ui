@@ -4,21 +4,9 @@ import Contexts from "@bach/contexts";
 import AdapterMoment from "@mui/lab/AdapterMoment";
 
 import { LocalizationProvider } from '@mui/lab';
-import { createTheme, ThemeProvider, adaptV4Theme } from "@mui/material/styles";
+import { createTheme, ThemeProvider} from "@mui/material/styles";
 import { StyledEngineProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
-
-const defaultTheme = createTheme(adaptV4Theme({
-  palette: {
-    primary: {
-      main: "#10B0AB",
-      dark: "#069995",
-    },
-    secondary: {
-      main: "#EEEEEE",
-    },
-  },
-}));
 
 const AllTheProviders = ({children}) => (
     <StyledEngineProvider injectFirst>
@@ -49,9 +37,8 @@ const customRender = (ui, options) => render(ui, {wrapper: AllTheProviders, ...o
 
 const customRenderWithRouter = (ui, options, { route = "/" } = {}) => {
       window.history.pushState({}, "Test page", route);
-    render(ui, {wrapper: AllTheProvidersWithRouter, ...options});
+    return render(ui, {wrapper: AllTheProvidersWithRouter, ...options});
 };
-
 
 // re-export everything
 export * from '@testing-library/react'

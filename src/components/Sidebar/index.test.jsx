@@ -1,7 +1,5 @@
 import React from "react";
-
-import { renderWithRouter, fireEvent, screen } from "@bach/test-utils";
-import "@testing-library/jest-dom";
+import { fireEvent, renderWithRouter, screen } from "@bach/test-utils";
 
 import Sidebar from "@bach/components/Sidebar";
 
@@ -22,8 +20,8 @@ describe("Sidebar test", () => {
     expect(screen.getByText(/Reporting/i)).toBeInTheDocument();
     // hidden for OPERA
     // expect(screen.getByText(/Cluster Health/i)).toBeInTheDocument();
-    expect(screen.getByText(/Information/i)).toBeInTheDocument();
-    expect(screen.getByText(/Logout/i)).toBeInTheDocument();
+    // expect(screen.getByText(/Information/i)).toBeInTheDocument();
+    // expect(screen.getByText(/Logout/i)).toBeInTheDocument();
 
     const closeMenu = screen.getByTestId("open-close-menu");
 

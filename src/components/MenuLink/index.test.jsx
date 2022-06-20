@@ -1,22 +1,14 @@
 import React from "react";
-import { render } from "@bach/test-utils";
-import "@testing-library/jest-dom";
+import { renderWithRouter } from "@bach/test-utils";
 
 import InfoIcon from "@mui/icons-material/Info";
 
-import MenuLink from "@bach/components/MenuLink"
+import MenuLink from "@bach/components/MenuLink";
 
 describe("Menu Link", () => {
-  const renderComponent = ({ label, icon, opened }) =>
-    render(<MenuLink label={label} icon={icon} opened={opened} />);
-
   test("renders MenuLink component", () => {
-    const label = "Information";
-
-    const { getByText } = renderComponent({
-      label,
-      icon: <InfoIcon />,
-    });
+    const route = "/data-summary/incoming";
+    const { getByText } = renderWithRouter(<MenuLink label="Information" icon={<InfoIcon />} to={{screen: "workaround_for_pathname_error"}}/>, {route});
 
     expect(getByText("Information")).toBeInTheDocument();
   });
