@@ -2,17 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import { Grid } from "@material-ui/core";
-
 import Table from "@bach/components/Table";
 
 import { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
 
-import useStyles from "./style";
-
 function IncomingSdpProducts(props) {
-  const classes = useStyles();
-
   const { data, loading } = props;
 
   const columns = [
@@ -40,11 +34,7 @@ function IncomingSdpProducts(props) {
     },
   ];
 
-  return (
-    <Grid item xs={12} className={classes.reportTable}>
-      <Table data={data} columns={columns} loading={loading} />
-    </Grid>
-  );
+  return <Table data={data} columns={columns} loading={loading} />;
 }
 
 IncomingSdpProducts.propTypes = {
@@ -56,4 +46,4 @@ IncomingSdpProducts.defaultProps = {
   data: [],
 };
 
-export default withRouter(IncomingSdpProducts);
+export default IncomingSdpProducts;

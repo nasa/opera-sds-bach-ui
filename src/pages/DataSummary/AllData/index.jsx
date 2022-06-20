@@ -1,12 +1,12 @@
 import React from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { Button, Tooltip, useTheme } from "@material-ui/core";
+import { Button, Tooltip, useTheme } from "@mui/material";
 
-import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import HelpIcon from "@material-ui/icons/Help";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
+import HelpIcon from "@mui/icons-material/Help";
 
 import moment from "moment";
 
@@ -43,10 +43,11 @@ import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import useStyles from "./style";
 
 function AllData() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const theme = useTheme();
-
-  const history = useHistory();
 
   const [filtersHidden, setFiltersHidden] = React.useState(false);
 
@@ -219,7 +220,7 @@ function AllData() {
       field: "FileName",
       headerName: "File Name",
       flex: 0,
-      minWidth: 550,
+      minWidth: 700,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
       renderCell: (params) => {
         const { value } = params;
@@ -337,7 +338,7 @@ function AllData() {
     setLoading(true);
     pushTempToState(dispatch, tempState);
 
-    pushUrlParams(getTempValues(state, tempState, true), history);
+    pushUrlParams(getTempValues(state, tempState, true), location, navigate);
     const results = await getAllDataCount();
     setLoading(false);
     const filteredResults = filterData(results.data);
@@ -355,8 +356,8 @@ function AllData() {
   };
 
   React.useEffect(() => {
-    onMount(history, getTempValues(state, null, false), tempDispatch);
-  }, [history.location.pathname]);
+    onMount(location, navigate, getTempValues(state, null, false), tempDispatch);
+  }, [location.pathname]);
 
   return (
     <PageWrapper>
@@ -403,4 +404,4 @@ function AllData() {
   );
 }
 
-export default withRouter(AllData);
+export default AllData;

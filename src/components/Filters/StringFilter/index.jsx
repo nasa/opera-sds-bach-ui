@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
 
 import useStyles from "./style";
 

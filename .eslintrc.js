@@ -1,5 +1,5 @@
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   env: {
     browser: true,
     commonjs: true,
@@ -26,14 +26,7 @@ module.exports = {
     react: {
       version: "detect",
     },
-    "import/resolver": {
-      "eslint-import-resolver-custom-alias": {
-        alias: {
-          "@bach": "./src",
-        },
-        extensions: [".js", ".jsx"],
-      },
-    },
+    "import/resolver": "webpack",
   },
   rules: {
     "prettier/prettier": ["error", { singleQuote: false, parser: "flow" }],

@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import moment from "moment";
 
-import { TextField, MenuItem } from "@material-ui/core";
+import { TextField, MenuItem } from "@mui/material";
 
 import useStyles from "./style";
 
@@ -69,26 +69,22 @@ export default function DateFilter(props) {
     if (presetVals.includes(val)) setPresetValue(val);
 
     switch (val) {
-      case "Today": {
+      case "Today":
         setStartValue(startOfDay);
         setEndValue(endOfDay);
         break;
-      }
-      case "Yesterday": {
+      case "Yesterday":
         setStartValue(startOfYesterday);
         setEndValue(endOfYesterday);
         break;
-      }
-      case "This Month": {
+      case "This Month":
         setStartValue(startOfMonth);
         setEndValue(endOfMonth);
         break;
-      }
-      case "Last Month": {
+      case "Last Month":
         setStartValue(startOfLastMonth);
         setEndValue(endOfLastMonth);
         break;
-      }
       case "Custom":
         break;
       default:
@@ -173,6 +169,7 @@ export default function DateFilter(props) {
         value={startValue}
         onChange={changeStartValue}
         disabled={disabled}
+        margin="normal"
         className={clsx(
           classes.textField,
           classes.filterComponent,
@@ -198,6 +195,7 @@ export default function DateFilter(props) {
         value={endValue}
         disabled={disabled}
         onChange={changeEndValue}
+        margin="normal"
         className={clsx(classes.textField, classes.filterComponent)}
         InputLabelProps={{
           shrink: true,
@@ -219,6 +217,7 @@ export default function DateFilter(props) {
         variant="outlined"
         label="Presets"
         disabled={disabled}
+        margin="normal"
         className={clsx(classes.dateSelect, {
           [classes.show]: presets,
           [classes.hide]: !presets,

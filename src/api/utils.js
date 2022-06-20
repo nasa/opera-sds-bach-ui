@@ -17,12 +17,11 @@ const extractJobParams = (urlParams) => {
   return params;
 };
 /**
- * get's the last path in the url history passed into the function
- * @param {*} history
+ * get's the last path in the location passed into the function
+ * @param {*} location
  * @returns {String} urlTail
  */
-const getPathTail = (history) => {
-  const { location } = history;
+const getPathTail = (location) => {
   const { pathname } = location;
   const splitPath = pathname.split("/");
 

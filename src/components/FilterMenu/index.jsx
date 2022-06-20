@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@mui/styles";
 
 import clsx from "clsx";
 
@@ -11,7 +11,7 @@ import {
   CardContent,
   CardActions,
   Container,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import FilterSearch from "../FilterSearch";
 import FilterReset from "../FilterReset";
@@ -19,7 +19,7 @@ import FilterReset from "../FilterReset";
 import useStyles from "./style";
 
 export default function FilterMenu(props) {
-  const { title, children, search, reset } = props;
+  const { title, children, search, reset, searchButtonValue } = props;
   const classes = useStyles();
 
   const onResetClick = () => reset();
@@ -95,7 +95,7 @@ export default function FilterMenu(props) {
         </CardContent>
       </Container>
       <CardActions>
-        <FilterSearch onClick={onSearchClick} />
+        <FilterSearch onClick={onSearchClick} {...(searchButtonValue ? {value: searchButtonValue} : {})} />
         <FilterReset onClick={onResetClick} />
       </CardActions>
     </Card>
@@ -110,8 +110,10 @@ FilterMenu.propTypes = {
   ]),
   search: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  searchButtonValue: PropTypes.string,
 };
 
 FilterMenu.defaultProps = {
   children: [],
+  searchButtonValue: "SEARCH",
 };

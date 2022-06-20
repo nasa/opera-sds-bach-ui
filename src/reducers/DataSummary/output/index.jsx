@@ -8,12 +8,10 @@ const initialState = {
 
 function outputDataReducer(state, action) {
   switch (action.type) {
-    case DATA: {
+    case DATA:
       return { ...state, data: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 

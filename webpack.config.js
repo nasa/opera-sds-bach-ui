@@ -5,7 +5,6 @@ const { BASEPATH } = require("./src/config");
 
 module.exports = {
   devtool: "eval-source-map",
-  entry: ["babel-polyfill", "./src/index.js"],
   module: {
     rules: [
       {
@@ -13,6 +12,17 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/react',
+              {
+                plugins: ['@babel/plugin-proposal-class-properties'
+                 , '@babel/plugin-transform-runtime'
+              ],
+              },
+            ],
+          },
         },
       },
       {
@@ -28,20 +38,11 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|ttf|svg|eot|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {},
-          },
-        ],
+        type: "asset/resource"
       },
       {
         test: /\.png$/,
-        use: [
-          {
-            loader: "url-loader?mimetype=image/png",
-          },
-        ],
+        type: "asset/inline"
       },
     ],
   },
@@ -71,8 +72,6 @@ module.exports = {
     },
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
     publicPath: BASEPATH, // will probably prepend with /bach-ui (in production)
-    filename: "index_bundle.js",
   },
 };

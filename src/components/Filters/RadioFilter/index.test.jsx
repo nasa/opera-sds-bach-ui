@@ -1,8 +1,7 @@
 import React from "react";
-import { render, screen, fireEvent } from "@bach/test-utils";
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@bach/test-utils";
 
-import RadioFilter from "@bach/components/Filters/RadioFilter"
+import RadioFilter from "@bach/components/Filters/RadioFilter";
 
 describe("Select Filter", () => {
   const defaultProps = {

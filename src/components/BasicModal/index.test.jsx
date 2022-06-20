@@ -1,9 +1,7 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render } from "@bach/test-utils";
 
-import { Typography } from "@material-ui/core";
-
-import "@testing-library/jest-dom";
+import { Typography } from "@mui/material";
 
 import BasicModal from ".";
 

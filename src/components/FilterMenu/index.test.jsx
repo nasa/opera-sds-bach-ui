@@ -1,10 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@bach/test-utils";
 import userEvent from "@testing-library/user-event";
 
-import "@testing-library/jest-dom";
-
 import FilterMenu from "@bach/components/FilterMenu"
+import { act } from "react-dom/test-utils";
 
 describe("Filter Menu", () => {
   const defaultProps = {
@@ -15,8 +14,8 @@ describe("Filter Menu", () => {
 
   const renderComponent = ({ title, search, reset }) =>
     render(<FilterMenu title={title} search={search} reset={reset} />);
-  test("Renders the filter Menu component", () => {
-    // const toggleFilter = jest.fn();
+
+  test("Renders the filter Menu component", async () => {
     const { getByText } = renderComponent({
       title: defaultProps.title,
       search: defaultProps.search,
@@ -24,11 +23,17 @@ describe("Filter Menu", () => {
     });
 
     expect(getByText(/HELLO WORLD/i)).toBeInTheDocument();
-    const searchBtn = getByText(/search/i);
-    userEvent.click(searchBtn);
+
+    const user = userEvent.setup();
+
+    await act(async () => {
+      await user.click(screen.getByRole("button", { name: "SEARCH" }));
+    });
     expect(defaultProps.search).toHaveBeenCalled();
-    const resetBtn = getByText(/reset/i);
-    userEvent.click(resetBtn);
+
+    await act(async () => {
+      await user.click(screen.getByRole("button", { name: "RESET" }));
+    });
     expect(defaultProps.reset).toHaveBeenCalled();
   });
 });

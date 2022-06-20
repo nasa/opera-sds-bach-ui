@@ -9,15 +9,12 @@ const initialState = {
 
 function generatedSdsReducer(state, action) {
   switch (action.type) {
-    case DATA: {
+    case DATA:
       return { ...state, data: action.payload };
-    }
-    case SUMMARY: {
+    case SUMMARY:
       return { ...state, summary: action.payload };
-    }
-    default: {
+    default:
       throw new Error(`Unhandled type: ${action.type}`);
-    }
   }
 }
 /**

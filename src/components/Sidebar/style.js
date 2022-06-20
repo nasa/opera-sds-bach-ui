@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 
 import {
   DRAWER_WIDTH,
@@ -22,7 +22,7 @@ export default makeStyles((theme) => ({
   drawerClose: {
     overflowX: "hidden",
     backgroundColor: theme.palette.background.default,
-    width: theme.spacing(9) + 1,
+    width: theme.spacing(9),
   },
   drawerList: {
     paddingTop: 0,

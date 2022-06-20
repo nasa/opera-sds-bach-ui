@@ -1,9 +1,7 @@
 import React from "react";
+import { fireEvent, render, screen } from "@bach/test-utils";
 
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-
-import CheckboxFilter from "@bach/components/Filters/CheckboxFilter"
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
 describe("CheckboxFilter", () => {
   const defaultProps = {

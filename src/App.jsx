@@ -1,14 +1,14 @@
 import React from "react";
 
-import MomentUtils from "@date-io/moment";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import AdapterMoment from "@mui/lab/AdapterMoment";
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { createTheme, ThemeProvider, adaptV4Theme } from "@mui/material/styles";
+import { StyledEngineProvider } from '@mui/material/styles';
 
-import Routes from "@bach/pages/Routes";
-
+import Root from "@bach/pages/Routes";
 import Contexts from "@bach/contexts";
 
-const defaultTheme = createTheme({
+const defaultTheme = createTheme(adaptV4Theme({
   palette: {
     primary: {
       main: "#10B0AB",
@@ -18,17 +18,19 @@ const defaultTheme = createTheme({
       main: "#EEEEEE",
     },
   },
-});
+}));
 
 function App() {
   return (
-    <MuiPickersUtilsProvider utils={MomentUtils}>
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={defaultTheme}>
-        <Contexts>
-          <Routes />
-        </Contexts>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <Contexts>
+            <Root />
+          </Contexts>
+        </LocalizationProvider>
       </ThemeProvider>
-    </MuiPickersUtilsProvider>
+    </StyledEngineProvider>
   );
 }
 
