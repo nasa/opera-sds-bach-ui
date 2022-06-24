@@ -285,8 +285,8 @@ function AllData() {
       paths.push(tempProductType);
     }
     const params = {
-      start: `${tempStartDate}:00Z`,
-      end: `${tempEndDate}:00Z`,
+      start: `${tempStartDate}Z`,
+      end: `${tempEndDate}Z`,
       ...(tileId && { "metadata.tile_id": tileId }),
       ...(sensor && { "metadata.sensor": sensor }),
     };
@@ -346,8 +346,8 @@ function AllData() {
   };
 
   const reset = () => {
-    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
-    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
+    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"));
+    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"));
     setTempPreset("Today");
     setTempProductType("");
 

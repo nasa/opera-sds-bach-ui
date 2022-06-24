@@ -21,8 +21,8 @@ const actionTypes = {
 };
 
 const initialState = {
-  startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-  endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+  startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+  endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
   preset: "",
   productType: "",
   source: "",
@@ -53,8 +53,8 @@ function useDataSummary({ reducer = dataSummaryReducer } = {}) {
     { startDate, endDate, preset, productType, source, data },
     dispatch,
   ] = React.useReducer(reducer, {
-    startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-    endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+    startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+    endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
     preset: "Today",
     productType: "",
     source: "",

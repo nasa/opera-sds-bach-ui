@@ -182,8 +182,8 @@ function DataProcessing(props) {
   const getIncomingL2HLSFiles = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
       mime: "application/json",
       venue: getVenue()
@@ -200,8 +200,8 @@ function DataProcessing(props) {
   const getIncomingAncillary = async () => {
     const paths = ["reports", "IncomingFiles"];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       reportType: "ancillary",
       mime: "application/json",
       venue: getVenue()
@@ -218,8 +218,8 @@ function DataProcessing(props) {
   const getGeneratedSdsProducts = async () => {
     const paths = ["reports", "GeneratedSdsProducts"];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
       mime: "application/json",
       venue: getVenue()
@@ -236,8 +236,8 @@ function DataProcessing(props) {
   const getOutgoingDaacProducts = async () => {
     const paths = ["reports", "DaacOutgoingProducts"];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
       mime: "application/json",
       venue: getVenue()
@@ -337,8 +337,8 @@ function DataProcessing(props) {
   };
 
   const reset = () => {
-    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
-    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
+    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"));
+    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"));
     setTempPreset("Today");
     setTempReportType("brief");
   };

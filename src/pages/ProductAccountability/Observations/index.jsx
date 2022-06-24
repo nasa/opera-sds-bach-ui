@@ -359,10 +359,10 @@ function Observations() {
     const paths = ["observation"];
     const params = {
       // will be added later on.
-      // obs_start: `${tempObservationStartDate}:00Z`,
-      // obs_end: `${tempObservationEndDate}:00Z`,
-      start: `${tempLastModifiedStartDate}:00Z`,
-      end: `${tempLastModifiedEndDate}:00Z`,
+      // obs_start: `${tempObservationStartDate}Z`,
+      // obs_end: `${tempObservationEndDate}Z`,
+      start: `${tempLastModifiedStartDate}Z`,
+      end: `${tempLastModifiedEndDate}Z`,
     };
     if (tempObservationID !== "") {
       params.observation_id = tempObservationID;
@@ -400,15 +400,15 @@ function Observations() {
 
   const reset = () => {
     setTempObservationStartDate(
-      moment().startOf("day").format("YYYY-MM-DDTHH:mm")
+      moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss")
     );
-    setTempObservationEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
+    setTempObservationEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"));
     setTempObservationPreset("Today");
     setTempLastModifiedStartDate(
-      moment().startOf("day").format("YYYY-MM-DDTHH:mm")
+      moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss")
     );
     setTempLastModifiedEndDate(
-      moment().endOf("day").format("YYYY-MM-DDTHH:mm")
+      moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss")
     );
     setTempLastModifiedPreset("Today");
     setShowLatestVersionStr("true");
