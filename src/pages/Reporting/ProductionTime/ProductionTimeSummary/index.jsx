@@ -88,7 +88,7 @@ function ProductionTimeSummary(props) {
           `mime=` + `application/zip`
         }
       >
-        Click here to download the production time summary report for {startDate} to {endDate}.
+        Click here to download the production time summary report for {startDate}Z to {endDate}Z.
       </Link>
       <Table data={data} columns={columns} loading={loading} />
       <BasicModal

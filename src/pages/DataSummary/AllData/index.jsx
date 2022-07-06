@@ -259,7 +259,7 @@ function AllData() {
         `${params.row.metadata.ProductReceivedTime || ""}`,
       renderCell: (params) => {
         const { value } = params;
-        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+        return moment.utc(value).format();
       },
     },
     {
