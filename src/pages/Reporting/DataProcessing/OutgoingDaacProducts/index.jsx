@@ -12,7 +12,7 @@ function OutgoingDaacProducts(props) {
   const columns = [
     {
       field: "id",
-      headerName: "File Name",
+      headerName: "OPERA Product Short Name",
       flex: 0,
       minWidth: 200,
     },

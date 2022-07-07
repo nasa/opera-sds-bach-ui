@@ -6,13 +6,13 @@ import Table from "@bach/components/Table";
 
 import { toByteString } from "@bach/pages/Reporting/DataProcessing/utils";
 
-function GeneratedSdsProducts(props) {
+function IncomingSdpProducts(props) {
   const { data, loading } = props;
 
   const columns = [
     {
       field: "id",
-      headerName: "File Name",
+      headerName: "Input Product Short Name",
       flex: 0,
       minWidth: 150,
     },
@@ -37,14 +37,14 @@ function GeneratedSdsProducts(props) {
   return <Table data={data} columns={columns} loading={loading} />;
 }
 
-GeneratedSdsProducts.propTypes = {
+IncomingSdpProducts.propTypes = {
   loading: PropTypes.bool,
   data: PropTypes.arrayOf(PropTypes.shape),
 };
 
-GeneratedSdsProducts.defaultProps = {
+IncomingSdpProducts.defaultProps = {
   data: [],
   loading: false,
 };
 
-export default GeneratedSdsProducts;
+export default IncomingSdpProducts;
