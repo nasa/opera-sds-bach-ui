@@ -88,8 +88,8 @@ function RetrievalTime(props) {
   const getRetrievalTimeReport = async (endpoint) => {
     const paths = ["reports", endpoint];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
       mime: "application/json",
     };

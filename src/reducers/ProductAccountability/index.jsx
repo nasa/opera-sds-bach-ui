@@ -51,14 +51,14 @@ const actionTypes = {
 };
 
 const initialState = {
-  workflowStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-  workflowEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+  workflowStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+  workflowEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
   workflowPreset: "Today",
-  lastModifiedStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-  lastModifiedEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+  lastModifiedStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+  lastModifiedEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
   lastModifiedPreset: "Today",
-  observationStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-  observationEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+  observationStartDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+  observationEndDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
   observationPreset: "Today",
   observationID: "",
   datatakeID: "",

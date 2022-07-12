@@ -46,7 +46,7 @@ function ProductionTimeDetailed(props) {
           `mime=` + `text/csv`
         }
       >
-        Click here to download the production time detailed report for {startDate} to {endDate}.
+        Click here to download the production time detailed report for {startDate}Z to {endDate}Z.
       </Link>
       <Table data={data} columns={columns} loading={loading} />
     </>

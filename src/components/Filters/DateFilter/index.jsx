@@ -34,30 +34,30 @@ export default function DateFilter(props) {
     "Custom",
   ];
 
-  const startOfDay = moment().startOf("day").format("YYYY-MM-DDTHH:mm");
-  const endOfDay = moment().endOf("day").format("YYYY-MM-DDTHH:mm");
+  const startOfDay = moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss");
+  const endOfDay = moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss");
 
   const startOfYesterday = moment()
     .subtract(1, "day")
     .startOf("day")
-    .format("YYYY-MM-DDTHH:mm");
+    .format("YYYY-MM-DDTHH:mm:ss");
 
   const endOfYesterday = moment()
     .subtract(1, "day")
     .endOf("day")
-    .format("YYYY-MM-DDTHH:mm");
+    .format("YYYY-MM-DDTHH:mm:ss");
 
-  const startOfMonth = moment().startOf("month").format("YYYY-MM-DDTHH:mm");
-  const endOfMonth = moment().endOf("month").format("YYYY-MM-DDTHH:mm");
+  const startOfMonth = moment().startOf("month").format("YYYY-MM-DDTHH:mm:ss");
+  const endOfMonth = moment().endOf("month").format("YYYY-MM-DDTHH:mm:ss");
 
   const startOfLastMonth = moment()
     .subtract(1, "month")
     .startOf("month")
-    .format("YYYY-MM-DDTHH:mm");
+    .format("YYYY-MM-DDTHH:mm:ss");
   const endOfLastMonth = moment()
     .subtract(1, "month")
     .endOf("month")
-    .format("YYYY-MM-DDTHH:mm");
+    .format("YYYY-MM-DDTHH:mm:ss");
 
   const changePresetValue = (val) => {
     /**
