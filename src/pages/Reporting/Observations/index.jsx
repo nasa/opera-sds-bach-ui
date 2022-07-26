@@ -124,8 +124,8 @@ function Observations() {
   const getObservationReport = async () => {
     const paths = ["reports", "ObservationAccountabilityReport"];
     const params = {
-      startDateTime: `${tempStartDate}:00Z`,
-      endDateTime: `${tempEndDate}:00Z`,
+      startDateTime: `${tempStartDate}Z`,
+      endDateTime: `${tempEndDate}Z`,
       mime: `json`,
     };
     let results = {};
@@ -162,8 +162,8 @@ function Observations() {
   };
 
   const reset = () => {
-    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
-    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
+    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"));
+    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"));
     setTempPreset("Today");
     setTempCRID("");
     setTempReportType("brief");

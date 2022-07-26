@@ -6,8 +6,8 @@ import DateFilter from "@bach/components/Filters/DateFilter";
 
 describe("Date Filter", () => {
   const defaultProps = {
-    startValue: moment().format("YYYY-MM-DDTHH:mm"),
-    endValue: moment().format("YYYY-MM-DDTHH:mm"),
+    startValue: moment().format("YYYY-MM-DDTHH:mm:ss"),
+    endValue: moment().format("YYYY-MM-DDTHH:mm:ss"),
     preset: "Today",
     setStartDate: jest.fn(),
     setEndDate: jest.fn(),

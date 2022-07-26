@@ -21,8 +21,8 @@ const actionTypes = {
 };
 
 const initialState = {
-  startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-  endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+  startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+  endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
   preset: "",
   crid: "",
   processingMode: "",
@@ -53,8 +53,8 @@ function useReporting({ reducer = reportingReducer } = {}) {
     { startDate, endDate, preset, processingMode, crid, reportType },
     dispatch,
   ] = React.useReducer(reducer, {
-    startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm"),
-    endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm"),
+    startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
+    endDate: moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"),
     preset: "Today",
     processingMode: "",
     crid: "",

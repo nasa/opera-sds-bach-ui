@@ -92,8 +92,8 @@ function OutputData() {
   const getOutputDataCount = async () => {
     const paths = ["data", "list", "count"];
     const params = {
-      start: `${tempStartDate}:00Z`,
-      end: `${tempEndDate}:00Z`,
+      start: `${tempStartDate}Z`,
+      end: `${tempEndDate}Z`,
       category: "outgoing",
     };
     let results = {};
@@ -125,8 +125,8 @@ function OutputData() {
   };
 
   const reset = () => {
-    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm"));
-    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm"));
+    setTempStartDate(moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"));
+    setTempEndDate(moment().endOf("day").format("YYYY-MM-DDTHH:mm:ss"));
     setTempPreset("Today");
     setTempSource("");
   };

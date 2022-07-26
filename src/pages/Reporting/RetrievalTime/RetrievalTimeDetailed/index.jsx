@@ -46,7 +46,7 @@ function RetrievalTimeDetailed(props) {
       minWidth: 250,
       renderCell: (params) => {
         const { value } = params;
-        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+        return moment.utc(value).format();
       },
     },
     {
@@ -56,7 +56,7 @@ function RetrievalTimeDetailed(props) {
       minWidth: 250,
       renderCell: (params) => {
         const { value } = params;
-        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+        return moment.utc(value).format();
       },
     },
     {
@@ -66,7 +66,7 @@ function RetrievalTimeDetailed(props) {
       minWidth: 250,
       renderCell: (params) => {
         const { value } = params;
-        return moment.utc(value).format("Y-MM-DD HH:mmZ");
+        return moment.utc(value).format();
       },
     },
     {
@@ -89,7 +89,7 @@ function RetrievalTimeDetailed(props) {
           `mime=` + `text/csv`
         }
       >
-        Click here to download the retrieval time detailed report for {startDate} to {endDate}.
+        Click here to download the retrieval time detailed report for {startDate}Z to {endDate}Z.
       </Link>
       <Table data={data} columns={columns} loading={loading} />
     </>
