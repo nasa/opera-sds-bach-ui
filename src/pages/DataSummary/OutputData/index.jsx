@@ -81,7 +81,7 @@ function OutputData() {
     },
     {
       field: "count",
-      headerName: "Files Generated",
+      headerName: "Products Generated",
       flex: 0,
       width: 200,
     },

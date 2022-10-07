@@ -80,7 +80,7 @@ function IncomingData() {
     },
     {
       field: "count",
-      headerName: "Files Ingested",
+      headerName: "Granules Ingested",
       flex: 0,
       minWidth: 170,
     },
