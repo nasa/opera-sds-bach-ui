@@ -16,8 +16,8 @@ function RetrievalTimeDetailed(props) {
       minWidth: 85,
     },
     {
-      field: "input_product_filename",
-      headerName: "Input Product Filename",
+      field: "input_product_name",
+      headerName: "Input Product Name",
       flex: 0,
       minWidth: 360,
     },
@@ -34,8 +34,8 @@ function RetrievalTimeDetailed(props) {
       minWidth: 200,
     },
     {
-      field: "opera_product_filename",
-      headerName: "OPERA Product Filename",
+      field: "opera_product_name",
+      headerName: "OPERA Product Name",
       flex: 0,
       minWidth: 700,
     },

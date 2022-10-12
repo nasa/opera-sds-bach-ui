@@ -18,7 +18,7 @@ function GeneratedSdsProducts(props) {
     },
     {
       field: "files_produced",
-      headerName: "Files Produced",
+      headerName: "Products Produced",
       flex: 0,
       minWidth: 170,
     },
