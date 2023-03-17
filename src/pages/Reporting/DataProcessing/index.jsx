@@ -156,7 +156,10 @@ function DataProcessing(props) {
     processing_mode: "Processing Mode",
     time_of_report: "Time of Report",
     total_data_volume: "Total Data Volume",
+    total_granules_ingested: "Total Granules Ingested",
+    total_products_generated: "Total Products Generated",
     total_products_produced: "Total Products Produced",
+    total_products_published: "Total Products Published",
     venue: "Venue",
   };
 

@@ -18,7 +18,7 @@ function IncomingSdpProducts(props) {
     },
     {
       field: "num_ingested",
-      headerName: "Files Ingested",
+      headerName: "Granules Ingested",
       flex: 0,
       minWidth: 170,
     },

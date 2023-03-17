@@ -218,7 +218,7 @@ function AllData() {
     },
     {
       field: "FileName",
-      headerName: "File Name",
+      headerName: "Product Name",
       flex: 0,
       minWidth: 700,
       valueGetter: (params) => `${params.row.metadata.FileName || ""}`,
