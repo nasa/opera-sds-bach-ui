@@ -14,7 +14,7 @@ function IncomingSdpProducts(props) {
       field: "id",
       headerName: "Input Product Short Name",
       flex: 0,
-      minWidth: 150,
+      minWidth: 200,
     },
     {
       field: "num_ingested",
