@@ -20,7 +20,7 @@ function IncomingSdpProducts(props) {
       field: "id",
       headerName: "File Name",
       flex: 0,
-      minWidth: 150,
+      minWidth: 200,
     },
     {
       field: "files_produced",
