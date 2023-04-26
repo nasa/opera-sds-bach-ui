@@ -14,7 +14,7 @@ function GeneratedSdsProducts(props) {
       field: "id",
       headerName: "OPERA Product Short Name",
       flex: 0,
-      minWidth: 150,
+      minWidth: 200,
     },
     {
       field: "files_produced",
