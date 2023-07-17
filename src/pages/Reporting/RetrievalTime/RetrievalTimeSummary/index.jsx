@@ -19,12 +19,6 @@ function RetrievalTimeSummary(props) {
       minWidth: 85,
     },
     {
-      field: "opera_product_short_name",
-      headerName: "OPERA Product Short Name",
-      flex: 0,
-      minWidth: 200,
-    },
-    {
       field: "input_product_short_name",
       headerName: "Input Product Short Name",
       flex: 0,
