@@ -1,5 +1,11 @@
 import React from "react";
-import { Navigate, Route, Routes, useLocation, useMatch } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useMatch,
+} from "react-router-dom";
 
 import { Typography } from "@mui/material";
 
@@ -90,6 +96,17 @@ function ProductionTime(props) {
     let results = {};
     try {
       results = await makeAPIGet(paths, params);
+      for (let i = 0; i < results.data.payload.length; i++) {
+        if (
+          Object.prototype.hasOwnProperty(
+            results.data.payload[i],
+            "production_time"
+          ) &&
+          !results.data.payload[i].production_time
+        ) {
+          results.data.payload[i].production_time = "NULL";
+        }
+      }
     } catch (err) {
       console.error(err);
       setModalDialogState({
