@@ -1,12 +1,20 @@
-import PropTypes from "prop-types";
-import Table from "@bach/components/Table";
 import React from "react";
+
+import PropTypes from "prop-types";
+
 import { Button, Link } from "@mui/material";
+
+import Table from "@bach/components/Table";
 import { DEFAULT_HOST, SUFFIX } from "@bach/config";
+
+import { StateContext } from "@bach/contexts/ReportingContexts";
+
 import BasicModal from "@bach/components/BasicModal";
 
 function ProductionTimeSummary(props) {
   const { data, loading, startDate, endDate } = props;
+
+  const { reportOptions } = React.useContext(StateContext);
 
   const [selectedHistogram, setSelectedHistogram] = React.useState(<></>);
   const [open, setOpen] = React.useState(false);
@@ -54,7 +62,10 @@ function ProductionTimeSummary(props) {
       flex: 0,
       minWidth: 270,
     },
-    {
+  ];
+
+  if (reportOptions.enableHistograms) {
+    columns.push({
       field: "histogram",
       headerName: "Histogram",
       flex: 0,
@@ -73,8 +84,8 @@ function ProductionTimeSummary(props) {
           </Button>
         );
       },
-    },
-  ];
+    });
+  }
 
   return (
     <>
@@ -85,7 +96,8 @@ function ProductionTimeSummary(props) {
           `startDateTime=${startDate}` + `&` +
           `endDateTime=${endDate}` + `&` +
           `reportType=` + `sdp` + `&` +
-          `mime=` + `application/zip`
+          `mime=` + `application/zip` + `&` +
+          `enableHistograms=${reportOptions.enableHistograms}`
         }
       >
         Click here to download the production time summary report for {startDate}Z to {endDate}Z.

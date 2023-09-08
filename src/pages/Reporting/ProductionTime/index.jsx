@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Navigate, Route, Routes, useLocation, useMatch } from "react-router-dom";
 
 import { Typography } from "@mui/material";
@@ -21,6 +22,7 @@ import {
   DispatchContext as DataDispatchProductionTimeLogContext,
 } from "@bach/contexts/DataContexts/ProductionTimeReport/ProductionTimeDetailedReport";
 
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import FilterMenu from "@bach/components/FilterMenu";
 import FilterController from "@bach/components/FilterController";
 import DateFilter from "@bach/components/Filters/DateFilter";
@@ -47,23 +49,17 @@ function ProductionTime(props) {
   const [filtersHidden, setFiltersHidden] = React.useState(false);
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
-  const state = React.useContext(StateContext);
+  const reportingState = React.useContext(StateContext);
+  const reportingDispatch = React.useContext(DispatchContext);
   const modalDialogState = React.useContext(ModalDialogContext);
 
-  const productionTimeSummaryState = React.useContext(
-    DataStateProductionTimeSummaryContext
-  );
-  const productionTimeSummaryDispatch = React.useContext(
-    DataDispatchProductionTimeSummaryContext
-  );
-  const productionTimeLogState = React.useContext(
-    DataStateProductionTimeLogContext
-  );
-  const productionTimeLogDispatch = React.useContext(
-    DataDispatchProductionTimeLogContext
-  );
+  const productionTimeSummaryState = React.useContext(DataStateProductionTimeSummaryContext);
+  const productionTimeSummaryDispatch = React.useContext(DataDispatchProductionTimeSummaryContext);
+  const productionTimeLogState = React.useContext(DataStateProductionTimeLogContext);
+  const productionTimeLogDispatch = React.useContext(DataDispatchProductionTimeLogContext);
 
-  const { startDate, endDate, preset } = state;
+  const { startDate, endDate, preset } = reportingState;
+  const { reportOptions } = reportingState;
 
   const productionTimeSummaryData = productionTimeSummaryState.data;
   const setProductionTimeSummaryData = productionTimeSummaryDispatch.setData;
@@ -79,6 +75,29 @@ function ProductionTime(props) {
 
   const [header, setHeader] = React.useState([]);
 
+  const setReportOption = (event) => reportingDispatch.setReportOptions({...reportOptions, enableHistograms: event.target.checked});
+
+  const makeLabel = (text, hoverText, color) => (
+    <div className={classes.iconLabel}>
+      <span className={classes.spanLabel} style={{ color }}>
+        {text}
+      </span>
+    </div>
+  );
+
+  const reportOptionsOptions = [
+    {
+      label: makeLabel(
+          "Histogram",
+          "Toggle Histogram Generation",
+          "primary"
+      ),
+      name: "enable_histograms",
+      value: reportOptions.enableHistograms,
+      setValue: setReportOption,
+    },
+  ];
+
   const getProductionTimeReport = async (endpoint) => {
     const paths = ["reports", endpoint];
     const params = {
@@ -86,6 +105,7 @@ function ProductionTime(props) {
       endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
       mime: "application/json",
+      enableHistograms: reportOptions.enableHistograms,
     };
     let results = {};
     try {
@@ -174,6 +194,7 @@ function ProductionTime(props) {
             setPresetValue={setTempPreset}
             presets
           />
+          {/-summary$/.test(getPathTail(location)) ? <CheckboxFilter label="Report Options" options={reportOptionsOptions} /> : <></>}
         </FilterMenu>
         <>
           <div className={classes.summaryTable}>

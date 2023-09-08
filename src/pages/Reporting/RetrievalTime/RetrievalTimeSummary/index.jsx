@@ -1,12 +1,19 @@
-import PropTypes from "prop-types";
-import Table from "@bach/components/Table";
 import React from "react";
+
+import PropTypes from "prop-types";
+
+import Table from "@bach/components/Table";
 import { Button, Link } from "@mui/material";
 import { DEFAULT_HOST, SUFFIX } from "@bach/config";
+
+import { StateContext } from "@bach/contexts/ReportingContexts";
+
 import BasicModal from "@bach/components/BasicModal";
 
 function RetrievalTimeSummary(props) {
   const { data, loading, startDate, endDate } = props;
+
+  const { reportOptions } = React.useContext(StateContext);
 
   const [selectedHistogram, setSelectedHistogram] = React.useState(<></>);
   const [open, setOpen] = React.useState(false);
@@ -60,7 +67,10 @@ function RetrievalTimeSummary(props) {
       flex: 0,
       minWidth: 270,
     },
-    {
+  ];
+
+  if (reportOptions.enableHistograms) {
+    columns.push({
       field: "histogram",
       headerName: "Histogram",
       flex: 0,
@@ -79,8 +89,8 @@ function RetrievalTimeSummary(props) {
           </Button>
         );
       },
-    },
-  ];
+    });
+  }
 
   return (
     <>
@@ -91,7 +101,8 @@ function RetrievalTimeSummary(props) {
           `startDateTime=${startDate}` + `&` +
           `endDateTime=${endDate}` + `&` +
           `reportType=` + `sdp` + `&` +
-          `mime=` + `application/zip`
+          `mime=` + `application/zip` + `&` +
+          `enableHistograms=${reportOptions.enableHistograms}`
         }
       >
         Click here to download the retrieval time summary report for {startDate}Z to {endDate}Z.
