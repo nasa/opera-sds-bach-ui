@@ -101,7 +101,7 @@ function RetrievalTimeSummary(props) {
           `startDateTime=${startDate}` + `&` +
           `endDateTime=${endDate}` + `&` +
           `reportType=` + `sdp` + `&` +
-          `enableHistograms=${reportOptions.enableHistograms}` + `&` +
+          ((reportOptions.enableHistograms) ? `enableHistograms=${reportOptions.enableHistograms}` + `&` : ``) +
           `mime=` + `application/zip`
         }
       >
