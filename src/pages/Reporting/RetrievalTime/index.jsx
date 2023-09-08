@@ -110,7 +110,7 @@ function RetrievalTime(props) {
       startDateTime: `${tempStartDate}Z`,
       endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
-      enableHistograms: setReportOption,
+      enableHistograms: reportOptions.enableHistograms,
       mime: "application/json",
     };
     let results = {};
