@@ -101,8 +101,8 @@ function RetrievalTimeSummary(props) {
           `startDateTime=${startDate}` + `&` +
           `endDateTime=${endDate}` + `&` +
           `reportType=` + `sdp` + `&` +
-          `mime=` + `application/zip` + `&` +
-          `enableHistograms=${reportOptions.enableHistograms}`
+          `enableHistograms=${reportOptions.enableHistograms}` + `&` +
+          `mime=` + `application/zip`
         }
       >
         Click here to download the retrieval time summary report for {startDate}Z to {endDate}Z.

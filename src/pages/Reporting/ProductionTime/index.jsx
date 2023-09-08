@@ -104,8 +104,8 @@ function ProductionTime(props) {
       startDateTime: `${tempStartDate}Z`,
       endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
-      mime: "application/json",
       enableHistograms: reportOptions.enableHistograms,
+      mime: "application/json",
     };
     let results = {};
     try {
