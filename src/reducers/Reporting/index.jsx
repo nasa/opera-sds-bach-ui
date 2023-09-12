@@ -18,6 +18,7 @@ const actionTypes = {
   crid: CRID,
   processingMode: PROCESSING_MODE,
   reportType: REPORT_TYPE,
+  reportOptions: "REPORT_OPTIONS",
 };
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
   crid: "",
   processingMode: "",
   reportType: "brief",
+  reportOptions: { enableHistograms: null },
 };
 
 function reportingReducer(state, action) {
@@ -43,6 +45,8 @@ function reportingReducer(state, action) {
       return { ...state, source: action.payload };
     case REPORT_TYPE:
       return { ...state, source: action.payload };
+    case "REPORT_OPTIONS":
+      return { ...state, reportOptions: action.payload };
     default:
       throw new Error(`Unhandled type: ${action.type}`);
   }
@@ -50,7 +54,7 @@ function reportingReducer(state, action) {
 
 function useReporting({ reducer = reportingReducer } = {}) {
   const [
-    { startDate, endDate, preset, processingMode, crid, reportType },
+    { startDate, endDate, preset, processingMode, crid, reportType, reportOptions },
     dispatch,
   ] = React.useReducer(reducer, {
     startDate: moment().startOf("day").format("YYYY-MM-DDTHH:mm:ss"),
@@ -59,17 +63,16 @@ function useReporting({ reducer = reportingReducer } = {}) {
     processingMode: "",
     crid: "",
     reportType: "brief",
+    reportOptions: { enableHistograms: false },
   });
 
-  const setStartDate = (val) => {
-    dispatch({ type: START_DATE, payload: val });
-  };
+  const setStartDate = (val) => dispatch({ type: START_DATE, payload: val });
   const setEndDate = (val) => dispatch({ type: END_DATE, payload: val });
   const setPreset = (val) => dispatch({ type: PRESET, payload: val });
-  const setProcessingMode = (val) =>
-    dispatch({ type: PROCESSING_MODE, payload: val });
+  const setProcessingMode = (val) => dispatch({ type: PROCESSING_MODE, payload: val });
   const setCRID = (val) => dispatch({ type: CRID, payload: val });
   const setReportType = (val) => dispatch({ type: REPORT_TYPE, payload: val });
+  const setReportOptions = (val) => dispatch({ type: "REPORT_OPTIONS", payload: val});
 
   return {
     startDate,
@@ -78,12 +81,14 @@ function useReporting({ reducer = reportingReducer } = {}) {
     crid,
     processingMode,
     reportType,
+    reportOptions,
     setStartDate,
     setEndDate,
     setPreset,
     setProcessingMode,
     setCRID,
     setReportType,
+    setReportOptions,
   };
 }
 
