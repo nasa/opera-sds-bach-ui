@@ -1,4 +1,5 @@
 import React from "react";
+
 import PropTypes from "prop-types";
 
 import { FormControlLabel, Checkbox } from "@mui/material";
@@ -12,7 +13,7 @@ export default function CheckboxFilter(props) {
     <FilterSkeleton label={label}>
       {options.map((option) => (
         <FormControlLabel
-          style={{ color: option.labelColor }}
+          style={{ color: option.labelColor ? option.labelColor : "primary" }}
           key={option.name}
           control={
             <Checkbox
@@ -24,7 +25,7 @@ export default function CheckboxFilter(props) {
             />
           }
           label={option.label}
-          color={option.labelColor}
+          color={option.labelColor ? option.labelColor : "primary"}
         />
       ))}
     </FilterSkeleton>

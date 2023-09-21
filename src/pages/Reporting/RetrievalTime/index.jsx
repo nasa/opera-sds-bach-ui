@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Navigate,
   Route,
@@ -27,6 +28,7 @@ import {
   DispatchContext as DataDispatchRetrievalTimeLogContext,
 } from "@bach/contexts/DataContexts/RetrievalTimeReport/RetrievalTimeDetailedReport";
 
+import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 import FilterMenu from "@bach/components/FilterMenu";
 import FilterController from "@bach/components/FilterController";
 import DateFilter from "@bach/components/Filters/DateFilter";
@@ -53,23 +55,17 @@ function RetrievalTime(props) {
   const [filtersHidden, setFiltersHidden] = React.useState(false);
   const toggleFilters = () => setFiltersHidden(!filtersHidden);
 
-  const state = React.useContext(StateContext);
+  const reportingState = React.useContext(StateContext);
+  const reportingDispatch = React.useContext(DispatchContext);
   const modalDialogState = React.useContext(ModalDialogContext);
 
-  const retrievalTimeSummaryState = React.useContext(
-    DataStateRetrievalTimeSummaryContext
-  );
-  const retrievalTimeSummaryDispatch = React.useContext(
-    DataDispatchRetrievalTimeSummaryContext
-  );
-  const retrievalTimeLogState = React.useContext(
-    DataStateRetrievalTimeLogContext
-  );
-  const retrievalTimeLogDispatch = React.useContext(
-    DataDispatchRetrievalTimeLogContext
-  );
+  const retrievalTimeSummaryState = React.useContext(DataStateRetrievalTimeSummaryContext);
+  const retrievalTimeSummaryDispatch = React.useContext(DataDispatchRetrievalTimeSummaryContext);
+  const retrievalTimeLogState = React.useContext(DataStateRetrievalTimeLogContext);
+  const retrievalTimeLogDispatch = React.useContext(DataDispatchRetrievalTimeLogContext);
 
-  const { startDate, endDate, preset } = state;
+  const { startDate, endDate, preset } = reportingState;
+  const { reportOptions } = reportingState;
 
   const retrievalTimeSummaryData = retrievalTimeSummaryState.data;
   const setRetrievalTimeSummaryData = retrievalTimeSummaryDispatch.setData;
@@ -85,12 +81,36 @@ function RetrievalTime(props) {
 
   const [header, setHeader] = React.useState([]);
 
+  const setReportOption = (event) => reportingDispatch.setReportOptions({...reportOptions, enableHistograms: event.target.checked});
+
+  const makeLabel = (text, hoverText, color) => (
+    <div className={classes.iconLabel}>
+      <span className={classes.spanLabel} style={{ color }}>
+        {text}
+      </span>
+    </div>
+  );
+
+  const reportOptionsOptions = [
+    {
+      label: makeLabel(
+          "Histogram",
+          "Toggle Histogram Generation",
+          "primary"
+      ),
+      name: "enable_histograms",
+      value: reportOptions.enableHistograms,
+      setValue: setReportOption,
+    },
+  ];
+
   const getRetrievalTimeReport = async (endpoint) => {
     const paths = ["reports", endpoint];
     const params = {
       startDateTime: `${tempStartDate}Z`,
       endDateTime: `${tempEndDate}Z`,
       reportType: "sdp",
+      enableHistograms: reportOptions.enableHistograms,
       mime: "application/json",
     };
     let results = {};
@@ -180,6 +200,7 @@ function RetrievalTime(props) {
             setPresetValue={setTempPreset}
             presets
           />
+          {/-summary$/.test(getPathTail(location)) ? <CheckboxFilter label="Report Options" options={reportOptionsOptions} /> : <></>}
         </FilterMenu>
         <>
           <div className={classes.summaryTable}>
