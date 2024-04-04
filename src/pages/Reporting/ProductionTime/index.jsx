@@ -111,11 +111,13 @@ function ProductionTime(props) {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
       setModalDialogState({
         open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
+        title: err?.response.data?.message || "Something went wrong",
+        contentText:
+          err?.response.data?.traceback ||
+          err?.response.data?.details ||
+          "Please try again.",
       });
     }
     return results;
