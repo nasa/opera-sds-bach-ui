@@ -134,9 +134,10 @@ function ProductionTime(props) {
         contentText: (
           <>
             {err?.response.data?.detail || "Please try again."}
-            <p>{
-              err?.response.data?.traceback || err?.response.data?.detail || err?.response.data?.message
-            }</p>
+            <br />
+            {err?.response.data?.traceback ||
+              err?.response.data?.detail ||
+              err?.response.data?.message}
           </>
         ),
       });
