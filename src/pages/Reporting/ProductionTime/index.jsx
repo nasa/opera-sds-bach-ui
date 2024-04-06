@@ -36,6 +36,7 @@ import TabMenu from "@bach/components/TabMenu";
 import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
 
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 import ProductionTimeSummary from "@bach/pages/Reporting/ProductionTime/ProductionTimeSummary";
 import ProductionTimeDetailed from "@bach/pages/Reporting/ProductionTime/ProductionTimeDetailed";
 
@@ -125,22 +126,7 @@ function ProductionTime(props) {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      setModalDialogState({
-        open: true,
-        title:
-          err.response.data.title ||
-          err.response.data.message ||
-          "Something went wrong",
-        contentText: (
-          <>
-            {err.response.data.detail || "Please try again."}
-            <br />
-            {err.response.data.traceback ||
-              err.response.data.detail ||
-              err.response.data.message}
-          </>
-        ),
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   };

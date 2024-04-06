@@ -41,6 +41,7 @@ import StringFilter from "@bach/components/Filters/StringFilter";
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
 import useStyles from "./style";
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 
 function AllData() {
   const location = useLocation();
@@ -103,22 +104,7 @@ function AllData() {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      setModalDialogState({
-        open: true,
-        title:
-          err.response.data.title ||
-          err.response.data.message ||
-          "Something went wrong",
-        contentText: (
-          <>
-            {err.response.data.detail || "Please try again."}
-            <br />
-            {err.response.data.traceback ||
-              err.response.data.detail ||
-              err.response.data.message}
-          </>
-        ),
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     setLoading(false);
     return results;
@@ -305,22 +291,7 @@ function AllData() {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      setModalDialogState({
-        open: true,
-        title:
-          err.response.data.title ||
-          err.response.data.message ||
-          "Something went wrong",
-        contentText: (
-          <>
-            {err.response.data.detail || "Please try again."}
-            <br />
-            {err.response.data.traceback ||
-              err.response.data.detail ||
-              err.response.data.message}
-          </>
-        ),
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   }
