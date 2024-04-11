@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Button, Tooltip, useTheme } from "@mui/material";
+import { Button, Link, Tooltip, useTheme } from "@mui/material";
 
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -40,6 +40,7 @@ import DateFilter from "@bach/components/Filters/DateFilter";
 import StringFilter from "@bach/components/Filters/StringFilter";
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
+import { DEFAULT_HOST, SUFFIX } from "@bach/config";
 import useStyles from "./style";
 
 function AllData() {
@@ -391,6 +392,17 @@ function AllData() {
           />
           <CheckboxFilter label="Transfer Status" options={transferOptions} />
         </FilterMenu>
+        <Link
+          href={
+            `${DEFAULT_HOST}${SUFFIX}` +
+            `/data/` + `?` +
+            `startDateTime=${tempStartDate}` + `&` +
+            `endDateTime=${tempEndDate}` + `&` +
+            `mime=` + `text/csv`
+          }
+        >
+          Click here to download the data summary for {tempStartDate} to {tempEndDate}.
+        </Link>
         <Table
           data={data}
           columns={columns}

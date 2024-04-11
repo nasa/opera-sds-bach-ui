@@ -36,7 +36,7 @@ export default function FilterTableGrid(props) {
           xl={filtersHidden ? 12 : 10}
           className={classes.rightGridChild}
         >
-          {children[1]}
+          {children.slice(1)}
         </Grid>
       )}
     </Grid>
