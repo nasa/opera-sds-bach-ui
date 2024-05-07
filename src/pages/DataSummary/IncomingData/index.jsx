@@ -31,6 +31,7 @@ import FilterController from "@bach/components/FilterController";
 import Table from "@bach/components/Table";
 import DateFilter from "@bach/components/Filters/DateFilter";
 import StringFilter from "@bach/components/Filters/StringFilter";
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 
 function IncomingData() {
   const location = useLocation();
@@ -99,12 +100,7 @@ function IncomingData() {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
-      setModalDialogState({
-        open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   }

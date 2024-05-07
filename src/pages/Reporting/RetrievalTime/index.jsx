@@ -1,31 +1,22 @@
 import React from "react";
 
+import {Navigate, Route, Routes, useLocation, useMatch,} from "react-router-dom";
+
+import {Typography} from "@mui/material";
+
+import {makeAPIGet} from "@bach/api/DataUtils";
+
+import {getPathTail} from "@bach/api/utils";
+
+import {ModalDialogContext} from "@bach/contexts/ModelDialogContext";
+import {DispatchContext, StateContext,} from "@bach/contexts/ReportingContexts";
 import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useMatch,
-} from "react-router-dom";
-
-import { Typography } from "@mui/material";
-
-import { makeAPIGet } from "@bach/api/DataUtils";
-
-import { getPathTail } from "@bach/api/utils";
-
-import { ModalDialogContext } from "@bach/contexts/ModelDialogContext";
-import {
-  DispatchContext,
-  StateContext,
-} from "@bach/contexts/ReportingContexts";
-import {
-  StateContext as DataStateRetrievalTimeSummaryContext,
   DispatchContext as DataDispatchRetrievalTimeSummaryContext,
+  StateContext as DataStateRetrievalTimeSummaryContext,
 } from "@bach/contexts/DataContexts/RetrievalTimeReport/RetrievalTimeSummaryReport";
 import {
-  StateContext as DataStateRetrievalTimeLogContext,
   DispatchContext as DataDispatchRetrievalTimeLogContext,
+  StateContext as DataStateRetrievalTimeLogContext,
 } from "@bach/contexts/DataContexts/RetrievalTimeReport/RetrievalTimeDetailedReport";
 
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
@@ -36,6 +27,7 @@ import TabMenu from "@bach/components/TabMenu";
 import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
 
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 import RetrievalTimeSummary from "@bach/pages/Reporting/RetrievalTime/RetrievalTimeSummary";
 import RetrievalTimeDetailed from "@bach/pages/Reporting/RetrievalTime/RetrievalTimeDetailed";
 
@@ -117,12 +109,7 @@ function RetrievalTime(props) {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
-      setModalDialogState({
-        open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   };

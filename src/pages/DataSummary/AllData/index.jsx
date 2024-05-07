@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Button, Tooltip, useTheme } from "@mui/material";
+import { Button, Link, Tooltip, useTheme } from "@mui/material";
 
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
@@ -40,7 +40,9 @@ import DateFilter from "@bach/components/Filters/DateFilter";
 import StringFilter from "@bach/components/Filters/StringFilter";
 import CheckboxFilter from "@bach/components/Filters/CheckboxFilter";
 
+import { DEFAULT_HOST, SUFFIX } from "@bach/config";
 import useStyles from "./style";
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 
 function AllData() {
   const location = useLocation();
@@ -103,12 +105,7 @@ function AllData() {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
-      setModalDialogState({
-        open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     setLoading(false);
     return results;
@@ -295,12 +292,7 @@ function AllData() {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
-      setModalDialogState({
-        open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   }
@@ -391,6 +383,17 @@ function AllData() {
           />
           <CheckboxFilter label="Transfer Status" options={transferOptions} />
         </FilterMenu>
+        <Link
+          href={
+            `${DEFAULT_HOST}${SUFFIX}` +
+            `/data/` + `?` +
+            `startDateTime=${tempStartDate}` + `&` +
+            `endDateTime=${tempEndDate}` + `&` +
+            `mime=` + `text/csv`
+          }
+        >
+          Click here to download the data summary for {tempStartDate} to {tempEndDate}.
+        </Link>
         <Table
           data={data}
           columns={columns}
