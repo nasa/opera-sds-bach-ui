@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Navigate, Route, Routes, useLocation, useMatch } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useMatch,
+} from "react-router-dom";
 
 import { Typography } from "@mui/material";
 
@@ -30,6 +36,7 @@ import TabMenu from "@bach/components/TabMenu";
 import PageWrapper from "@bach/components/PageWrapper";
 import FilterTableGrid from "@bach/components/FilterTableGrid";
 
+import { apiErrorHandler } from "@bach/pages/reporting_utils";
 import ProductionTimeSummary from "@bach/pages/Reporting/ProductionTime/ProductionTimeSummary";
 import ProductionTimeDetailed from "@bach/pages/Reporting/ProductionTime/ProductionTimeDetailed";
 
@@ -53,10 +60,18 @@ function ProductionTime(props) {
   const reportingDispatch = React.useContext(DispatchContext);
   const modalDialogState = React.useContext(ModalDialogContext);
 
-  const productionTimeSummaryState = React.useContext(DataStateProductionTimeSummaryContext);
-  const productionTimeSummaryDispatch = React.useContext(DataDispatchProductionTimeSummaryContext);
-  const productionTimeLogState = React.useContext(DataStateProductionTimeLogContext);
-  const productionTimeLogDispatch = React.useContext(DataDispatchProductionTimeLogContext);
+  const productionTimeSummaryState = React.useContext(
+    DataStateProductionTimeSummaryContext
+  );
+  const productionTimeSummaryDispatch = React.useContext(
+    DataDispatchProductionTimeSummaryContext
+  );
+  const productionTimeLogState = React.useContext(
+    DataStateProductionTimeLogContext
+  );
+  const productionTimeLogDispatch = React.useContext(
+    DataDispatchProductionTimeLogContext
+  );
 
   const { startDate, endDate, preset } = reportingState;
   const { reportOptions } = reportingState;
@@ -75,7 +90,11 @@ function ProductionTime(props) {
 
   const [header, setHeader] = React.useState([]);
 
-  const setReportOption = (event) => reportingDispatch.setReportOptions({...reportOptions, enableHistograms: event.target.checked});
+  const setReportOption = (event) =>
+    reportingDispatch.setReportOptions({
+      ...reportOptions,
+      enableHistograms: event.target.checked,
+    });
 
   const makeLabel = (text, hoverText, color) => (
     <div className={classes.iconLabel}>
@@ -87,11 +106,7 @@ function ProductionTime(props) {
 
   const reportOptionsOptions = [
     {
-      label: makeLabel(
-          "Histogram",
-          "Toggle Histogram Generation",
-          "primary"
-      ),
+      label: makeLabel("Histogram", "Toggle Histogram Generation", "primary"),
       name: "enable_histograms",
       value: reportOptions.enableHistograms,
       setValue: setReportOption,
@@ -111,12 +126,7 @@ function ProductionTime(props) {
     try {
       results = await makeAPIGet(paths, params);
     } catch (err) {
-      console.error(err);
-      setModalDialogState({
-        open: true,
-        title: "Something went wrong",
-        contentText: "Please try again.",
-      });
+      apiErrorHandler(setModalDialogState, err);
     }
     return results;
   };
@@ -175,7 +185,11 @@ function ProductionTime(props) {
   for (let i = 0; i < header.length; i++) {
     const headerLine = header[i];
     Object.entries(headerLine).forEach(([key, value]) => {
-      reportHeaderLines.push(<Typography>{key}: {value}</Typography>);
+      reportHeaderLines.push(
+        <Typography>
+          {key}: {value}
+        </Typography>
+      );
     });
   }
 
@@ -183,7 +197,12 @@ function ProductionTime(props) {
     <PageWrapper>
       <FilterController hidden={filtersHidden} toggleFilters={toggleFilters} />
       <FilterTableGrid filtersHidden={filtersHidden}>
-        <FilterMenu title="REPORT SETTINGS" search={search} reset={reset} searchButtonValue="GENERATE">
+        <FilterMenu
+          title="REPORT SETTINGS"
+          search={search}
+          reset={reset}
+          searchButtonValue="GENERATE"
+        >
           <DateFilter
             label="Date"
             startValue={tempStartDate}
@@ -194,7 +213,14 @@ function ProductionTime(props) {
             setPresetValue={setTempPreset}
             presets
           />
-          {/-summary$/.test(getPathTail(location)) ? <CheckboxFilter label="Report Options" options={reportOptionsOptions} /> : <></>}
+          {/-summary$/.test(getPathTail(location)) ? (
+            <CheckboxFilter
+              label="Report Options"
+              options={reportOptionsOptions}
+            />
+          ) : (
+            <></>
+          )}
         </FilterMenu>
         <>
           <div className={classes.summaryTable}>
@@ -207,7 +233,11 @@ function ProductionTime(props) {
           <div className={classes.subPage}>
             <Routes>
               {/* this allows to move to the first tab when clicking the link in the sidebar */}
-              <Route path="/" element={<Navigate to="production-time-summary" />} exact />
+              <Route
+                path="/"
+                element={<Navigate to="production-time-summary" />}
+                exact
+              />
               <Route
                 path="production-time-summary"
                 element={

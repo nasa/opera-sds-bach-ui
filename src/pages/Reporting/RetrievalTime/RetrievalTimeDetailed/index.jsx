@@ -19,7 +19,7 @@ function RetrievalTimeDetailed(props) {
       field: "input_product_name",
       headerName: "Input Product Name",
       flex: 0,
-      minWidth: 360,
+      minWidth: 800,
     },
     {
       field: "input_product_type",
@@ -62,6 +62,19 @@ function RetrievalTimeDetailed(props) {
       headerName: "Retrieval Time",
       flex: 0,
       minWidth: 250,
+    },
+    {
+      field: "latest_public_available_datetime",
+      headerName: "Retrieval Clock Time Start",
+      flex: 0,
+      minWidth: 250,
+      renderCell: (params) => {
+        const { value } = params;
+        if (!value) {
+          return "N/A";
+        }
+        return moment.utc(value).format();
+      },
     },
   ];
 
