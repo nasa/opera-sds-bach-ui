@@ -12,14 +12,9 @@ const requestTimeoutMs = Number.isFinite(API_TIMEOUT_MS)
   ? API_TIMEOUT_MS
   : DEFAULT_TIMEOUT_MS;
 
-export async function makeAPIGet(paths, params, data) {
+export async function makeAPIGet(paths, params) {
   const url = buildAPIUrl(paths, `${DEFAULT_HOST}${SUFFIX}`);
-  const config = { method: "GET", url };
-  if (data !== null) {
-    config.data = data;
-  }
-  const response = await axios.get(url, { params, timeout: requestTimeoutMs });
-  return response;
+  return axios.get(url, { params, timeout: requestTimeoutMs });
 }
 
 export function getVenue() {
