@@ -1,18 +1,20 @@
 import axios from "axios";
-import { DEFAULT_HOST, SUFFIX } from "@bach/config";
+import { API_TIMEOUT_MS, DEFAULT_HOST, SUFFIX } from "@bach/config";
 import mozartConfig from "@bach/config/mozartConfig.json";
 
 import { URL_TO_VALUES_DICT, VALUES_TO_URL_DICT } from "@bach/constants";
 import { buildAPIUrl } from "@bach/api/utils";
 
-export async function makeAPIGet(paths, params, data) {
+// A deployment whose `src/config/index.js` predates API_TIMEOUT_MS would
+// otherwise import `undefined`, which axios reads as "wait forever".
+const DEFAULT_TIMEOUT_MS = 900000; // 15 minutes
+const requestTimeoutMs = Number.isFinite(API_TIMEOUT_MS)
+  ? API_TIMEOUT_MS
+  : DEFAULT_TIMEOUT_MS;
+
+export async function makeAPIGet(paths, params) {
   const url = buildAPIUrl(paths, `${DEFAULT_HOST}${SUFFIX}`);
-  const config = { method: "GET", url };
-  if (data !== null) {
-    config.data = data;
-  }
-  const response = await axios.get(url, { params });
-  return response;
+  return axios.get(url, { params, timeout: requestTimeoutMs });
 }
 
 export function getVenue() {
